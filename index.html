@@ -213,29 +213,31 @@
 
   /* plan — horizontal scroll */
   .plan{}
-  .plan-sticky{top:0;z-index:5}
   .plan-header{padding-top:96px;padding-bottom:48px}
-  .plan-track-wrap{overflow:hidden;background:#fff;border-radius:var(--r-xl) var(--r-xl) 0 0;border:1px solid var(--line);border-bottom:none;position:relative}
-  .plan-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0}
+  .plan-track-wrap{overflow:hidden;background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r-lg);position:relative}
+  .plan-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:28px;gap:24px}
   .plan-track::-webkit-scrollbar{display:none}
-  .plan-col-h{flex:0 0 min(440px,82vw);scroll-snap-align:start;padding:40px 36px 36px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:16px;min-height:500px;position:relative;background:#fff}
-  .plan-col-h:last-child{border-right:none}
-  .plan-col-h .ph{display:flex;align-items:center;gap:12px}
-  .plan-col-h .ph .pno{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;background:var(--brand-bg);border-radius:99px}
-  .plan-col-h .ph .days{font-size:13px;color:var(--muted);font-weight:500}
-  .plan-col-h h3{margin:0;font-size:26px;font-weight:600;letter-spacing:-0.018em;line-height:1.2;max-width:18ch}
-  .plan-col-h .lead{margin:0;color:var(--body);font-size:15px;line-height:1.6;max-width:42ch}
-  .plan-col-h ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
-  .plan-col-h li{font-size:14px;color:var(--ink);display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;line-height:1.5}
-  .plan-col-h li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand);margin-top:8px}
-  .plan-col-h li b{font-weight:600;color:var(--ink)}
-  .plan-col-h li span{color:var(--body)}
-  .plan-col-h .plan-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-  .plan-col-h .plan-foot b{color:var(--ink);font-weight:600;display:block;margin-top:3px;font-size:14px;letter-spacing:-0.005em}
-  .plan-progress{display:flex;gap:8px;justify-content:center;padding:18px 0 24px;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r-xl) var(--r-xl)}
+  .plan-col-h{flex:0 0 min(480px,86vw);scroll-snap-align:start;background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;position:relative;min-height:520px;box-shadow:var(--shadow-sm);transition:box-shadow .2s}
+  .plan-col-h:hover{box-shadow:var(--shadow-md)}
+  .plan-col-h::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brand),var(--brand-soft));z-index:1}
+  .plan-col-h .ph{padding:34px 36px 18px;display:flex;align-items:center;justify-content:space-between}
+  .plan-col-h .ph .pno{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;background:var(--brand-bg);border-radius:99px}
+  .plan-col-h .ph .days{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:-0.005em}
+  .plan-col-h .card-body{padding:0 36px;display:flex;flex-direction:column;gap:14px;flex:1}
+  .plan-col-h .card-body h3{margin:0;font-size:26px;font-weight:600;letter-spacing:-0.02em;line-height:1.18;color:var(--ink)}
+  .plan-col-h .card-body .lead{margin:0;color:var(--body);font-size:15px;line-height:1.55}
+  .plan-col-h .card-body ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;padding-top:6px}
+  .plan-col-h .card-body li{font-size:14px;color:var(--body);display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:baseline;line-height:1.5}
+  .plan-col-h .card-body li::before{content:"✓";font-size:11px;font-weight:700;color:var(--brand);width:20px;height:20px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:1px;flex:none}
+  .plan-col-h .card-body li b{font-weight:600;color:var(--ink)}
+  .plan-col-h .card-body li span{display:block;margin-top:1px}
+  .plan-col-h .plan-foot{margin-top:auto;padding:20px 36px;background:var(--brand-bg);border-top:1px solid var(--brand-bg-2);display:flex;align-items:center;gap:10px}
+  .plan-col-h .plan-foot .plan-flag{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+  .plan-col-h .plan-foot .plan-outcome{font-size:14px;color:var(--ink);font-weight:600;letter-spacing:-0.01em}
+  .plan-progress{display:flex;gap:8px;justify-content:center;padding:20px 0 6px}
   .plan-dot{width:10px;height:10px;border-radius:99px;background:var(--line);transition:all .25s}
   .plan-dot.active{background:var(--brand);width:28px}
-  .plan-mouse-indicator{position:absolute;bottom:12px;right:20px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-weight:500;pointer-events:none;animation:fadeHint 3s 1s forwards}
+  .plan-mouse-indicator{position:absolute;bottom:8px;right:24px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-weight:500;pointer-events:none;animation:fadeHint 3s 1s forwards;z-index:2}
   @keyframes fadeHint{0%,80%{opacity:1}100%{opacity:0}}
 
   /* questions */
@@ -686,47 +688,53 @@
     <div class="plan-track" id="planTrack">
       <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 01</span><span class="days">Days 0–30</span></div>
-        <h3>Foundation &amp; first revenue pages</h3>
-        <p class="lead">Make the system legible. Stand up tracking, ship visible movement, and put the first commercial pages live so we have real data to learn from.</p>
-        <ul>
-          <li><b>Tracking + CRM integration</b><span> — GA4, GTM, Search Console, Looker Studio, HubSpot/Salesforce attribution.</span></li>
-          <li><b>Audit + intent map</b><span> across www, get, try, insights.</span></li>
-          <li><b>5 high-intent pages</b><span>: creative testing platform, brand lift measurement, message testing, Swayable vs Zappi, best creative testing platforms.</span></li>
-          <li><b>OCR pipeline setup</b><span> on the first 5 reports.</span></li>
-          <li><b>PPC tests</b><span> on competitor + category terms to validate page messaging.</span></li>
-          <li><b>G2 / review-site cleanup</b><span> and customer review campaign brief.</span></li>
-        </ul>
-        <div class="plan-foot">Phase outcome<b>System legible · first conversions tracked</b></div>
+        <div class="card-body">
+          <h3>Foundation &amp; first revenue pages</h3>
+          <p class="lead">Make the system legible. Stand up tracking, ship visible movement, and put the first commercial pages live so we have real data to learn from.</p>
+          <ul>
+            <li><b>Tracking + CRM</b><span> GA4, GTM, Search Console, Looker Studio, HubSpot/Salesforce attribution</span></li>
+            <li><b>Audit + intent map</b><span> across www, get, try, insights</span></li>
+            <li><b>5 high-intent pages</b><span> creative testing, brand lift, message testing, Swayable vs Zappi, best platforms</span></li>
+            <li><b>OCR pipeline</b><span> structured extraction on first 5 reports</span></li>
+            <li><b>PPC validation</b><span> competitor + category terms to test messaging</span></li>
+            <li><b>Review cleanup</b><span> G2 profiles + customer review campaign brief</span></li>
+          </ul>
+        </div>
+        <div class="plan-foot"><span class="plan-flag">Outcome</span><span class="plan-outcome">System legible · first conversions tracked</span></div>
       </div>
 
       <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 02</span><span class="days">Days 31–60</span></div>
-        <h3>Buyer-capture system</h3>
-        <p class="lead">Expand into use-case and comparison pages, ship the first interactive assets, and start the third-party validation campaigns that compound monthly.</p>
-        <ul>
-          <li><b>8–12 SEO pages</b><span> across use-case and methodology families.</span></li>
-          <li><b>2 interactive assets</b><span>: media-waste calculator, creative-testing brief generator.</span></li>
-          <li><b>Listicle + category outreach</b><span> for inclusion in "best of" articles.</span></li>
-          <li><b>Repurpose Insights + webinars</b><span> into LinkedIn and YouTube.</span></li>
-          <li><b>Retargeting</b><span> on methodology, comparison, and calculator visitors.</span></li>
-          <li><b>Schema rollout</b><span>: Organization, SoftwareApplication, FAQ, VideoObject, Dataset.</span></li>
-        </ul>
-        <div class="plan-foot">Phase outcome<b>Coverage across the buyer journey</b></div>
+        <div class="card-body">
+          <h3>Buyer-capture system</h3>
+          <p class="lead">Expand into use-case and comparison pages, ship the first interactive assets, and start the third-party validation campaigns that compound monthly.</p>
+          <ul>
+            <li><b>8–12 SEO pages</b><span> use-case and methodology families</span></li>
+            <li><b>2 interactive assets</b><span> media-waste calculator, creative-testing brief generator</span></li>
+            <li><b>Listicle outreach</b><span> inclusion in "best of" category articles</span></li>
+            <li><b>Content repurposing</b><span> Insights + webinars → LinkedIn and YouTube</span></li>
+            <li><b>Retargeting</b><span> methodology, comparison, calculator visitors</span></li>
+            <li><b>Schema rollout</b><span> Organization, SoftwareApplication, FAQ, VideoObject, Dataset</span></li>
+          </ul>
+        </div>
+        <div class="plan-foot"><span class="plan-flag">Outcome</span><span class="plan-outcome">Coverage across the buyer journey</span></div>
       </div>
 
       <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 03</span><span class="days">Days 61–90</span></div>
-        <h3>Authority &amp; conversion compounding</h3>
-        <p class="lead">Scale the surface area, double down on what's converting, and put the first AI Visibility Scorecard on the table for review.</p>
-        <ul>
-          <li><b>Competitor pages</b><span> for Suzy, Kantar, Qualtrics, Attest based on demand.</span></li>
-          <li><b>Influencer report campaign</b><span> — pillar, posts, video, PR pitch.</span></li>
-          <li><b>PR around proprietary data</b><span> into AdAge, Marketing Week, MarTech.</span></li>
-          <li><b>Review generation</b><span> expansion across G2, TrustRadius, Capterra.</span></li>
-          <li><b>CRO on top pages</b><span>, demo-form flow, and landing pages from PPC learnings.</span></li>
-          <li><b>AI Visibility Scorecard</b><span> shipped against the agreed prompt set.</span></li>
-        </ul>
-        <div class="plan-foot">Phase outcome<b>Compounding pipeline contribution</b></div>
+        <div class="card-body">
+          <h3>Authority &amp; conversion compounding</h3>
+          <p class="lead">Scale the surface area, double down on what's converting, and put the first AI Visibility Scorecard on the table for review.</p>
+          <ul>
+            <li><b>Competitor pages</b><span> Suzy, Kantar, Qualtrics, Attest — based on demand</span></li>
+            <li><b>Influencer campaign</b><span> pillar page, social posts, video, PR pitch</span></li>
+            <li><b>PR &amp; data</b><span> proprietary data → AdAge, Marketing Week, MarTech</span></li>
+            <li><b>Review expansion</b><span> G2, TrustRadius, Capterra</span></li>
+            <li><b>CRO</b><span> demo-form flow, landing pages from PPC learnings</span></li>
+            <li><b>AI Scorecard</b><span> first AI Visibility Scorecard against prompt set</span></li>
+          </ul>
+        </div>
+        <div class="plan-foot"><span class="plan-flag">Outcome</span><span class="plan-outcome">Compounding pipeline contribution</span></div>
       </div>
     </div>
     <div class="plan-progress" id="planProgress">
