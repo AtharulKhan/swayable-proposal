@@ -302,12 +302,13 @@
   .ai-prompt .pmark{color:var(--brand-soft);font-weight:700;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;flex:none;width:80px}
   .ai-advantage{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:36px 40px;margin-bottom:56px}
   .ai-advantage h3{margin:0 0 18px;font-size:20px;font-weight:600;letter-spacing:-0.015em;color:#fff;line-height:1.3}
-  .ai-advantage p{margin:0 0 24px;color:rgba(255,255,255,0.78);font-size:15px;line-height:1.65;max-width:64ch}
-  .ai-advantage-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;margin:0;padding:0;list-style:none}
-  .ai-advantage-list li{font-size:14px;color:rgba(255,255,255,0.86);line-height:1.5;display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:baseline}
-  .ai-advantage-list li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand-soft);margin-top:8px}
-  .ai-advantage-list li b{color:#fff;font-weight:600;display:block;margin-bottom:2px}
-  .ai-advantage-list li span{display:block;color:rgba(255,255,255,0.62);font-size:12.5px}
+  .ai-advantage p{margin:0 0 28px;color:rgba(255,255,255,0.78);font-size:15px;line-height:1.65;max-width:64ch}
+  .ai-advantage-table{border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);overflow:hidden;background:rgba(255,255,255,0.025)}
+  .ai-advantage-row{display:grid;grid-template-columns:0.95fr 1.6fr;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,0.08);align-items:flex-start;gap:32px}
+  .ai-advantage-row:last-child{border-bottom:none}
+  .ai-advantage-row .arow-label{display:flex;align-items:flex-start;gap:10px;color:#fff;font-weight:600;font-size:14px;letter-spacing:-0.005em;line-height:1.45;padding-top:1px}
+  .ai-advantage-row .arow-label .dot{width:6px;height:6px;border-radius:99px;background:var(--brand-soft);flex:none;margin-top:7px}
+  .ai-advantage-row .arow-desc{color:rgba(255,255,255,0.68);font-size:13.5px;line-height:1.6}
   .ai-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:48px}
   .ai-stage{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:30px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
   .ai-stage .stage-num{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-soft);font-weight:700}
@@ -371,7 +372,7 @@
     .plan-cell{border-right:none}
     .ai-shift{grid-template-columns:1fr;gap:24px}
     .ai-stages{grid-template-columns:1fr}
-    .ai-advantage-list{grid-template-columns:1fr}
+    .ai-advantage-row{grid-template-columns:1fr;gap:6px;padding:16px 20px}
     .urgency-grid{grid-template-columns:1fr}
     .outcome-row{grid-template-columns:1fr;gap:12px}
     .outcome-deliverables{grid-template-columns:1fr}
@@ -766,14 +767,32 @@
     <div class="ai-advantage stagger">
       <h3>Why Swayable wins this layer structurally.</h3>
       <p>LLMs and AI search reward proof, citations, structured benchmarks, and authoritative sources. Most B2B competitors publish generic content. Swayable has the inputs that AI systems actually prioritize when assembling answers about creative testing, persuasion, and brand-lift measurement.</p>
-      <ul class="ai-advantage-list">
-        <li><b>Proprietary RCT data</b><span>Causal lift numbers AI can cite, not opinion content</span></li>
-        <li><b>Credible methodology</b><span>RCT-based measurement that maps to "how to" queries</span></li>
-        <li><b>Real benchmarks</b><span>Industry and channel data competitors cannot fabricate</span></li>
-        <li><b>Executive thought leadership</b><span>Named voices LLMs surface as authoritative</span></li>
-        <li><b>Category-relevant proof</b><span>Influencer, political, CPG, entertainment use cases</span></li>
-        <li><b>Defensible positioning</b><span>Persuasion and causal impact, not vanity metrics</span></li>
-      </ul>
+      <div class="ai-advantage-table">
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Proprietary RCT data</div>
+          <div class="arow-desc">Causal lift numbers AI can cite, not opinion content.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Credible methodology</div>
+          <div class="arow-desc">RCT-based measurement that maps directly to "how to measure persuasion" queries.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Real benchmarks</div>
+          <div class="arow-desc">Industry and channel data competitors cannot fabricate or replicate.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Executive thought leadership</div>
+          <div class="arow-desc">Named voices LLMs surface as authoritative when answering category questions.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Category-relevant proof</div>
+          <div class="arow-desc">Influencer, political, CPG, and entertainment use cases buyers actually search for.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Defensible positioning</div>
+          <div class="arow-desc">Persuasion and causal impact, not vanity metrics generic vendors lean on.</div>
+        </div>
+      </div>
     </div>
 
     <div class="ai-shift stagger" style="margin-bottom:0">
@@ -782,15 +801,33 @@
         <p>We do not treat AI visibility as SEO with a new label. We build Swayable into the source LLMs and AI search pull from when answering high-intent marketing questions. That means structuring proof so AI models can interpret and cite it, aligning content with how buyers actually phrase questions, and engineering the technical inputs that drive citation.</p>
       </div>
       <div class="ai-advantage" style="margin:0;padding:28px 32px">
-        <h3 style="font-size:15px;letter-spacing:0.04em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:18px">Inputs we engineer</h3>
-        <ul class="ai-advantage-list" style="grid-template-columns:1fr">
-          <li><b>Schema markup</b><span>Organization, FAQ, HowTo, Dataset, SoftwareApplication, VideoObject</span></li>
-          <li><b>Conversational query optimization</b><span>Pages structured around the questions buyers actually ask LLMs</span></li>
-          <li><b>Authoritative citations</b><span>RCT data, named methodology, executive bylines, structured benchmarks</span></li>
-          <li><b>E-E-A-T signals</b><span>Author authority, source credibility, methodology transparency</span></li>
-          <li><b>Cross-property indexing</b><span>Coherent signal across www, get, try, insights subdomains</span></li>
-          <li><b>Prompt-set tracking</b><span>Monthly AI Visibility Scorecard against priority buyer questions</span></li>
-        </ul>
+        <h3 style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:18px;font-weight:700">Inputs we engineer</h3>
+        <div class="ai-advantage-table">
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Schema markup</div>
+            <div class="arow-desc">Organization, FAQ, HowTo, Dataset, SoftwareApplication, VideoObject.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Conversational queries</div>
+            <div class="arow-desc">Pages structured around the questions buyers actually ask LLMs.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Authoritative citations</div>
+            <div class="arow-desc">RCT data, named methodology, executive bylines, structured benchmarks.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>E-E-A-T signals</div>
+            <div class="arow-desc">Author authority, source credibility, and methodology transparency.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Cross-property indexing</div>
+            <div class="arow-desc">Coherent signal across www, get, try, and insights subdomains.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Prompt-set tracking</div>
+            <div class="arow-desc">Monthly AI Visibility Scorecard against priority buyer questions.</div>
+          </div>
+        </div>
       </div>
     </div>
 
