@@ -211,34 +211,26 @@
   .report-col.no li{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-2);text-decoration-thickness:1px}
   .report-col.no li::before{content:"–";background:var(--bg-2);color:var(--muted)}
 
-  /* plan — horizontal scroll */
+  /* plan */
   .plan{}
-  .plan-header{padding-top:96px;padding-bottom:48px}
-  .plan-track-wrap{overflow:hidden;background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r-lg);position:relative}
-  .plan-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:28px;gap:24px}
-  .plan-track::-webkit-scrollbar{display:none}
-  .plan-col-h{flex:0 0 min(480px,86vw);scroll-snap-align:start;background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;position:relative;min-height:520px;box-shadow:var(--shadow-sm);transition:box-shadow .2s}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .plan-col-h{background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;position:relative;min-height:480px;box-shadow:var(--shadow-sm);transition:box-shadow .2s}
   .plan-col-h:hover{box-shadow:var(--shadow-md)}
   .plan-col-h::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brand),var(--brand-soft));z-index:1}
-  .plan-col-h .ph{padding:34px 36px 18px;display:flex;align-items:center;justify-content:space-between}
+  .plan-col-h .ph{padding:34px 32px 18px;display:flex;align-items:center;justify-content:space-between}
   .plan-col-h .ph .pno{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;background:var(--brand-bg);border-radius:99px}
   .plan-col-h .ph .days{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:-0.005em}
-  .plan-col-h .card-body{padding:0 36px;display:flex;flex-direction:column;gap:14px;flex:1}
-  .plan-col-h .card-body h3{margin:0;font-size:26px;font-weight:600;letter-spacing:-0.02em;line-height:1.18;color:var(--ink)}
-  .plan-col-h .card-body .lead{margin:0;color:var(--body);font-size:15px;line-height:1.55}
-  .plan-col-h .card-body ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;padding-top:6px}
-  .plan-col-h .card-body li{font-size:14px;color:var(--body);display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:baseline;line-height:1.5}
-  .plan-col-h .card-body li::before{content:"✓";font-size:11px;font-weight:700;color:var(--brand);width:20px;height:20px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:1px;flex:none}
+  .plan-col-h .card-body{padding:0 32px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .plan-col-h .card-body h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-0.018em;line-height:1.2;color:var(--ink)}
+  .plan-col-h .card-body .lead{margin:0;color:var(--body);font-size:14.5px;line-height:1.55}
+  .plan-col-h .card-body ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;padding-top:4px}
+  .plan-col-h .card-body li{font-size:14px;color:var(--body);display:grid;grid-template-columns:18px 1fr;gap:8px;align-items:baseline;line-height:1.5}
+  .plan-col-h .card-body li::before{content:"✓";font-size:10px;font-weight:700;color:var(--brand);width:18px;height:18px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:1px;flex:none}
   .plan-col-h .card-body li b{font-weight:600;color:var(--ink)}
   .plan-col-h .card-body li span{display:block;margin-top:1px}
-  .plan-col-h .plan-foot{margin-top:auto;padding:20px 36px;background:var(--brand-bg);border-top:1px solid var(--brand-bg-2);display:flex;align-items:center;gap:10px}
-  .plan-col-h .plan-foot .plan-flag{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
-  .plan-col-h .plan-foot .plan-outcome{font-size:14px;color:var(--ink);font-weight:600;letter-spacing:-0.01em}
-  .plan-progress{display:flex;gap:8px;justify-content:center;padding:20px 0 6px}
-  .plan-dot{width:10px;height:10px;border-radius:99px;background:var(--line);transition:all .25s}
-  .plan-dot.active{background:var(--brand);width:28px}
-  .plan-mouse-indicator{position:absolute;bottom:8px;right:24px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-weight:500;pointer-events:none;animation:fadeHint 3s 1s forwards;z-index:2}
-  @keyframes fadeHint{0%,80%{opacity:1}100%{opacity:0}}
+  .plan-col-h .plan-foot{margin-top:auto;padding:18px 32px;background:var(--brand-bg);border-top:1px solid var(--brand-bg-2);display:flex;align-items:center;gap:10px}
+  .plan-col-h .plan-foot .plan-flag{font-size:10px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+  .plan-col-h .plan-foot .plan-outcome{font-size:13px;color:var(--ink);font-weight:600;letter-spacing:-0.01em}
 
   /* questions */
   .qa{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -291,7 +283,8 @@
     .arch-cat,.arch-purpose{border-right:none;border-bottom:1px solid var(--line)}
     .nav-links{display:none}
     .flow-out{grid-template-columns:1fr 1fr}
-    .plan-col-h{flex-basis:min(360px,90vw)}
+    .plan-grid{grid-template-columns:1fr}
+    .plan-col-h{min-height:auto}
   }
 
   /* ── scroll reveal ── */
@@ -670,7 +663,7 @@
 
 <!-- 90-day plan -->
 <section class="sec plan reveal" id="plan">
-  <div class="wrap plan-header">
+  <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
         <div class="bar"></div>
@@ -681,11 +674,8 @@
         <p class="sec-sub">A staged plan, not a content calendar. The point of phase one is to make movement visible quickly; the point of phase two is to compound it; the point of phase three is to scale what's working and cut what isn't.</p>
       </div>
     </div>
-  </div>
 
-  <div class="plan-track-wrap">
-    <span class="plan-mouse-indicator">scroll →</span>
-    <div class="plan-track" id="planTrack">
+    <div class="plan-grid">
       <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 01</span><span class="days">Days 0–30</span></div>
         <div class="card-body">
@@ -736,11 +726,6 @@
         </div>
         <div class="plan-foot"><span class="plan-flag">Outcome</span><span class="plan-outcome">Compounding pipeline contribution</span></div>
       </div>
-    </div>
-    <div class="plan-progress" id="planProgress">
-      <div class="plan-dot active"></div>
-      <div class="plan-dot"></div>
-      <div class="plan-dot"></div>
     </div>
   </div>
 </section>
@@ -857,32 +842,6 @@
   },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
 
   document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){obs.observe(el)});
-
-  /* ── horizontal plan scroll ── */
-  (function(){
-    var track = document.getElementById('planTrack');
-    var dots = document.querySelectorAll('.plan-dot');
-    var planWrap = document.querySelector('.plan-track-wrap');
-    if(!track||!dots.length) return;
-
-    var maxScroll = track.scrollWidth - track.clientWidth;
-    var updateDots = function(){
-      var pct = maxScroll>0 ? track.scrollLeft / maxScroll : 0;
-      var idx = Math.round(pct * (dots.length-1));
-      dots.forEach(function(d,i){d.classList.toggle('active',i===idx)});
-    };
-    track.addEventListener('scroll',updateDots,{passive:true});
-
-    track.addEventListener('wheel',function(e){
-      if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      if(maxScroll<=0) return;
-      var atStart = track.scrollLeft <= 0;
-      var atEnd = track.scrollLeft >= maxScroll - 2;
-      if((e.deltaY>0 && atEnd)||(e.deltaY<0 && atStart)) return;
-      e.preventDefault();
-      track.scrollLeft += e.deltaY * 1.4;
-    },{passive:false});
-  })();
 })();
 </script>
 </html>
