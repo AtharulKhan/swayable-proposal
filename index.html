@@ -211,23 +211,32 @@
   .report-col.no li{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-2);text-decoration-thickness:1px}
   .report-col.no li::before{content:"–";background:var(--bg-2);color:var(--muted)}
 
-  /* plan */
+  /* plan — horizontal scroll */
   .plan{}
-  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff}
-  .plan-col{padding:36px 32px 36px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:16px;min-height:480px;position:relative}
-  .plan-col:last-child{border-right:none}
-  .plan-col .ph{display:flex;align-items:center;gap:12px}
-  .plan-col .ph .pno{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;background:var(--brand-bg);border-radius:99px}
-  .plan-col .ph .days{font-size:13px;color:var(--muted);font-weight:500}
-  .plan-col h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-0.018em;line-height:1.2;max-width:18ch}
-  .plan-col .lead{margin:0;color:var(--body);font-size:14.5px;line-height:1.6;max-width:36ch}
-  .plan-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
-  .plan-col li{font-size:14px;color:var(--ink);display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;line-height:1.5}
-  .plan-col li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand);margin-top:8px}
-  .plan-col li b{font-weight:600;color:var(--ink)}
-  .plan-col li span{color:var(--body)}
-  .plan-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-  .plan-foot b{color:var(--ink);font-weight:600;display:block;margin-top:3px;font-size:14px;letter-spacing:-0.005em}
+  .plan-sticky{top:0;z-index:5}
+  .plan-header{padding-top:96px;padding-bottom:48px}
+  .plan-track-wrap{overflow:hidden;background:#fff;border-radius:var(--r-xl) var(--r-xl) 0 0;border:1px solid var(--line);border-bottom:none;position:relative}
+  .plan-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0}
+  .plan-track::-webkit-scrollbar{display:none}
+  .plan-col-h{flex:0 0 min(440px,82vw);scroll-snap-align:start;padding:40px 36px 36px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:16px;min-height:500px;position:relative;background:#fff}
+  .plan-col-h:last-child{border-right:none}
+  .plan-col-h .ph{display:flex;align-items:center;gap:12px}
+  .plan-col-h .ph .pno{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;background:var(--brand-bg);border-radius:99px}
+  .plan-col-h .ph .days{font-size:13px;color:var(--muted);font-weight:500}
+  .plan-col-h h3{margin:0;font-size:26px;font-weight:600;letter-spacing:-0.018em;line-height:1.2;max-width:18ch}
+  .plan-col-h .lead{margin:0;color:var(--body);font-size:15px;line-height:1.6;max-width:42ch}
+  .plan-col-h ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  .plan-col-h li{font-size:14px;color:var(--ink);display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;line-height:1.5}
+  .plan-col-h li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand);margin-top:8px}
+  .plan-col-h li b{font-weight:600;color:var(--ink)}
+  .plan-col-h li span{color:var(--body)}
+  .plan-col-h .plan-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .plan-col-h .plan-foot b{color:var(--ink);font-weight:600;display:block;margin-top:3px;font-size:14px;letter-spacing:-0.005em}
+  .plan-progress{display:flex;gap:8px;justify-content:center;padding:18px 0 24px;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r-xl) var(--r-xl)}
+  .plan-dot{width:10px;height:10px;border-radius:99px;background:var(--line);transition:all .25s}
+  .plan-dot.active{background:var(--brand);width:28px}
+  .plan-mouse-indicator{position:absolute;bottom:12px;right:20px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-weight:500;pointer-events:none;animation:fadeHint 3s 1s forwards}
+  @keyframes fadeHint{0%,80%{opacity:1}100%{opacity:0}}
 
   /* questions */
   .qa{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -275,12 +284,12 @@
     .wrap{padding:0 24px}
     .hero-inner{grid-template-columns:1fr;gap:48px}
     .sec-head{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
-    .diag-grid,.pillar-grid,.flow-out,.report-grid,.plan-grid,.qa-grid,.work-grid{grid-template-columns:1fr}
+    .diag-grid,.pillar-grid,.flow-out,.report-grid,.qa-grid,.work-grid{grid-template-columns:1fr}
     .arch-row{grid-template-columns:1fr}
     .arch-cat,.arch-purpose{border-right:none;border-bottom:1px solid var(--line)}
     .nav-links{display:none}
     .flow-out{grid-template-columns:1fr 1fr}
-    .plan-col{border-right:none;border-bottom:1px solid var(--line);min-height:auto}
+    .plan-col-h{flex-basis:min(360px,90vw)}
   }
 
   /* ── scroll reveal ── */
@@ -659,7 +668,7 @@
 
 <!-- 90-day plan -->
 <section class="sec plan reveal" id="plan">
-  <div class="wrap">
+  <div class="wrap plan-header">
     <div class="sec-head">
       <div class="sec-eyebrow">
         <div class="bar"></div>
@@ -670,9 +679,12 @@
         <p class="sec-sub">A staged plan, not a content calendar. The point of phase one is to make movement visible quickly; the point of phase two is to compound it; the point of phase three is to scale what's working and cut what isn't.</p>
       </div>
     </div>
+  </div>
 
-    <div class="plan-grid">
-      <div class="plan-col stagger">
+  <div class="plan-track-wrap">
+    <span class="plan-mouse-indicator">scroll →</span>
+    <div class="plan-track" id="planTrack">
+      <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 01</span><span class="days">Days 0–30</span></div>
         <h3>Foundation &amp; first revenue pages</h3>
         <p class="lead">Make the system legible. Stand up tracking, ship visible movement, and put the first commercial pages live so we have real data to learn from.</p>
@@ -687,7 +699,7 @@
         <div class="plan-foot">Phase outcome<b>System legible · first conversions tracked</b></div>
       </div>
 
-      <div class="plan-col stagger">
+      <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 02</span><span class="days">Days 31–60</span></div>
         <h3>Buyer-capture system</h3>
         <p class="lead">Expand into use-case and comparison pages, ship the first interactive assets, and start the third-party validation campaigns that compound monthly.</p>
@@ -702,7 +714,7 @@
         <div class="plan-foot">Phase outcome<b>Coverage across the buyer journey</b></div>
       </div>
 
-      <div class="plan-col stagger">
+      <div class="plan-col-h stagger">
         <div class="ph"><span class="pno">Phase 03</span><span class="days">Days 61–90</span></div>
         <h3>Authority &amp; conversion compounding</h3>
         <p class="lead">Scale the surface area, double down on what's converting, and put the first AI Visibility Scorecard on the table for review.</p>
@@ -716,6 +728,11 @@
         </ul>
         <div class="plan-foot">Phase outcome<b>Compounding pipeline contribution</b></div>
       </div>
+    </div>
+    <div class="plan-progress" id="planProgress">
+      <div class="plan-dot active"></div>
+      <div class="plan-dot"></div>
+      <div class="plan-dot"></div>
     </div>
   </div>
 </section>
@@ -812,16 +829,16 @@
 
 <script>
 (function(){
-  const isReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var isReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(isReduced){
     document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){el.classList.add('revealed')});
     return;
   }
-  const obs = new IntersectionObserver(function(entries){
+  var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
         e.target.classList.add('revealed');
-        const kids = e.target.querySelectorAll('.stagger');
+        var kids = e.target.querySelectorAll('.stagger');
         kids.forEach(function(k,i){
           k.style.transitionDelay = (i * 0.08) + 's';
           k.classList.add('revealed');
@@ -832,6 +849,32 @@
   },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
 
   document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){obs.observe(el)});
+
+  /* ── horizontal plan scroll ── */
+  (function(){
+    var track = document.getElementById('planTrack');
+    var dots = document.querySelectorAll('.plan-dot');
+    var planWrap = document.querySelector('.plan-track-wrap');
+    if(!track||!dots.length) return;
+
+    var maxScroll = track.scrollWidth - track.clientWidth;
+    var updateDots = function(){
+      var pct = maxScroll>0 ? track.scrollLeft / maxScroll : 0;
+      var idx = Math.round(pct * (dots.length-1));
+      dots.forEach(function(d,i){d.classList.toggle('active',i===idx)});
+    };
+    track.addEventListener('scroll',updateDots,{passive:true});
+
+    track.addEventListener('wheel',function(e){
+      if(Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      if(maxScroll<=0) return;
+      var atStart = track.scrollLeft <= 0;
+      var atEnd = track.scrollLeft >= maxScroll - 2;
+      if((e.deltaY>0 && atEnd)||(e.deltaY<0 && atStart)) return;
+      e.preventDefault();
+      track.scrollLeft += e.deltaY * 1.4;
+    },{passive:false});
+  })();
 })();
 </script>
 </html>
