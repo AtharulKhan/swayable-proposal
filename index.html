@@ -223,11 +223,12 @@
   .plan-cell-ph .days{font-size:12px;color:var(--muted);font-weight:500}
   .plan-cell-ph h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.015em;line-height:1.3;color:var(--ink)}
   .plan-cell-obj p{margin:0;font-size:13.5px;color:var(--body);line-height:1.6}
-  .plan-cell-del ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
-  .plan-cell-del li{font-size:13px;color:var(--body);display:grid;grid-template-columns:16px 1fr;gap:8px;line-height:1.5}
-  .plan-cell-del li::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:1px;flex:none}
-  .plan-cell-del li b{font-weight:600;color:var(--ink)}
-  .plan-cell-del li span{display:block;margin-top:1px;color:var(--muted);font-size:12px}
+  .plan-cell-del ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .plan-cell-del li{display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:flex-start}
+  .plan-cell-del li::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:2px;flex:none}
+  .plan-cell-del li > div{display:flex;flex-direction:column;gap:2px}
+  .plan-cell-del li b{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+  .plan-cell-del li span{font-size:11.5px;color:var(--muted);line-height:1.4}
   .plan-cell-out{display:flex;align-items:flex-start;gap:12px}
   .plan-cell-out .out-icon{width:34px;height:34px;border-radius:10px;background:var(--brand-bg);display:grid;place-items:center;flex:none}
   .plan-cell-out .out-icon svg{width:15px;height:15px}
@@ -250,20 +251,22 @@
   .qa-item p{margin:0;font-size:15px;color:var(--ink);line-height:1.5;font-weight:400}
   .qa-item p b{font-weight:600}
 
-  /* working together */
-  .work{}
-  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .work-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 32px;display:flex;flex-direction:column;gap:18px}
-  .work-card .h{font-size:13px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
-  .work-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.015em;line-height:1.25}
-  .work-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
-  .work-card li{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:14.5px;color:var(--body);line-height:1.55;padding:14px 0;border-top:1px solid var(--line)}
-  .work-card li:first-child{border-top:none;padding-top:0}
-  .work-card li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--brand);margin-top:6px}
-  .work-card li b{font-weight:600;color:var(--ink);display:block;margin-bottom:2px}
-  .work-card.them{background:var(--bg-3)}
-  .work-card.them .h{color:var(--muted)}
-  .work-card.them li::before{background:var(--line-2)}
+  /* working together table */
+  .work-table{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);display:grid;grid-template-columns:1fr 1fr}
+  .work-col{border-right:1px solid var(--line)}
+  .work-col:last-child{border-right:none}
+  .work-col-head{padding:22px 28px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+  .work-col-head .wowner{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+  .work-col-head.them .wowner{color:var(--muted)}
+  .work-col-head h3{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.012em;line-height:1.3;color:var(--ink)}
+  .work-items{padding:6px 28px 22px}
+  .work-item{display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .work-item:last-child{border-bottom:none}
+  .work-item::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:2px;flex:none}
+  .work-col.them .work-item::before{color:var(--muted);background:var(--bg-2)}
+  .work-item > div{display:flex;flex-direction:column;gap:2px}
+  .work-item b{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+  .work-item span{font-size:11.5px;color:var(--muted);line-height:1.4}
 
   /* close */
   .close{padding:120px 0 110px;position:relative;overflow:hidden}
@@ -287,7 +290,10 @@
     .wrap{padding:0 24px}
     .hero-inner{grid-template-columns:1fr;gap:48px}
     .sec-head{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
-    .diag-grid,.pillar-grid,.flow-out,.report-grid,.qa-grid,.work-grid{grid-template-columns:1fr}
+    .diag-grid,.pillar-grid,.flow-out,.report-grid,.qa-grid{grid-template-columns:1fr}
+    .work-table{grid-template-columns:1fr}
+    .work-col{border-right:none;border-bottom:1px solid var(--line)}
+    .work-col:last-child{border-bottom:none}
     .arch-row{grid-template-columns:1fr}
     .arch-cat,.arch-purpose{border-right:none;border-bottom:1px solid var(--line)}
     .nav-links{display:none}
@@ -714,32 +720,32 @@
         <div class="plan-row-lbl">Key Deliverables</div>
         <div class="plan-cell plan-cell-del">
           <ul>
-            <li><b>Tracking + CRM</b><span>GA4, GTM, Search Console, Looker Studio, HubSpot/Salesforce</span></li>
-            <li><b>Audit + intent map</b><span>across www, get, try, insights</span></li>
-            <li><b>5 high-intent pages</b><span>creative testing, brand lift, message testing, Swayable vs Zappi, best platforms</span></li>
-            <li><b>OCR pipeline</b><span>first 5 reports</span></li>
-            <li><b>PPC validation</b><span>competitor + category terms</span></li>
-            <li><b>Review cleanup</b><span>G2 profiles + customer reviews</span></li>
+            <li><div><b>Tracking + CRM</b><span>GA4, GTM, Search Console, Looker Studio, HubSpot/Salesforce</span></div></li>
+            <li><div><b>Audit + intent map</b><span>across www, get, try, insights</span></div></li>
+            <li><div><b>5 high-intent pages</b><span>creative testing, brand lift, message testing, Swayable vs Zappi, best platforms</span></div></li>
+            <li><div><b>OCR pipeline</b><span>first 5 reports</span></div></li>
+            <li><div><b>PPC validation</b><span>competitor + category terms</span></div></li>
+            <li><div><b>Review cleanup</b><span>G2 profiles + customer reviews</span></div></li>
           </ul>
         </div>
         <div class="plan-cell plan-cell-del">
           <ul>
-            <li><b>8–12 SEO pages</b><span>use-case, methodology families</span></li>
-            <li><b>2 interactive assets</b><span>media-waste calculator, creative-testing brief generator</span></li>
-            <li><b>Listicle outreach</b><span>inclusion in "best of" lists</span></li>
-            <li><b>Content repurposing</b><span>insights + webinars → LinkedIn &amp; YouTube</span></li>
-            <li><b>Retargeting</b><span>methodology, comparison, calculator visitors</span></li>
-            <li><b>Schema rollout</b><span>Organization, FAQ, VideoObject, Dataset</span></li>
+            <li><div><b>8–12 SEO pages</b><span>use-case, methodology families</span></div></li>
+            <li><div><b>2 interactive assets</b><span>media-waste calculator, creative-testing brief generator</span></div></li>
+            <li><div><b>Listicle outreach</b><span>inclusion in "best of" lists</span></div></li>
+            <li><div><b>Content repurposing</b><span>insights + webinars → LinkedIn &amp; YouTube</span></div></li>
+            <li><div><b>Retargeting</b><span>methodology, comparison, calculator visitors</span></div></li>
+            <li><div><b>Schema rollout</b><span>Organization, FAQ, VideoObject, Dataset</span></div></li>
           </ul>
         </div>
         <div class="plan-cell plan-cell-del">
           <ul>
-            <li><b>Competitor pages</b><span>Suzy, Kantar, Qualtrics, Attest — based on demand</span></li>
-            <li><b>Influencer campaign</b><span>pillar page, socials, PR pitch</span></li>
-            <li><b>PR &amp; data</b><span>AdAge, Marketing Week, MarTech</span></li>
-            <li><b>Review expansion</b><span>G2, TrustRadius, Capterra</span></li>
-            <li><b>CRO</b><span>demo flow, landing pages from PPC learnings</span></li>
-            <li><b>AI Scorecard</b><span>first AI Visibility Scorecard set</span></li>
+            <li><div><b>Competitor pages</b><span>Suzy, Kantar, Qualtrics, Attest — based on demand</span></div></li>
+            <li><div><b>Influencer campaign</b><span>pillar page, socials, PR pitch</span></div></li>
+            <li><div><b>PR &amp; data</b><span>AdAge, Marketing Week, MarTech</span></div></li>
+            <li><div><b>Review expansion</b><span>G2, TrustRadius, Capterra</span></div></li>
+            <li><div><b>CRO</b><span>demo flow, landing pages from PPC learnings</span></div></li>
+            <li><div><b>AI Scorecard</b><span>first AI Visibility Scorecard set</span></div></li>
           </ul>
         </div>
       </div>
@@ -792,28 +798,32 @@
       </div>
     </div>
 
-    <div class="work-grid">
-      <div class="work-card stagger">
-        <div class="h">Swayable owns</div>
-        <h3>Brand voice, product truth, customer relationships.</h3>
-        <ul>
-          <li><b>Brand &amp; positioning</b>Voice, narrative, and the high-level category story.</li>
-          <li><b>Product &amp; methodology truth</b>What is and isn't accurate to claim about Swayable's RCT methodology.</li>
-          <li><b>Customer access</b>Approvals on logos, case studies, and review outreach.</li>
-          <li><b>Sales motion</b>Lead acceptance SLA and the conversation that closes deals.</li>
-        </ul>
+    <div class="work-table stagger">
+      <div class="work-col">
+        <div class="work-col-head">
+          <div class="wowner">Swayable owns</div>
+          <h3>Brand voice, product truth, customer relationships.</h3>
+        </div>
+        <div class="work-items">
+          <div class="work-item"><div><b>Brand &amp; positioning</b><span>Voice, narrative, and the high-level category story.</span></div></div>
+          <div class="work-item"><div><b>Product &amp; methodology truth</b><span>What is and isn't accurate to claim about Swayable's RCT methodology.</span></div></div>
+          <div class="work-item"><div><b>Customer access</b><span>Approvals on logos, case studies, and review outreach.</span></div></div>
+          <div class="work-item"><div><b>Sales motion</b><span>Lead acceptance SLA and the conversation that closes deals.</span></div></div>
+        </div>
       </div>
-      <div class="work-card stagger">
-        <div class="h">SimplifAI owns</div>
-        <h3>Technical execution, content velocity, measurement.</h3>
-        <ul>
-          <li><b>Search architecture &amp; SEO</b>Crawl, intent map, technical fixes, page system.</li>
-          <li><b>Content production</b>Commercial, methodology, use-case, and comparison pages at velocity.</li>
-          <li><b>Paid validation</b>Small, sharp PPC tests that feed back into SEO and CRO.</li>
-          <li><b>Reporting &amp; attribution</b>The dashboards, tracking, and AI visibility scorecards.</li>
-          <li><b>Authority &amp; AI visibility</b>Reviews, listicles, PR, and directory presence.</li>
-          <li><b>Repurposing &amp; production</b>Video, LinkedIn, calculators, and sales enablement assets.</li>
-        </ul>
+      <div class="work-col them">
+        <div class="work-col-head them">
+          <div class="wowner">SimplifAI owns</div>
+          <h3>Technical execution, content velocity, measurement.</h3>
+        </div>
+        <div class="work-items">
+          <div class="work-item"><div><b>Search architecture &amp; SEO</b><span>Crawl, intent map, technical fixes, page system.</span></div></div>
+          <div class="work-item"><div><b>Content production</b><span>Commercial, methodology, use-case, and comparison pages at velocity.</span></div></div>
+          <div class="work-item"><div><b>Paid validation</b><span>Small, sharp PPC tests that feed back into SEO and CRO.</span></div></div>
+          <div class="work-item"><div><b>Reporting &amp; attribution</b><span>The dashboards, tracking, and AI visibility scorecards.</span></div></div>
+          <div class="work-item"><div><b>Authority &amp; AI visibility</b><span>Reviews, listicles, PR, and directory presence.</span></div></div>
+          <div class="work-item"><div><b>Repurposing &amp; production</b><span>Video, LinkedIn, calculators, and sales enablement assets.</span></div></div>
+        </div>
       </div>
     </div>
   </div>
