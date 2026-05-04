@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Swayable — Growth Strategy</title>
+<template id="__bundler_thumbnail" data-bg-color="#F5F6FA">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F5F6FA"/>
+    <g transform="translate(600,400)">
+      <circle r="220" fill="none" stroke="#E6E8EF" stroke-width="2"/>
+      <circle r="140" fill="none" stroke="#E6E8EF" stroke-width="2"/>
+      <circle r="70" fill="#6C4CF1"/>
+      <text y="6" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="500">Strategy</text>
+    </g>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Brand from spec */
+    --brand:#6C4CF1;
+    --brand-2:#5A3DE0;
+    --brand-soft:#8E78F5;
+    --brand-bg:#F1EEFE;
+    --brand-bg-2:#E8E3FD;
+
+    --ink:#1A1A1A;
+    --body:#4A4A4A;
+    --muted:#7A7A82;
+    --bg:#FFFFFF;
+    --bg-2:#F5F6FA;
+    --bg-3:#FAFBFD;
+    --line:#E6E8EF;
+    --line-2:#D6D9E3;
+
+    --r-sm:6px;
+    --r-md:10px;
+    --r-lg:16px;
+    --r-xl:20px;
+
+    --shadow-sm:0 1px 2px rgba(20,20,40,0.04);
+    --shadow-md:0 8px 24px -8px rgba(20,20,40,0.08), 0 1px 2px rgba(20,20,40,0.04);
+    --shadow-lg:0 24px 60px -24px rgba(60,40,180,0.18), 0 4px 16px -6px rgba(20,20,40,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  body{font-size:16px;line-height:1.6;letter-spacing:-0.005em}
+  ::selection{background:var(--brand);color:#fff}
+  a{color:inherit;text-decoration:none}
+
+  /* layout */
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+  section{position:relative}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(255,255,255,0.85);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--brand) 0%,#8B6BF5 100%);position:relative;display:grid;place-items:center;color:#fff;font-weight:600;font-size:14px;letter-spacing:-0.02em}
+  .brand-name{font-size:16px;font-weight:600;letter-spacing:-0.015em}
+  .brand-name span{color:var(--muted);font-weight:400;margin-left:6px}
+  .nav-links{display:flex;gap:36px;font-size:14px;color:var(--body);font-weight:400}
+  .nav-links a{transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;line-height:1;letter-spacing:-0.005em;border:1px solid transparent;transition:all .15s;cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-2);transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(108,76,241,0.5)}
+  .btn-ghost{color:var(--ink);border-color:var(--line-2);background:#fff}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-link{color:var(--brand);font-weight:500;display:inline-flex;align-items:center;gap:6px}
+  .btn-link:hover{color:var(--brand-2)}
+
+  /* hero */
+  .hero{padding:96px 0 80px;position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .hero-bg::before{content:"";position:absolute;top:-200px;right:-200px;width:720px;height:720px;border-radius:50%;background:radial-gradient(closest-side,rgba(108,76,241,0.18),transparent 70%);filter:blur(40px)}
+  .hero-bg::after{content:"";position:absolute;bottom:-200px;left:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(120,180,255,0.16),transparent 70%);filter:blur(40px)}
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center}
+
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border-radius:99px;background:var(--brand-bg);color:var(--brand);font-size:13px;font-weight:500;border:1px solid var(--brand-bg-2);letter-spacing:-0.005em}
+  .pill .dot{width:6px;height:6px;border-radius:99px;background:var(--brand);box-shadow:0 0 0 3px rgba(108,76,241,0.18)}
+
+  h1.hero-title{font-size:clamp(40px,5.4vw,68px);font-weight:500;line-height:1.04;letter-spacing:-0.028em;margin:24px 0 0;max-width:18ch;color:var(--ink)}
+  h1.hero-title em{font-style:normal;color:var(--brand)}
+
+  .hero-sub{margin-top:24px;font-size:18px;line-height:1.55;color:var(--body);max-width:52ch}
+
+  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-actions .btn{padding:14px 22px;font-size:15px;border-radius:12px}
+
+  .hero-meta{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:28px;border-top:1px solid var(--line);max-width:640px}
+  .hero-meta .k{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:-0.005em}
+  .hero-meta .v{font-size:18px;color:var(--ink);margin-top:6px;font-weight:500;letter-spacing:-0.015em}
+  .hero-meta .v em{font-style:normal;color:var(--brand)}
+
+  /* hero card visual */
+  .hero-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:28px;position:relative}
+  .hero-card-h{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .hero-card-h .t{font-size:13px;color:var(--muted);font-weight:500}
+  .hero-card-h .t b{color:var(--ink);font-weight:600}
+  .hero-card-h .live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:500;color:#1B8055;background:#E6F4EB;padding:4px 10px;border-radius:99px;letter-spacing:0.02em}
+  .hero-card-h .live i{width:6px;height:6px;border-radius:99px;background:#28A06B;display:block}
+
+  .hero-card-rows{display:flex;flex-direction:column;gap:14px}
+  .hero-row{display:grid;grid-template-columns:120px 1fr 80px;gap:14px;align-items:center;font-size:13.5px}
+  .hero-row .lbl{color:var(--body);font-weight:500}
+  .hero-row .val{color:var(--ink);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+  .hero-track{height:8px;background:var(--bg-2);border-radius:99px;overflow:hidden;position:relative}
+  .hero-track i{display:block;height:100%;background:linear-gradient(90deg,var(--brand-soft),var(--brand));border-radius:99px}
+  .hero-row.muted .hero-track i{background:var(--line-2)}
+  .hero-row.muted .lbl,.hero-row.muted .val{color:var(--muted)}
+
+  .hero-card-foot{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;font-size:13px;color:var(--body)}
+  .hero-card-foot b{display:block;font-size:22px;color:var(--ink);font-weight:600;letter-spacing:-0.018em;margin-top:4px}
+  .hero-card-foot .delta{color:var(--brand);font-weight:500}
+
+  /* section heading */
+  .sec{padding:96px 0}
+  .sec-head{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;margin-bottom:56px}
+  .sec-eyebrow{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+  .sec-eyebrow .label{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+  .sec-eyebrow .bar{width:32px;height:2px;background:var(--brand);border-radius:99px}
+  .sec-eyebrow .num{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:0.02em}
+  .sec-title{font-size:clamp(32px,3.6vw,46px);font-weight:500;line-height:1.08;letter-spacing:-0.025em;margin:0;max-width:22ch;color:var(--ink)}
+  .sec-title em{font-style:normal;color:var(--brand)}
+  .sec-sub{margin-top:20px;font-size:17px;color:var(--body);line-height:1.6;max-width:60ch}
+
+  /* diagnosis */
+  .diag{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .diag-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;display:flex;flex-direction:column;gap:14px;min-height:300px;transition:all .2s}
+  .diag-card:hover{border-color:var(--brand-soft);box-shadow:var(--shadow-md)}
+  .diag-card .ic{width:40px;height:40px;border-radius:10px;background:var(--brand-bg);color:var(--brand);display:grid;place-items:center;font-weight:600;font-size:16px}
+  .diag-card h3{margin:0;font-size:20px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;max-width:22ch}
+  .diag-card p{margin:0;color:var(--body);font-size:14.5px;line-height:1.6}
+  .diag-card .meta{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+  .diag-card .meta b{color:var(--ink);font-weight:500}
+
+  /* approach pillars */
+  .pillars{}
+  .pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pillar{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 32px 32px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+  .pillar::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand-soft))}
+  .pillar-head{display:flex;align-items:center;gap:14px}
+  .pillar-num{width:36px;height:36px;border-radius:8px;background:var(--brand-bg);color:var(--brand);display:grid;place-items:center;font-weight:600;font-size:14px}
+  .pillar-tag{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0.04em;text-transform:uppercase}
+  .pillar h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-0.018em;line-height:1.22;max-width:20ch}
+  .pillar p{margin:0;color:var(--body);font-size:15px;line-height:1.6;max-width:46ch}
+  .pillar-list{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .pillar-list li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:baseline;font-size:14px;color:var(--body);line-height:1.5}
+  .pillar-list li::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--brand);display:block;margin-top:8px}
+  .pillar-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+  .pillar-foot b{color:var(--ink);font-weight:500}
+
+  /* search architecture */
+  .arch{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .arch-table{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .arch-row{display:grid;grid-template-columns:200px 1fr 1.4fr;gap:0;border-bottom:1px solid var(--line)}
+  .arch-row:last-child{border-bottom:none}
+  .arch-row.head{background:var(--bg-3)}
+  .arch-row.head>div{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:16px 24px}
+  .arch-row>div{padding:24px}
+  .arch-cat{background:var(--bg-3);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .arch-cat b{display:block;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.012em}
+  .arch-cat span{font-size:13px;color:var(--muted)}
+  .arch-purpose{border-right:1px solid var(--line);font-size:14.5px;color:var(--body);line-height:1.6;display:flex;align-items:center}
+  .arch-pages{display:flex;flex-wrap:wrap;gap:8px;align-content:center}
+  .arch-tag{display:inline-flex;align-items:center;font-size:13px;color:var(--ink);background:var(--bg-2);border:1px solid var(--line);padding:6px 12px;border-radius:99px;font-weight:400}
+  .arch-tag.brand{background:var(--brand-bg);border-color:var(--brand-bg-2);color:var(--brand-2);font-weight:500}
+
+  /* proprietary data flow */
+  .data{}
+  .flow{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:40px;display:grid;grid-template-columns:1fr;gap:32px}
+  .flow-h{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:end}
+  .flow-h h3{margin:0;font-size:28px;font-weight:600;letter-spacing:-0.02em;line-height:1.18;max-width:22ch}
+  .flow-h p{margin:0;color:var(--body);font-size:15.5px;line-height:1.6;max-width:42ch}
+  .flow-source{padding:22px 24px;background:var(--brand);color:#fff;border-radius:var(--r-md);display:flex;align-items:center;gap:18px}
+  .flow-source .ic{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.16);display:grid;place-items:center;font-weight:600}
+  .flow-source .body b{display:block;font-size:16px;font-weight:600;letter-spacing:-0.012em}
+  .flow-source .body span{display:block;font-size:13px;opacity:0.85;margin-top:2px}
+  .flow-out{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .flow-card{background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:8px;position:relative;transition:all .2s}
+  .flow-card:hover{border-color:var(--brand-soft);background:#fff;box-shadow:var(--shadow-sm)}
+  .flow-card .n{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+  .flow-card h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.008em;line-height:1.3}
+  .flow-card p{margin:0;font-size:13px;color:var(--body);line-height:1.5}
+  .flow-card .out{margin-top:6px;font-size:12px;color:var(--muted);font-weight:500}
+
+  /* reporting */
+  .report{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .report-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+  .report-text h3{margin:0 0 16px;font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;max-width:18ch}
+  .report-text p{margin:0 0 14px;color:var(--body);font-size:15.5px;line-height:1.65;max-width:44ch}
+  .report-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .report-col{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:24px}
+  .report-col.no{background:var(--bg-3)}
+  .report-col h4{margin:0 0 16px;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .report-col.yes h4{color:var(--brand)}
+  .report-col h4 .pip{width:8px;height:8px;border-radius:99px;background:var(--brand)}
+  .report-col.no h4 .pip{background:var(--line-2)}
+  .report-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .report-col li{font-size:14.5px;color:var(--ink);display:flex;align-items:flex-start;gap:10px;line-height:1.45}
+  .report-col li::before{content:"";flex:none;width:18px;height:18px;border-radius:99px;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--bg-2);margin-top:1px;color:var(--muted)}
+  .report-col.yes li{color:var(--ink);font-weight:500}
+  .report-col.yes li::before{content:"✓";background:var(--brand);color:#fff}
+  .report-col.no li{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-2);text-decoration-thickness:1px}
+  .report-col.no li::before{content:"–";background:var(--bg-2);color:var(--muted)}
+
+  /* plan */
+  .plan{}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+  .plan-col{padding:36px 32px 36px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:16px;min-height:480px;position:relative}
+  .plan-col:last-child{border-right:none}
+  .plan-col .ph{display:flex;align-items:center;gap:12px}
+  .plan-col .ph .pno{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:5px 10px;background:var(--brand-bg);border-radius:99px}
+  .plan-col .ph .days{font-size:13px;color:var(--muted);font-weight:500}
+  .plan-col h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-0.018em;line-height:1.2;max-width:18ch}
+  .plan-col .lead{margin:0;color:var(--body);font-size:14.5px;line-height:1.6;max-width:36ch}
+  .plan-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+  .plan-col li{font-size:14px;color:var(--ink);display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;line-height:1.5}
+  .plan-col li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand);margin-top:8px}
+  .plan-col li b{font-weight:600;color:var(--ink)}
+  .plan-col li span{color:var(--body)}
+  .plan-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .plan-foot b{color:var(--ink);font-weight:600;display:block;margin-top:3px;font-size:14px;letter-spacing:-0.005em}
+
+  /* questions */
+  .qa{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
+  .qa-item{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transition:all .15s}
+  .qa-item:hover{border-color:var(--brand-soft);box-shadow:var(--shadow-sm)}
+  .qa-item .n{flex:none;width:32px;height:32px;border-radius:8px;background:var(--brand-bg);color:var(--brand);display:grid;place-items:center;font-weight:600;font-size:13px}
+  .qa-item p{margin:0;font-size:15px;color:var(--ink);line-height:1.5;font-weight:400}
+  .qa-item p b{font-weight:600}
+
+  /* working together */
+  .work{}
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .work-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 32px;display:flex;flex-direction:column;gap:18px}
+  .work-card .h{font-size:13px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+  .work-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.015em;line-height:1.25}
+  .work-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+  .work-card li{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:14.5px;color:var(--body);line-height:1.55;padding:14px 0;border-top:1px solid var(--line)}
+  .work-card li:first-child{border-top:none;padding-top:0}
+  .work-card li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--brand);margin-top:6px}
+  .work-card li b{font-weight:600;color:var(--ink);display:block;margin-bottom:2px}
+  .work-card.them{background:var(--bg-3)}
+  .work-card.them .h{color:var(--muted)}
+  .work-card.them li::before{background:var(--line-2)}
+
+  /* close */
+  .close{padding:120px 0 110px;position:relative;overflow:hidden}
+  .close::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(108,76,241,0.16),transparent 70%);filter:blur(40px);pointer-events:none;z-index:0}
+  .close-inner{position:relative;z-index:1;text-align:center;max-width:840px;margin:0 auto}
+  .close .pill{margin-bottom:24px}
+  .close h2{font-size:clamp(40px,5.6vw,68px);font-weight:500;line-height:1.05;letter-spacing:-0.028em;margin:0;max-width:18ch;margin-left:auto;margin-right:auto;color:var(--ink)}
+  .close h2 em{font-style:normal;color:var(--brand)}
+  .close p{margin:24px auto 0;color:var(--body);font-size:18px;line-height:1.55;max-width:54ch}
+  .close-actions{margin-top:40px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .close-actions .btn{padding:14px 24px;font-size:15px;border-radius:12px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:13px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer a:hover{color:var(--ink)}
+  footer .links{display:flex;gap:28px}
+
+  /* responsive */
+  @media (max-width:1080px){
+    .wrap{padding:0 24px}
+    .hero-inner{grid-template-columns:1fr;gap:48px}
+    .sec-head{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
+    .diag-grid,.pillar-grid,.flow-out,.report-grid,.plan-grid,.qa-grid,.work-grid{grid-template-columns:1fr}
+    .arch-row{grid-template-columns:1fr}
+    .arch-cat,.arch-purpose{border-right:none;border-bottom:1px solid var(--line)}
+    .nav-links{display:none}
+    .flow-out{grid-template-columns:1fr 1fr}
+    .plan-col{border-right:none;border-bottom:1px solid var(--line);min-height:auto}
+  }
+
+  /* ── scroll reveal ── */
+  .reveal,.stagger{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.revealed,.stagger.revealed{opacity:1;transform:translateY(0)}
+
+  .reveal-fade{opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1)}
+  .reveal-fade.revealed{opacity:1}
+
+  .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal-left.revealed{opacity:1;transform:translateX(0)}
+
+  .reveal-right{opacity:0;transform:translateX(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal-right.revealed{opacity:1;transform:translateX(0)}
+
+  .reveal-scale{opacity:0;transform:scale(.94);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .reveal-scale.revealed{opacity:1;transform:scale(1)}
+</style>
+</head>
+<body>
+
+<!-- nav -->
+
+
+<!-- hero -->
+<section class="hero reveal-fade">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <div class="reveal-left">
+      <span class="pill"><span class="dot"></span>Growth strategy · Prepared for Swayable</span>
+      <h1 class="hero-title">Turning Swayable's <em>proof</em> into a buyer-discovery system.</h1>
+      <p class="hero-sub">You already have product–market proof: RCT-based creative testing, brand-lift measurement, and 24-hour insights that enterprise marketers trust. What's missing is the discoverability infrastructure that puts that proof in front of in-market buyers — across search, AI answers, review sites, and competitor comparisons. This is how we'd build it.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#approach">Read the approach</a>
+        <a class="btn btn-ghost" href="#plan">See the 90-day plan</a>
+      </div>
+      <div class="hero-meta">
+        <div><div class="k">Engagement</div><div class="v">6 months · structured</div></div>
+        <div><div class="k">Focus</div><div class="v"><em>Discoverability</em> + pipeline</div></div>
+        <div><div class="k">Owned by you</div><div class="v">Pages, tracking, playbook</div></div>
+      </div>
+    </div>
+
+    <div class="hero-card reveal-right">
+      <div class="hero-card-h">
+        <div class="t">Where Swayable shows up today<br/><b>Buyer-journey coverage</b></div>
+        <div class="live"><i></i>Snapshot</div>
+      </div>
+      <div class="hero-card-rows">
+        <div class="hero-row stagger"><div class="lbl">Methodology</div><div class="hero-track"><i style="width:78%"></i></div><div class="val">Strong</div></div>
+        <div class="hero-row stagger"><div class="lbl">Use-case pages</div><div class="hero-track"><i style="width:42%"></i></div><div class="val">Partial</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">Comparison pages</div><div class="hero-track"><i style="width:14%"></i></div><div class="val">Sparse</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">Review presence</div><div class="hero-track"><i style="width:18%"></i></div><div class="val">Sparse</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">AI / GEO visibility</div><div class="hero-track"><i style="width:22%"></i></div><div class="val">Sparse</div></div>
+        <div class="hero-row stagger"><div class="lbl">Proprietary data</div><div class="hero-track"><i style="width:88%"></i></div><div class="val">Strong</div></div>
+      </div>
+      <div class="hero-card-foot">
+        <div>The biggest gap is between <b>strong proof</b><br/>and <b>where buyers research.</b></div>
+        <div class="delta">→ that's the work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- diagnosis -->
+<section class="sec diag reveal" id="diagnosis">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">01 · Diagnosis</div>
+      </div>
+      <div>
+        <h2 class="sec-title">The honest read of where things stand.</h2>
+        <p class="sec-sub">Before proposing tactics, here's the diagnosis we'd defend in a working session. Each of these is solvable — and each one shows up in pipeline within the first two quarters once it is.</p>
+      </div>
+    </div>
+
+    <div class="diag-grid">
+      <div class="diag-card stagger">
+        <div class="ic">01</div>
+        <h3>Fragmented growth architecture</h3>
+        <p>Assets live across www, get, try, and insights subdomains. They aren't acting as one revenue engine yet — methodology is strong, but the path from a researching buyer to a booked demo is uneven and inconsistently instrumented.</p>
+        <div class="meta"><span>Symptom</span><b>Pages don't compound</b></div>
+      </div>
+      <div class="diag-card stagger">
+        <div class="ic">02</div>
+        <h3>Buyers research where you're not</h3>
+        <p>Enterprise marketers self-educate across Google, AI engines, YouTube, LinkedIn, review sites, and comparison articles. Competitors like Zappi and Suzy have built ecosystems across all of these. Swayable is under-represented in most.</p>
+        <div class="meta"><span>Symptom</span><b>Missing from shortlists</b></div>
+      </div>
+      <div class="diag-card stagger">
+        <div class="ic">03</div>
+        <h3>The proof isn't packaged</h3>
+        <p>Swayable's proprietary data — RCT studies, brand-lift benchmarks, the influencer report — is the most defensible content moat in the category. Today it sits as PDFs and one-off posts rather than a connected SEO, PR, and sales-enablement system.</p>
+        <div class="meta"><span>Symptom</span><b>Asset, not engine</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- approach -->
+<section class="sec pillars reveal" id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">02 · Approach</div>
+      </div>
+      <div>
+        <h2 class="sec-title">Five workstreams, run by one team, tied to one outcome.</h2>
+        <p class="sec-sub">Each pillar is independently measurable, but they reinforce each other. We don't believe in running SEO without CRO, or content without distribution, or paid without organic learnings flowing back into the page system.</p>
+      </div>
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">01</div>
+          <div class="pillar-tag">Search architecture</div>
+        </div>
+        <h3>Build the revenue search architecture across www, get, try, and insights.</h3>
+        <p>Treat all four properties as one system. Map every page to buyer intent, fix the technical foundation, and ship a deliberate set of commercial, methodology, use-case, and comparison pages.</p>
+        <ul class="pillar-list">
+          <li>Crawl + intent map across every property</li>
+          <li>Technical: speed, schema, canonicalization, internal links</li>
+          <li>Commercial pages: creative testing, brand lift, message testing, audience testing</li>
+          <li>Use-case pages by buyer pain (CPG, agencies, political, entertainment, retail)</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Coherent funnel from research to demo</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">02</div>
+          <div class="pillar-tag">Competitor intercept</div>
+        </div>
+        <h3>Capture buyers already comparing Zappi, Suzy, Kantar, and Qualtrics.</h3>
+        <p>The fastest path to pipeline. Honest comparison pages — not hit pieces — built around where each competitor is genuinely strong and where Swayable's RCT methodology wins.</p>
+        <ul class="pillar-list">
+          <li>Vendor-vs pages: Swayable vs Zappi, Suzy, Kantar LINK AI, Qualtrics</li>
+          <li>Category pages: best creative testing platforms, best brand-lift tools</li>
+          <li>"Alternatives" pages: Zappi alternatives, Suzy alternatives</li>
+          <li>Each page paired with proof, methodology snippet, and a demo path</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>In every shortlist</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">03</div>
+          <div class="pillar-tag">Authority &amp; AI visibility</div>
+        </div>
+        <h3>Become the answer when buyers — and the AI advising them — validate vendors.</h3>
+        <p>AI engines and B2B buyers both lean on third-party validation: G2, Capterra, TrustRadius, analyst notes, listicles, and PR. We treat reviews as a campaign and pitch into category articles deliberately.</p>
+        <ul class="pillar-list">
+          <li>Claim and clean up directory profiles (G2, Capterra, TrustRadius, Greenbook)</li>
+          <li>Compliant customer review campaign with happy enterprise accounts</li>
+          <li>Pitch inclusion into "best of" listicles and category articles</li>
+          <li>Track AI answer share-of-voice on a defined prompt set</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Validated wherever buyers look</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">04</div>
+          <div class="pillar-tag">Proprietary data moat</div>
+        </div>
+        <h3>Turn your test library into a moat competitors can't replicate.</h3>
+        <p>RCT studies, brand-lift benchmarks, and the influencer report are content competitors structurally cannot match. We package them into a connected SEO + PR + LinkedIn + video + sales system.</p>
+        <ul class="pillar-list">
+          <li>OCR + structured extraction pipeline for existing studies</li>
+          <li>Pillar pages on persuasion benchmarks by industry and channel</li>
+          <li>Repurpose into LinkedIn, YouTube, webinar, PR, and sales collateral</li>
+          <li>Light interactive tools: media-waste calculator, RCT explainer, brief generator</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Defensible category authority</b></div>
+      </div>
+
+      <div class="pillar stagger" style="grid-column:1/-1">
+        <div class="pillar-head">
+          <div class="pillar-num">05</div>
+          <div class="pillar-tag">CRO, paid validation &amp; reporting</div>
+        </div>
+        <h3>Wire everything to pipeline — not traffic, not rankings.</h3>
+        <p>Paid search isn't a separate upsell; it's the research engine that tells SEO which messages actually convert. Reporting is built around demo demand and pipeline, not vanity metrics. Without this layer, the rest of the work isn't auditable — so it's not optional.</p>
+        <ul class="pillar-list" style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px">
+          <li>GA4, GTM, Search Console, Looker Studio dashboard</li>
+          <li>HubSpot/Salesforce attribution wired to web conversions</li>
+          <li>Small exact-match PPC tests on high-intent terms — feed learnings back to SEO</li>
+          <li>Page-level conversion tests on commercial and comparison pages</li>
+          <li>Demo-form flow audit and friction reduction</li>
+          <li>Monthly AI Visibility Scorecard against a defined prompt set</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Every dollar traceable to pipeline</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- search architecture detail -->
+<section class="sec arch reveal" id="architecture">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">03 · Architecture</div>
+      </div>
+      <div>
+        <h2 class="sec-title">The page system, in detail.</h2>
+        <p class="sec-sub">Four families of pages, each with a job. The point isn't volume — it's coverage of the actual buyer journey, from "what is brand lift" through "Swayable vs Zappi" through "request a demo." Sample slugs are illustrative; the final set is built from your keyword data and CRM.</p>
+      </div>
+    </div>
+
+    <div class="arch-table">
+      <div class="arch-row head">
+        <div>Page family</div>
+        <div>Buyer job</div>
+        <div>Sample pages</div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Commercial</b><span>Rank &amp; convert</span></div>
+        <div class="arch-purpose">High-intent buyers searching by capability. These rank for product-category terms and carry the strongest demo CTAs.</div>
+        <div class="arch-pages">
+          <span class="arch-tag brand stagger">Creative testing platform</span>
+          <span class="arch-tag brand stagger">Brand lift measurement software</span>
+          <span class="arch-tag stagger">Message testing platform</span>
+          <span class="arch-tag stagger">Audience testing software</span>
+          <span class="arch-tag stagger">Campaign pre-testing</span>
+          <span class="arch-tag stagger">Brand tracking · Swayable Tracker</span>
+        </div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Methodology</b><span>Trust &amp; remove friction</span></div>
+        <div class="arch-purpose">Buyers who don't yet trust the category. These pages answer "why RCT?" and resolve objections before sales has to.</div>
+        <div class="arch-pages">
+          <span class="arch-tag brand stagger">RCT creative testing</span>
+          <span class="arch-tag stagger">A/B testing vs randomized controlled trials</span>
+          <span class="arch-tag stagger">How to measure persuasion</span>
+          <span class="arch-tag stagger">Brand lift vs engagement metrics</span>
+          <span class="arch-tag stagger">Statistical significance for marketers</span>
+          <span class="arch-tag stagger">How Swayable measures causal impact</span>
+        </div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Use-case</b><span>Speak to pain</span></div>
+        <div class="arch-purpose">Buyers who already know they have a problem in a specific context. These pages convert better than generic content because they read like the buyer's job description.</div>
+        <div class="arch-pages">
+          <span class="arch-tag stagger">Creative testing for CPG brands</span>
+          <span class="arch-tag stagger">Creative testing for agencies</span>
+          <span class="arch-tag brand stagger">Brand lift for influencer campaigns</span>
+          <span class="arch-tag stagger">Message testing for political campaigns</span>
+          <span class="arch-tag stagger">Creative testing for entertainment trailers</span>
+          <span class="arch-tag stagger">Pre-testing for product launches</span>
+        </div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Comparison</b><span>Capture in-market buyers</span></div>
+        <div class="arch-purpose">The fastest path to pipeline. Buyers searching these terms are evaluating, not exploring — they've already accepted they need a vendor.</div>
+        <div class="arch-pages">
+          <span class="arch-tag brand stagger">Swayable vs Zappi</span>
+          <span class="arch-tag brand stagger">Swayable vs Suzy</span>
+          <span class="arch-tag stagger">Swayable vs Kantar LINK AI</span>
+          <span class="arch-tag stagger">Swayable vs Qualtrics</span>
+          <span class="arch-tag stagger">Zappi alternatives</span>
+          <span class="arch-tag stagger">Best creative testing platforms</span>
+          <span class="arch-tag stagger">Best brand lift measurement tools</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- proprietary data flow -->
+<section class="sec data reveal" id="data">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">04 · Data moat</div>
+      </div>
+      <div>
+        <h2 class="sec-title">One report becomes a campaign.</h2>
+        <p class="sec-sub">Your proprietary studies are the most valuable raw material in the engagement. A single report — say, the 14k+ creative-test influencer analysis — should become a connected set of SEO, social, PR and sales assets. Here's the flow we'd run for each.</p>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-h">
+        <h3>From a single RCT report to a connected discovery surface.</h3>
+        <p>Each report is parsed once, then expressed across every place a buyer might encounter Swayable in the next 90 days. Internal velocity comes from a hybrid OCR + analyst pipeline.</p>
+      </div>
+
+      <div class="flow-source">
+        <div class="ic">◆</div>
+        <div class="body"><b>Source · Proprietary RCT report (PDF / data)</b><span>Parsed via OCR + structured extraction, validated by an analyst before publication</span></div>
+      </div>
+
+      <div class="flow-out">
+        <div class="flow-card stagger">
+          <div class="n">Output 01</div>
+          <h4>Pillar SEO page</h4>
+          <p>One canonical, evergreen page on the topic — e.g. "Influencer brand lift: what actually drives persuasion."</p>
+          <div class="out">→ commercial intent</div>
+        </div>
+        <div class="flow-card stagger">
+          <div class="n">Output 02</div>
+          <h4>Supporting articles</h4>
+          <p>5–8 articles that link to the pillar — measuring influencer ROI, views vs persuasion, creator pre-testing.</p>
+          <div class="out">→ informational intent</div>
+        </div>
+        <div class="flow-card stagger">
+          <div class="n">Output 03</div>
+          <h4>LinkedIn + YouTube</h4>
+          <p>Executive-led posts and short videos for marketers and insights leaders. Same insights, tuned for each surface.</p>
+          <div class="out">→ awareness + retargeting</div>
+        </div>
+        <div class="flow-card stagger">
+          <div class="n">Output 04</div>
+          <h4>PR &amp; sales enablement</h4>
+          <p>Pitch into AdAge, MarTech, Greenbook, Research Live. A clean checklist + slide for the sales team.</p>
+          <div class="out">→ trust + close rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reporting -->
+<section class="sec report reveal" id="reporting">
+  <div class="wrap">
+    <div class="report-grid">
+      <div class="report-text">
+        <div class="sec-eyebrow" style="flex-direction:row;align-items:center;gap:14px;padding:0;margin-bottom:18px"><div class="bar"></div><div class="label">05 · Reporting</div></div>
+        <h3>We won't report SEO activity. We'll report buyer discovery and pipeline movement.</h3>
+        <p>If a metric doesn't connect to a demo request, it doesn't go on the dashboard. The reporting stack is set up in the first 30 days so that every subsequent decision — what to invest in, what to cut — is grounded in the same numbers your sales team already trusts.</p>
+        <p>Stack: Google Search Console, GA4, GTM, a Looker Studio dashboard wired to HubSpot/Salesforce, plus a monthly AI Visibility Scorecard tracked against a defined prompt set.</p>
+        <a class="btn-link" href="#plan">See how it gets built →</a>
+      </div>
+      <div class="report-cols">
+        <div class="report-col yes">
+          <h4><span class="pip"></span>What we report</h4>
+          <ul>
+            <li>Organic-sourced demo requests</li>
+            <li>Demo form starts by landing page</li>
+            <li>Pipeline contribution by content cluster</li>
+            <li>Conversion rate by page family</li>
+            <li>BOFU keyword visibility</li>
+            <li>AI answer share-of-voice on prompt set</li>
+            <li>Review-site profile growth</li>
+            <li>Listicle / category inclusions earned</li>
+          </ul>
+        </div>
+        <div class="report-col no">
+          <h4><span class="pip"></span>What we don't</h4>
+          <ul>
+            <li>Total organic traffic</li>
+            <li>Generic keyword rankings</li>
+            <li>Impression counts</li>
+            <li>Number of blogs published</li>
+            <li>Social engagement volume</li>
+            <li>Domain authority score</li>
+            <li>Backlink count</li>
+            <li>"Activity" hours logged</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 90-day plan -->
+<section class="sec plan reveal" id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">06 · 90-Day plan</div>
+      </div>
+      <div>
+        <h2 class="sec-title">What the first 90 days actually look like.</h2>
+        <p class="sec-sub">A staged plan, not a content calendar. The point of phase one is to make movement visible quickly; the point of phase two is to compound it; the point of phase three is to scale what's working and cut what isn't.</p>
+      </div>
+    </div>
+
+    <div class="plan-grid">
+      <div class="plan-col stagger">
+        <div class="ph"><span class="pno">Phase 01</span><span class="days">Days 0–30</span></div>
+        <h3>Foundation &amp; first revenue pages</h3>
+        <p class="lead">Make the system legible. Stand up tracking, ship visible movement, and put the first commercial pages live so we have real data to learn from.</p>
+        <ul>
+          <li><b>Tracking + CRM integration</b><span> — GA4, GTM, Search Console, Looker Studio, HubSpot/Salesforce attribution.</span></li>
+          <li><b>Audit + intent map</b><span> across www, get, try, insights.</span></li>
+          <li><b>5 high-intent pages</b><span>: creative testing platform, brand lift measurement, message testing, Swayable vs Zappi, best creative testing platforms.</span></li>
+          <li><b>OCR pipeline setup</b><span> on the first 5 reports.</span></li>
+          <li><b>PPC tests</b><span> on competitor + category terms to validate page messaging.</span></li>
+          <li><b>G2 / review-site cleanup</b><span> and customer review campaign brief.</span></li>
+        </ul>
+        <div class="plan-foot">Phase outcome<b>System legible · first conversions tracked</b></div>
+      </div>
+
+      <div class="plan-col stagger">
+        <div class="ph"><span class="pno">Phase 02</span><span class="days">Days 31–60</span></div>
+        <h3>Buyer-capture system</h3>
+        <p class="lead">Expand into use-case and comparison pages, ship the first interactive assets, and start the third-party validation campaigns that compound monthly.</p>
+        <ul>
+          <li><b>8–12 SEO pages</b><span> across use-case and methodology families.</span></li>
+          <li><b>2 interactive assets</b><span>: media-waste calculator, creative-testing brief generator.</span></li>
+          <li><b>Listicle + category outreach</b><span> for inclusion in "best of" articles.</span></li>
+          <li><b>Repurpose Insights + webinars</b><span> into LinkedIn and YouTube.</span></li>
+          <li><b>Retargeting</b><span> on methodology, comparison, and calculator visitors.</span></li>
+          <li><b>Schema rollout</b><span>: Organization, SoftwareApplication, FAQ, VideoObject, Dataset.</span></li>
+        </ul>
+        <div class="plan-foot">Phase outcome<b>Coverage across the buyer journey</b></div>
+      </div>
+
+      <div class="plan-col stagger">
+        <div class="ph"><span class="pno">Phase 03</span><span class="days">Days 61–90</span></div>
+        <h3>Authority &amp; conversion compounding</h3>
+        <p class="lead">Scale the surface area, double down on what's converting, and put the first AI Visibility Scorecard on the table for review.</p>
+        <ul>
+          <li><b>Competitor pages</b><span> for Suzy, Kantar, Qualtrics, Attest based on demand.</span></li>
+          <li><b>Influencer report campaign</b><span> — pillar, posts, video, PR pitch.</span></li>
+          <li><b>PR around proprietary data</b><span> into AdAge, Marketing Week, MarTech.</span></li>
+          <li><b>Review generation</b><span> expansion across G2, TrustRadius, Capterra.</span></li>
+          <li><b>CRO on top pages</b><span>, demo-form flow, and landing pages from PPC learnings.</span></li>
+          <li><b>AI Visibility Scorecard</b><span> shipped against the agreed prompt set.</span></li>
+        </ul>
+        <div class="plan-foot">Phase outcome<b>Compounding pipeline contribution</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- working together -->
+<section class="sec work reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">07 · Working together</div>
+      </div>
+      <div>
+        <h2 class="sec-title">A growth pod that sits next to your team — not above it.</h2>
+        <p class="sec-sub">Your team owns the brand, the product truth, the customer relationships. We bring the technical execution, velocity, and measurement that would otherwise require five separate vendors. Below is a clean split of who owns what.</p>
+      </div>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card stagger">
+        <div class="h">Swayable owns</div>
+        <h3>Brand voice, product truth, customer relationships.</h3>
+        <ul>
+          <li><b>Brand &amp; positioning</b>Voice, narrative, and the high-level category story.</li>
+          <li><b>Product &amp; methodology truth</b>What is and isn't accurate to claim about Swayable's RCT methodology.</li>
+          <li><b>Customer access</b>Approvals on logos, case studies, and review outreach.</li>
+          <li><b>Sales motion</b>Lead acceptance SLA and the conversation that closes deals.</li>
+        </ul>
+      </div>
+      <div class="work-card stagger">
+        <div class="h">SimplifAI owns</div>
+        <h3>Technical execution, content velocity, measurement.</h3>
+        <ul>
+          <li><b>Search architecture &amp; SEO</b>Crawl, intent map, technical fixes, page system.</li>
+          <li><b>Content production</b>Commercial, methodology, use-case, and comparison pages at velocity.</li>
+          <li><b>Paid validation</b>Small, sharp PPC tests that feed back into SEO and CRO.</li>
+          <li><b>Reporting &amp; attribution</b>The dashboards, tracking, and AI visibility scorecards.</li>
+          <li><b>Authority &amp; AI visibility</b>Reviews, listicles, PR, and directory presence.</li>
+          <li><b>Repurposing &amp; production</b>Video, LinkedIn, calculators, and sales enablement assets.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- questions to align on -->
+<section class="sec qa reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">08 · To align on</div>
+      </div>
+      <div>
+        <h2 class="sec-title">The questions we'd open the working session with.</h2>
+        <p class="sec-sub">Answers to these shape priority order in the first 30 days. None require homework — they're the conversations we'd rather have on day one than guess at in month two.</p>
+      </div>
+    </div>
+
+    <div class="qa-grid">
+      <div class="qa-item stagger"><span class="n">Q1</span><p>Which buyer are you prioritizing this year — <b>brand marketers, insights teams, agencies, political, entertainment, or paid media?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q2</span><p>Which competitors come up most in sales calls — <b>Zappi, Suzy, Kantar, Qualtrics, Attest, or internal research teams?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q3</span><p>What are the <b>top three reasons deals stall</b> today — price, methodology trust, procurement, proof, or timing?</p></div>
+      <div class="qa-item stagger"><span class="n">Q4</span><p>Which existing pages already <b>generate demo requests</b>, and what do they have in common?</p></div>
+      <div class="qa-item stagger"><span class="n">Q5</span><p>Is <b>HubSpot or Salesforce attribution</b> connected to web conversions today, or does that need to be set up?</p></div>
+      <div class="qa-item stagger"><span class="n">Q6</span><p>Can we use anonymized aggregate test data to <b>publish benchmark content</b> under Swayable's name?</p></div>
+      <div class="qa-item stagger"><span class="n">Q7</span><p>Are you open to a compliant <b>customer review campaign</b> across G2, TrustRadius, and Capterra?</p></div>
+      <div class="qa-item stagger"><span class="n">Q8</span><p>What content already exists but hasn't been repurposed — <b>webinars, sales decks, case studies, founder talks?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q9</span><p>Who owns website changes internally, and <b>how quickly can technical updates ship?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q10</span><p>Of these four — <b>creative testing, brand lift, message testing, AI consumer insights</b> — which do you want to win first?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- close -->
+<section class="close reveal-scale" id="close">
+  <div class="wrap close-inner">
+    <span class="pill"><span class="dot"></span>Ready to walk through this</span>
+    <h2>The proof is already yours. Let's build the <em>system</em> that surfaces it.</h2>
+    <p>The next step isn't a sales call. It's a 60-minute working session where we walk through this strategy with your team, validate the diagnosis, and agree on the priority order for the first 30 days.</p>
+    <div class="close-actions">
+      <a class="btn btn-primary" href="#">Schedule a working session</a>
+      <a class="btn btn-ghost" href="#approach">Re-read the approach</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>SimplifAI · Growth strategy prepared for Swayable · 2026</div>
+    <div class="links"><a href="#diagnosis">Diagnosis</a><a href="#approach">Approach</a><a href="#plan">Plan</a><a href="#close">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const isReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(isReduced){
+    document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){el.classList.add('revealed')});
+    return;
+  }
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('revealed');
+        const kids = e.target.querySelectorAll('.stagger');
+        kids.forEach(function(k,i){
+          k.style.transitionDelay = (i * 0.08) + 's';
+          k.classList.add('revealed');
+        });
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){obs.observe(el)});
+})();
+</script>
+</html>
