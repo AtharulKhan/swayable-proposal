@@ -285,6 +285,74 @@
   footer a:hover{color:var(--ink)}
   footer .links{display:flex;gap:28px}
 
+  /* AI visibility section (marquee dark panel) */
+  .ai-vis{background:linear-gradient(180deg,#0F0E1A 0%,#1B1530 60%,#241848 100%);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+  .ai-vis::before{content:"";position:absolute;top:-200px;right:-180px;width:600px;height:600px;border-radius:50%;background:radial-gradient(closest-side,rgba(142,120,245,0.32),transparent 70%);filter:blur(40px);pointer-events:none}
+  .ai-vis::after{content:"";position:absolute;bottom:-200px;left:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(108,76,241,0.22),transparent 70%);filter:blur(40px);pointer-events:none}
+  .ai-vis .wrap{position:relative;z-index:1}
+  .ai-vis .sec-eyebrow .label{color:var(--brand-soft)}
+  .ai-vis .sec-eyebrow .bar{background:var(--brand-soft)}
+  .ai-vis .sec-title{color:#fff}
+  .ai-vis .sec-sub{color:rgba(255,255,255,0.72)}
+  .ai-shift{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start;margin-bottom:56px}
+  .ai-shift h3{margin:0 0 16px;font-size:22px;font-weight:600;letter-spacing:-0.018em;color:#fff;line-height:1.3}
+  .ai-shift p{margin:0 0 14px;color:rgba(255,255,255,0.75);font-size:15px;line-height:1.65}
+  .ai-prompts{display:flex;flex-direction:column;gap:10px}
+  .ai-prompt{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:14px 18px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:13px;color:rgba(255,255,255,0.86);display:flex;gap:12px;align-items:center;letter-spacing:-0.005em}
+  .ai-prompt .pmark{color:var(--brand-soft);font-weight:700;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;flex:none;width:80px}
+  .ai-advantage{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:36px 40px;margin-bottom:56px}
+  .ai-advantage h3{margin:0 0 18px;font-size:20px;font-weight:600;letter-spacing:-0.015em;color:#fff;line-height:1.3}
+  .ai-advantage p{margin:0 0 24px;color:rgba(255,255,255,0.78);font-size:15px;line-height:1.65;max-width:64ch}
+  .ai-advantage-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;margin:0;padding:0;list-style:none}
+  .ai-advantage-list li{font-size:14px;color:rgba(255,255,255,0.86);line-height:1.5;display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:baseline}
+  .ai-advantage-list li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand-soft);margin-top:8px}
+  .ai-advantage-list li b{color:#fff;font-weight:600;display:block;margin-bottom:2px}
+  .ai-advantage-list li span{display:block;color:rgba(255,255,255,0.62);font-size:12.5px}
+  .ai-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:48px}
+  .ai-stage{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:30px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
+  .ai-stage .stage-num{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-soft);font-weight:700}
+  .ai-stage h4{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.012em;color:#fff;line-height:1.3}
+  .ai-stage p{margin:0;color:rgba(255,255,255,0.72);font-size:13.5px;line-height:1.6}
+  .ai-stage .stage-arrow{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1);color:var(--brand-soft);font-size:12.5px;font-weight:600;letter-spacing:-0.005em}
+  .ai-quote{padding:36px 40px;background:linear-gradient(135deg,rgba(108,76,241,0.18),rgba(142,120,245,0.08));border:1px solid rgba(142,120,245,0.28);border-radius:var(--r-lg);font-size:19px;line-height:1.5;color:#fff;font-weight:500;letter-spacing:-0.014em;max-width:78ch}
+  .ai-quote b{color:var(--brand-soft);font-weight:600}
+
+  /* outcomes (after 90 days) */
+  .outcomes{display:flex;flex-direction:column;gap:14px}
+  .outcome-row{display:grid;grid-template-columns:48px 1fr;gap:24px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 32px;align-items:start;transition:box-shadow .2s,border-color .2s}
+  .outcome-row:hover{border-color:var(--brand-soft);box-shadow:var(--shadow-md)}
+  .outcome-num{font-size:30px;font-weight:300;color:var(--brand);letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums}
+  .outcome-body h4{margin:0 0 10px;font-size:18px;font-weight:600;letter-spacing:-0.015em;line-height:1.3;color:var(--ink)}
+  .outcome-deliverables{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin:0 0 14px;padding:0;list-style:none}
+  .outcome-deliverables li{font-size:13px;color:var(--body);line-height:1.5;display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:baseline}
+  .outcome-deliverables li::before{content:"";width:5px;height:5px;border-radius:99px;background:var(--brand);margin-top:8px;flex:none}
+  .outcome-impact{padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink);line-height:1.5;display:flex;gap:8px;align-items:baseline}
+  .outcome-impact .impact-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);flex:none;padding-top:1px}
+  .outcome-impact .impact-text{color:var(--body)}
+
+  /* urgency (why now) */
+  .urgency-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+  .urgency-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 32px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+  .urgency-card::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px}
+  .urgency-card.risk::before{background:#C2410C}
+  .urgency-card.opp::before{background:var(--brand)}
+  .urgency-card .tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+  .urgency-card.risk .tag{color:#C2410C}
+  .urgency-card.opp .tag{color:var(--brand)}
+  .urgency-card h3{margin:0;font-size:20px;font-weight:600;letter-spacing:-0.015em;line-height:1.3}
+  .urgency-card p{margin:0;font-size:14.5px;color:var(--body);line-height:1.6}
+  .urgency-note{padding:24px 28px;background:var(--brand-bg);border:1px solid var(--brand-bg-2);border-radius:var(--r-md);font-size:15px;color:var(--ink);line-height:1.55;display:flex;gap:14px;align-items:flex-start}
+  .urgency-note .note-mark{flex:none;width:32px;height:32px;border-radius:99px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+  .urgency-note b{color:var(--brand);font-weight:600}
+
+  /* close enhancement */
+  .close-decision{text-align:left;max-width:780px;margin:0 auto}
+  .close-decision .recommend{margin-top:32px;padding:24px 28px;background:rgba(255,255,255,0.85);border:1px solid var(--line-2);border-radius:var(--r-md);text-align:left;backdrop-filter:blur(8px)}
+  .close-decision .recommend .rlbl{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+  .close-decision .recommend p{margin:0;font-size:14.5px;color:var(--body);line-height:1.6}
+  .close-decision .closing-line{margin-top:28px;font-size:17px;line-height:1.5;color:var(--ink);font-weight:500;letter-spacing:-0.012em;font-style:italic;max-width:60ch;margin-left:auto;margin-right:auto;text-align:center}
+  .close-decision .closing-line b{color:var(--brand);font-style:normal;font-weight:600}
+
   /* responsive */
   @media (max-width:1080px){
     .wrap{padding:0 24px}
@@ -301,6 +369,12 @@
     .plan-table-row{grid-template-columns:1fr}
     .plan-row-lbl{border-right:none;border-bottom:1px solid var(--line)}
     .plan-cell{border-right:none}
+    .ai-shift{grid-template-columns:1fr;gap:24px}
+    .ai-stages{grid-template-columns:1fr}
+    .ai-advantage-list{grid-template-columns:1fr}
+    .urgency-grid{grid-template-columns:1fr}
+    .outcome-row{grid-template-columns:1fr;gap:12px}
+    .outcome-deliverables{grid-template-columns:1fr}
   }
 
   /* ── scroll reveal ── */
@@ -406,9 +480,9 @@
       </div>
       <div class="diag-card stagger">
         <div class="ic">05</div>
-        <h3>Reporting is not connected to pipeline</h3>
-        <p>Traffic, rankings, and content volume are not enough. The system needs to show which pages, keywords, campaigns, and assets create demo demand and qualified opportunities - so growth decisions are made from pipeline data, not marketing activity.</p>
-        <div class="meta"><span>Growth implication</span><b>Growth decisions from pipeline data</b></div>
+        <h3>Pipeline reporting can be tied tighter</h3>
+        <p>Traffic, rankings, and content volume are not enough on their own. The opportunity is to connect search, paid, content, review sites, and AI visibility more directly to demo demand - so growth decisions are made from pipeline data, not marketing activity.</p>
+        <div class="meta"><span>Growth implication</span><b>One source of truth for what creates demos</b></div>
       </div>
     </div>
   </div>
@@ -660,12 +734,102 @@
   </div>
 </section>
 
+<!-- AI visibility -->
+<section class="ai-vis reveal" id="ai-visibility">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">05 · AI Visibility</div>
+      </div>
+      <div>
+        <h2 class="sec-title">How Swayable wins in AI-driven buyer journeys.</h2>
+        <p class="sec-sub">Enterprise buyers are no longer just using Google. Before they book a demo, they ask ChatGPT, Perplexity, Gemini, and Google AI Overviews the same questions they used to ask analysts. The vendors that show up in those answers are shaping the shortlist before any sales conversation happens.</p>
+      </div>
+    </div>
+
+    <div class="ai-shift stagger">
+      <div>
+        <h3>The shift in how buyers research vendors.</h3>
+        <p>By 2026, the research path before a B2B demo is fragmented across LLM chats, AI overviews, comparison sites, review platforms, LinkedIn, and traditional search. Marketers ask conversational, intent-rich questions and accept the synthesized answer. If Swayable is not part of how those answers get assembled, Swayable is not part of the shortlist.</p>
+        <p>This is not a future problem. It is happening on every active enterprise vendor evaluation right now.</p>
+      </div>
+      <div class="ai-prompts">
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"Best brand-lift measurement tools for enterprise marketers"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"How do I measure persuasion in advertising?"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"Zappi vs alternatives for creative testing"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"Does influencer marketing actually drive ROI?"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"What is RCT-based ad testing and who offers it?"</div>
+      </div>
+    </div>
+
+    <div class="ai-advantage stagger">
+      <h3>Why Swayable wins this layer structurally.</h3>
+      <p>LLMs and AI search reward proof, citations, structured benchmarks, and authoritative sources. Most B2B competitors publish generic content. Swayable has the inputs that AI systems actually prioritize when assembling answers about creative testing, persuasion, and brand-lift measurement.</p>
+      <ul class="ai-advantage-list">
+        <li><b>Proprietary RCT data</b><span>Causal lift numbers AI can cite, not opinion content</span></li>
+        <li><b>Credible methodology</b><span>RCT-based measurement that maps to "how to" queries</span></li>
+        <li><b>Real benchmarks</b><span>Industry and channel data competitors cannot fabricate</span></li>
+        <li><b>Executive thought leadership</b><span>Named voices LLMs surface as authoritative</span></li>
+        <li><b>Category-relevant proof</b><span>Influencer, political, CPG, entertainment use cases</span></li>
+        <li><b>Defensible positioning</b><span>Persuasion and causal impact, not vanity metrics</span></li>
+      </ul>
+    </div>
+
+    <div class="ai-shift stagger" style="margin-bottom:0">
+      <div>
+        <h3>What we do differently.</h3>
+        <p>We do not treat AI visibility as SEO with a new label. We build Swayable into the source LLMs and AI search pull from when answering high-intent marketing questions. That means structuring proof so AI models can interpret and cite it, aligning content with how buyers actually phrase questions, and engineering the technical inputs that drive citation.</p>
+      </div>
+      <div class="ai-advantage" style="margin:0;padding:28px 32px">
+        <h3 style="font-size:15px;letter-spacing:0.04em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:18px">Inputs we engineer</h3>
+        <ul class="ai-advantage-list" style="grid-template-columns:1fr">
+          <li><b>Schema markup</b><span>Organization, FAQ, HowTo, Dataset, SoftwareApplication, VideoObject</span></li>
+          <li><b>Conversational query optimization</b><span>Pages structured around the questions buyers actually ask LLMs</span></li>
+          <li><b>Authoritative citations</b><span>RCT data, named methodology, executive bylines, structured benchmarks</span></li>
+          <li><b>E-E-A-T signals</b><span>Author authority, source credibility, methodology transparency</span></li>
+          <li><b>Cross-property indexing</b><span>Coherent signal across www, get, try, insights subdomains</span></li>
+          <li><b>Prompt-set tracking</b><span>Monthly AI Visibility Scorecard against priority buyer questions</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:72px">
+      <h3 style="margin:0 0 28px;font-size:22px;font-weight:600;letter-spacing:-0.018em;color:#fff;line-height:1.3">How AI visibility turns into revenue.</h3>
+      <div class="ai-stages stagger">
+        <div class="ai-stage">
+          <div class="stage-num">Stage 01 · Early influence</div>
+          <h4>Swayable frames the problem.</h4>
+          <p>When buyers are still defining what brand lift is, how to measure persuasion, or how to evaluate creative testing, Swayable shows up in the explanation. The category gets framed in Swayable's language and methodology.</p>
+          <div class="stage-arrow">→ Buyers learn the category through Swayable's lens</div>
+        </div>
+        <div class="ai-stage">
+          <div class="stage-num">Stage 02 · Mid validation</div>
+          <h4>Swayable enters the shortlist.</h4>
+          <p>When buyers move to comparison queries, alternatives searches, and "best tools" questions, Swayable appears alongside Zappi, Suzy, Kantar, and Qualtrics. RCT methodology becomes the reason to take a meeting.</p>
+          <div class="stage-arrow">→ Swayable named in active vendor evaluation</div>
+        </div>
+        <div class="ai-stage">
+          <div class="stage-num">Stage 03 · High-intent capture</div>
+          <h4>Swayable converts demand in motion.</h4>
+          <p>Buyers move from AI answer to search to site to demo form. By the time they hit the page, they have already accepted the methodology, the proof, and the category positioning. The conversation is closer.</p>
+          <div class="stage-arrow">→ Warmer demos, shorter sales cycles</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-quote stagger" style="margin-top:56px">
+      We are not just helping Swayable rank in search. We are making sure that when marketers ask AI tools how to measure persuasion, evaluate creative, or choose a platform - <b>Swayable is part of the answer.</b>
+    </div>
+  </div>
+</section>
+
 <!-- reporting -->
 <section class="sec report reveal" id="reporting">
   <div class="wrap">
     <div class="report-grid">
       <div class="report-text">
-        <div class="sec-eyebrow" style="flex-direction:row;align-items:center;gap:14px;padding:0;margin-bottom:18px"><div class="bar"></div><div class="label">05 · Reporting</div></div>
+        <div class="sec-eyebrow" style="flex-direction:row;align-items:center;gap:14px;padding:0;margin-bottom:18px"><div class="bar"></div><div class="label">06 · Reporting</div></div>
         <h3>We report pipeline movement, not marketing activity.</h3>
         <p>The goal is not to produce more content, chase vanity rankings, or show traffic charts disconnected from revenue. The dashboard is built around the questions Swayable's leadership actually needs answered: which pages create demo requests, which keywords create qualified buyers, and which parts of the funnel are leaking.</p>
         <p>Stack: GA4, GTM, Search Console, Looker Studio wired to HubSpot/Salesforce, plus a monthly AI Visibility Scorecard tracked against a defined prompt set. Set up in the first 30 days.</p>
@@ -709,7 +873,7 @@
     <div class="sec-head">
       <div class="sec-eyebrow">
         <div class="bar"></div>
-        <div class="label">06 · 90-Day plan</div>
+        <div class="label">07 · 90-Day plan</div>
       </div>
       <div>
         <h2 class="sec-title">What the first 90 days actually look like.</h2>
@@ -810,13 +974,143 @@
   </div>
 </section>
 
+<!-- after 90 days -->
+<section class="sec reveal" id="outcomes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">08 · After 90 days</div>
+      </div>
+      <div>
+        <h2 class="sec-title">What Swayable has after 90 days.</h2>
+        <p class="sec-sub">This is not a content plan or channel strategy. It is a 90-day system build that captures existing demand, validates what converts, and increases conversion into demos. Every deliverable lives in one of three buckets: capture demand, validate what converts, or improve conversion into demos.</p>
+      </div>
+    </div>
+
+    <div class="outcomes">
+      <div class="outcome-row stagger">
+        <div class="outcome-num">01</div>
+        <div class="outcome-body">
+          <h4>A measurable acquisition system tied to demo demand.</h4>
+          <ul class="outcome-deliverables">
+            <li>Full tracking stack: GA4, GTM, Search Console, CRM integration</li>
+            <li>UTM governance across all channels</li>
+            <li>Conversion mapping: demo requests, form starts, key page interactions</li>
+            <li>Pipeline attribution: first-touch, last-touch, assisted</li>
+            <li>Reporting dashboard: page to demo to pipeline visibility</li>
+            <li>Channel and keyword to conversion tracking</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Clear visibility into what drives demos and revenue. Faster decisions, less wasted spend.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">02</div>
+        <div class="outcome-body">
+          <h4>High-intent pages targeting the terms buyers search before sales calls.</h4>
+          <ul class="outcome-deliverables">
+            <li>Bottom-of-funnel keyword clusters identified</li>
+            <li>3 to 5 initial revenue pages live and indexed</li>
+            <li>Structured for ranking and conversion together</li>
+            <li>Clear demo CTAs and integrated proof</li>
+            <li>Internal linking architecture across the site</li>
+            <li>Schema markup, page speed, and crawlability fixes</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Captures buyers actively searching for solutions. Immediate lift in qualified traffic.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">03</div>
+        <div class="outcome-body">
+          <h4>Competitor and category pages that place Swayable in active vendor evaluations.</h4>
+          <ul class="outcome-deliverables">
+            <li>Comparison pages: Swayable vs Zappi, Suzy, Kantar, Qualtrics</li>
+            <li>Category pages: best creative testing, top brand-lift tools</li>
+            <li>Alternatives pages for primary competitor searches</li>
+            <li>Each page positions RCT methodology as the differentiator</li>
+            <li>Conversion paths and demo CTAs on every page</li>
+            <li>Sales-ready talking points pulled from each page</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Places Swayable directly into shortlist-stage decisions where conversion rates are highest.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">04</div>
+        <div class="outcome-body">
+          <h4>A repeatable process for turning proprietary research into pipeline assets.</h4>
+          <ul class="outcome-deliverables">
+            <li>Insights extracted from 3 to 5 existing reports</li>
+            <li>One pillar page: evergreen, SEO-driven, AI-citable</li>
+            <li>5 to 8 supporting articles linked to the pillar</li>
+            <li>LinkedIn post sets, exec-led, repurposed from the report</li>
+            <li>Short-form video scripts and sales one-pagers</li>
+            <li>Repeatable workflow: report to extraction to multi-channel distribution</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Turns existing proof into a compounding discovery engine competitors cannot replicate.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">05</div>
+        <div class="outcome-body">
+          <h4>Paid-search learnings that validate which messages and markets convert.</h4>
+          <ul class="outcome-deliverables">
+            <li>Tightly scoped exact-match high-intent campaigns</li>
+            <li>Competitor-term campaigns where the math works</li>
+            <li>Dedicated landing pages, message and audience specific</li>
+            <li>Headlines, value props, and pain-point variants tested</li>
+            <li>Retargeting on comparison and methodology page visitors</li>
+            <li>Learnings fed back into SEO and CRO priorities</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Fast feedback loop on what messaging drives demos. Reduces wasted effort across organic.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">06</div>
+        <div class="outcome-body">
+          <h4>Review-site and AI-visibility foundations that improve buyer trust.</h4>
+          <ul class="outcome-deliverables">
+            <li>G2, Capterra, TrustRadius, Greenbook profile cleanup</li>
+            <li>Compliant customer review-generation workflow</li>
+            <li>Directory presence with consistent positioning</li>
+            <li>AI Visibility Scorecard against defined prompt set</li>
+            <li>Tracking inclusion in AI-generated answers</li>
+            <li>Schema and citation engineering for LLM pickup</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Strengthens the validation layer buyers rely on before engaging sales.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">07</div>
+        <div class="outcome-body">
+          <h4>Reporting that shows what is creating qualified demand.</h4>
+          <ul class="outcome-deliverables">
+            <li>Looker Studio dashboard wired to GA4 and CRM</li>
+            <li>Demo requests by page, keyword, and campaign</li>
+            <li>Conversion rate by page family and content cluster</li>
+            <li>Monthly review process: top performers and leakage points</li>
+            <li>Defined success metrics and pipeline contribution by channel</li>
+            <li>One source of truth across organic, paid, and proof assets</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Decision-making moves from activity metrics to pipeline-driven optimization.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- working together -->
 <section class="sec work reveal">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
         <div class="bar"></div>
-        <div class="label">07 · Working together</div>
+        <div class="label">09 · Working together</div>
       </div>
       <div>
         <h2 class="sec-title">We extend your team without taking control away from it.</h2>
@@ -862,7 +1156,7 @@
     <div class="sec-head">
       <div class="sec-eyebrow">
         <div class="bar"></div>
-        <div class="label">08 · To align on</div>
+        <div class="label">10 · To align on</div>
       </div>
       <div>
         <h2 class="sec-title">The questions we'd open the working session with.</h2>
@@ -885,16 +1179,59 @@
   </div>
 </section>
 
+<!-- why now -->
+<section class="sec reveal" id="why-now">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">11 · Why now</div>
+      </div>
+      <div>
+        <h2 class="sec-title">Why this matters in 2026.</h2>
+        <p class="sec-sub">Buyers are no longer moving linearly from awareness to sales call. They are checking Google, asking AI tools, reading category pages, comparing vendors, scanning LinkedIn, validating proof, and only then deciding who is worth a conversation. That creates a risk and an opportunity.</p>
+      </div>
+    </div>
+
+    <div class="urgency-grid">
+      <div class="urgency-card risk stagger">
+        <div class="tag">The risk</div>
+        <h3>Competitors with weaker proof shape the shortlist first.</h3>
+        <p>Zappi, Suzy, Kantar, Qualtrics, and Attest are publishing volume across search, AI answers, review sites, and comparison pages. Their content is generic but it is everywhere. If Swayable does not enter those surfaces deliberately, AI systems and buyers will keep assembling shortlists that do not include Swayable - even when Swayable is the better fit.</p>
+      </div>
+      <div class="urgency-card opp stagger">
+        <div class="tag">The opportunity</div>
+        <h3>Swayable has what competitors cannot manufacture.</h3>
+        <p>Proprietary RCT data, a credible methodology, category-relevant executive voices, and proof that maps directly to the questions modern marketers are asking. These are exactly the inputs AI systems prioritize and buyers trust. The window to translate those assets into compounding visibility is open right now.</p>
+      </div>
+    </div>
+
+    <div class="urgency-note stagger">
+      <div class="note-mark">!</div>
+      <div>AI visibility compounds early. Vendors that become part of training data, indexed sources, and frequently cited pages gain disproportionate share of future demand. <b>Delaying this means competitors define the category in AI systems first.</b></div>
+    </div>
+  </div>
+</section>
+
 <!-- close -->
 <section class="close reveal-scale" id="close">
-  <div class="wrap close-inner">
-    <span class="pill"><span class="dot"></span>Ready to build it</span>
-    <h2>Ready to turn Swayable's proof into a <em>measurable</em> growth system?</h2>
-    <p>The next step is a working session to align on priority buyers, competitor targets, existing proof assets, sales objections, CRM tracking, and the first 30-day build plan.</p>
-    <div class="close-actions">
-      <a class="btn btn-primary" href="#">Schedule the growth working session</a>
-      <a class="btn btn-ghost" href="#plan">Review the 90-day plan</a>
+  <div class="wrap close-inner close-decision">
+    <span class="pill"><span class="dot"></span>The decision</span>
+    <h2>Swayable already has the proof. The question is whether those assets are <em>consistently turning into pipeline.</em></h2>
+    <p>Right now, too many buyer-research moments are likely happening without Swayable owning the conversation: competitor searches, category searches, AI answers, review-site checks, comparison pages, and high-intent paid queries. We build the system that closes that gap.</p>
+    <p>The first 90 days are designed to prove the model: ship the highest-intent pages, validate demand with paid search, connect reporting to demo activity, and turn existing proof into assets that sales and marketing can reuse. If the system shows qualified demand, we scale it. If something does not convert, we know quickly and redirect budget. That is the operating model: <b>test, prove, scale.</b> The same principle Swayable gives its customers.</p>
+
+    <div class="recommend">
+      <div class="rlbl">Recommended next step</div>
+      <p>Approve the 90-day growth build. We will begin with tracking, buyer-intent mapping, first revenue pages, paid-search validation, and proof-asset extraction. By the end of 90 days, Swayable will know which search surfaces, messages, competitors, and proof assets are creating measurable demo demand, and where to scale next.</p>
     </div>
+
+    <div class="close-actions">
+      <a class="btn btn-primary" href="#">Approve the 90-day growth build</a>
+      <a class="btn btn-ghost" href="#plan">Review the plan</a>
+    </div>
+
+    <p class="closing-line">Swayable proves what changes minds. <b>This engagement makes sure the market finds that proof before competitors shape the shortlist.</b></p>
   </div>
 </section>
 
