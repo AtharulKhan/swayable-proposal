@@ -285,6 +285,67 @@
   footer a:hover{color:var(--ink)}
   footer .links{display:flex;gap:28px}
 
+  /* start-here pricing tiers */
+  .start-here{padding:80px 0 90px;background:linear-gradient(180deg,var(--bg-3) 0%, #fff 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .start-here .sec-head{margin-bottom:48px}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-top:8px}
+  .tier-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;display:flex;flex-direction:column;gap:14px;position:relative;transition:all .2s;box-shadow:var(--shadow-sm)}
+  .tier-card:hover{box-shadow:var(--shadow-md)}
+  .tier-card.featured{border-color:var(--brand);box-shadow:0 16px 40px -12px rgba(108,76,241,0.28),0 4px 12px -4px rgba(20,20,40,0.06);transform:translateY(-6px)}
+  .tier-card.featured::before{content:"Recommended";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brand);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:99px;white-space:nowrap;box-shadow:0 4px 12px -2px rgba(108,76,241,0.4)}
+  .tier-tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+  .tier-card.featured .tier-tag{color:var(--brand)}
+  .tier-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.018em;line-height:1.25;color:var(--ink)}
+  .tier-price{display:flex;align-items:baseline;gap:6px;padding:16px 0 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tier-price .amount{font-size:32px;font-weight:600;color:var(--ink);letter-spacing:-0.025em;font-variant-numeric:tabular-nums;line-height:1}
+  .tier-price .unit{font-size:14px;color:var(--muted);font-weight:400}
+  .tier-min{font-size:12.5px;color:var(--muted);margin-top:-4px}
+  .tier-features{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+  .tier-features li{font-size:13.5px;color:var(--body);line-height:1.5;display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:baseline}
+  .tier-features li::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:2px;flex:none}
+  .tier-outcome{padding:14px 16px;background:var(--bg-3);border-radius:var(--r-sm);border:1px solid var(--line);font-size:13px;color:var(--ink);line-height:1.5;font-weight:500}
+  .tier-card.featured .tier-outcome{background:var(--brand-bg);border-color:var(--brand-bg-2);color:var(--ink)}
+  .tier-cta{margin-top:4px;padding:13px 18px;border-radius:10px;font-size:14px;font-weight:500;text-align:center;border:1px solid var(--line-2);color:var(--ink);background:#fff;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+  .tier-cta:hover{border-color:var(--ink)}
+  .tier-card.featured .tier-cta{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .tier-card.featured .tier-cta:hover{background:var(--brand-2);border-color:var(--brand-2);transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(108,76,241,0.5)}
+  .start-here-note{margin-top:32px;padding:18px 22px;background:var(--brand-bg);border:1px solid var(--brand-bg-2);border-radius:var(--r-md);font-size:14px;color:var(--ink);line-height:1.55;display:flex;gap:14px;align-items:flex-start}
+  .start-here-note .nm{flex:none;width:28px;height:28px;border-radius:99px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+  .start-here-note b{color:var(--brand);font-weight:600}
+
+  /* 6-month roadmap */
+  .roadmap{padding:96px 0}
+  .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .roadmap-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:34px 30px 30px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm);transition:all .2s}
+  .roadmap-card:hover{box-shadow:var(--shadow-md)}
+  .roadmap-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+  .roadmap-card.crawl::before{background:linear-gradient(90deg,#A89BF7,#8E78F5)}
+  .roadmap-card.walk::before{background:linear-gradient(90deg,#8E78F5,#6C4CF1)}
+  .roadmap-card.run::before{background:linear-gradient(90deg,#6C4CF1,#4A30C8)}
+  .roadmap-tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);padding-top:6px}
+  .roadmap-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.018em;line-height:1.25;color:var(--ink);max-width:18ch}
+  .roadmap-months{font-size:13px;color:var(--muted);font-weight:500;padding-bottom:14px;border-bottom:1px solid var(--line);letter-spacing:0.005em}
+  .roadmap-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;flex:1}
+  .roadmap-list li{font-size:13.5px;color:var(--body);line-height:1.55;display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:flex-start}
+  .roadmap-list li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand);margin-top:8px;flex:none}
+  .roadmap-list li > div{display:flex;flex-direction:column;gap:3px}
+  .roadmap-list li b{color:var(--ink);font-weight:600;font-size:13.5px;line-height:1.4}
+  .roadmap-list li span{color:var(--muted);font-size:12.5px;line-height:1.55}
+  .roadmap-success{padding:14px 16px;background:var(--brand-bg);border:1px solid var(--brand-bg-2);border-radius:var(--r-md);margin-top:auto}
+  .roadmap-success .label{display:block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);margin-bottom:5px}
+  .roadmap-success .text{font-size:12.5px;color:var(--ink);line-height:1.5;font-weight:500}
+
+  /* deep section toggle (hidden by default) */
+  .deep-section{display:none}
+  body.show-detail .deep-section{display:block}
+  .deep-toggle{padding:48px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-3);text-align:center}
+  body.show-detail .deep-toggle{border-bottom:none}
+  .deep-toggle button{background:#fff;border:1px solid var(--line-2);color:var(--ink);padding:14px 26px;border-radius:99px;font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .15s;font-family:inherit;letter-spacing:-0.005em}
+  .deep-toggle button:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .deep-toggle .arrow{transition:transform .25s;display:inline-block}
+  body.show-detail .deep-toggle .arrow{transform:rotate(180deg)}
+  .deep-toggle .toggle-hint{display:block;margin-top:10px;font-size:12.5px;color:var(--muted)}
+
   /* AI visibility section (marquee dark panel) */
   .ai-vis{background:linear-gradient(180deg,#0F0E1A 0%,#1B1530 60%,#241848 100%);color:#fff;padding:120px 0;position:relative;overflow:hidden}
   .ai-vis::before{content:"";position:absolute;top:-200px;right:-180px;width:600px;height:600px;border-radius:50%;background:radial-gradient(closest-side,rgba(142,120,245,0.32),transparent 70%);filter:blur(40px);pointer-events:none}
@@ -376,6 +437,9 @@
     .urgency-grid{grid-template-columns:1fr}
     .outcome-row{grid-template-columns:1fr;gap:12px}
     .outcome-deliverables{grid-template-columns:1fr}
+    .tier-grid{grid-template-columns:1fr;gap:32px}
+    .tier-card.featured{transform:none}
+    .roadmap-grid{grid-template-columns:1fr}
   }
 
   /* ── scroll reveal ── */
@@ -440,6 +504,94 @@
   </div>
 </section>
 
+<!-- start here pricing -->
+<section class="start-here reveal" id="start-here">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">Recommended starting point</div>
+      </div>
+      <div>
+        <h2 class="sec-title">Start with a measurable path to more demos.</h2>
+        <p class="sec-sub">The new website is a strong base. The post-launch audit shows technical and AI-search gaps still blocking discoverability: indexation issues, missing schema, no llms.txt, Core Web Vitals bottlenecks, and metadata cleanup. We fix those first, then turn Swayable's proof into the buyer-intent pages, comparison surfaces, and AI-citable assets that create demo demand.</p>
+      </div>
+    </div>
+
+    <div class="tier-grid">
+      <div class="tier-card stagger">
+        <div class="tier-tag">Lighter start</div>
+        <h3>Foundation</h3>
+        <div class="tier-price">
+          <span class="amount">$1,500</span>
+          <span class="unit">/ month</span>
+        </div>
+        <div class="tier-min">3-month minimum · Technical foundation only</div>
+        <ul class="tier-features">
+          <li>Technical SEO cleanup from full audit</li>
+          <li>Sitemap and indexation fixes (broken pages, 404s)</li>
+          <li>llms.txt setup for AI search visibility</li>
+          <li>Schema markup across core pages (Organization, FAQ, SoftwareApplication)</li>
+          <li>Metadata, title, and H1 cleanup at scale</li>
+          <li>Core Web Vitals fixes</li>
+          <li>Monthly reporting dashboard</li>
+        </ul>
+        <div class="tier-outcome">A technically sound, AI-readable, measurable site, ready for content scale.</div>
+        <a class="tier-cta" href="#close">Choose Foundation</a>
+      </div>
+
+      <div class="tier-card featured stagger">
+        <div class="tier-tag">Premium tier</div>
+        <h3>Revenue Search Program</h3>
+        <div class="tier-price">
+          <span class="amount">$2,475</span>
+          <span class="unit">/ month</span>
+        </div>
+        <div class="tier-min">6-month minimum · ~$14,850 total · Best fit for Swayable</div>
+        <ul class="tier-features">
+          <li>Everything in Foundation</li>
+          <li>2 to 3 revenue pages per month</li>
+          <li>Commercial, methodology, and use-case pages</li>
+          <li>Competitor and category pages (vs Zappi, Suzy, Kantar, Qualtrics)</li>
+          <li>Proof-to-content extraction from RCT reports</li>
+          <li>AI Visibility Scorecard against priority prompt set</li>
+          <li>Internal linking and on-page CRO improvements</li>
+          <li>Pipeline-tied monthly reporting (demo demand by page)</li>
+        </ul>
+        <div class="tier-outcome">First measurable inbound demo demand from search and AI surfaces, in 90 days.</div>
+        <a class="tier-cta" href="#close">Start with Premium</a>
+      </div>
+
+      <div class="tier-card stagger">
+        <div class="tier-tag">Full system</div>
+        <h3>Pipeline Growth Engine</h3>
+        <div class="tier-price">
+          <span class="amount">$3,500+</span>
+          <span class="unit">/ month</span>
+        </div>
+        <div class="tier-min">6-month minimum · Custom-scoped retainer</div>
+        <ul class="tier-features">
+          <li>Everything in Revenue Search Program</li>
+          <li>4 to 6+ revenue pages per month</li>
+          <li>Full competitor intercept system</li>
+          <li>Review-site visibility (G2, Capterra, TrustRadius)</li>
+          <li>Paid-search validation strategy and management</li>
+          <li>Retargeting layer once ad budget is approved</li>
+          <li>Higher repurposing velocity (LinkedIn, video, PR)</li>
+          <li>Quarterly executive growth review</li>
+        </ul>
+        <div class="tier-outcome">Consistent inbound pipeline across organic, AI, review sites, and paid.</div>
+        <a class="tier-cta" href="#close">Discuss custom scope</a>
+      </div>
+    </div>
+
+    <div class="start-here-note">
+      <div class="nm">i</div>
+      <div>The recommendation is the <b>Premium Revenue Search Program</b>. It fits Swayable's stated need (more warm inbound demos) and matches the Premium tier of our standard SEO pricing. Foundation is available if a lighter starting point makes sense for the first quarter.</div>
+    </div>
+  </div>
+</section>
+
 <!-- diagnosis -->
 <section class="sec diag reveal" id="diagnosis">
   <div class="wrap">
@@ -489,8 +641,83 @@
   </div>
 </section>
 
+<!-- 6-month roadmap -->
+<section class="sec roadmap reveal" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">6-Month Roadmap</div>
+      </div>
+      <div>
+        <h2 class="sec-title">From invisible to inescapable, in three phases.</h2>
+        <p class="sec-sub">A staged build, not a content calendar. Months 1-2 fix the foundation and make the system measurable. Months 3-4 launch the revenue pages and turn proof into discoverable assets. Months 5-6 scale what is converting and compound authority across review sites and AI answers.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-card crawl stagger">
+        <div class="roadmap-tag">Phase 1 · Crawl</div>
+        <h3>Technical Foundation</h3>
+        <div class="roadmap-months">Months 1 - 2</div>
+        <ul class="roadmap-list">
+          <li><div><b>Re-audit and tracking stack</b><span>Fresh audit on the new site, GA4, GTM, Search Console, and HubSpot/Salesforce attribution wired to demo form starts.</span></div></li>
+          <li><div><b>Technical SEO and AI readiness</b><span>Resolve broken pages, sitemap errors, Core Web Vitals issues, duplicate titles, and image optimization gaps from the audit.</span></div></li>
+          <li><div><b>Schema and llms.txt</b><span>Implement Organization, FAQ, HowTo, Dataset, and SoftwareApplication schema. Add llms.txt for AI search inclusion.</span></div></li>
+          <li><div><b>Buyer-intent map</b><span>Identify highest-intent keyword clusters across creative testing, brand lift, and competitor terms.</span></div></li>
+          <li><div><b>First 2 to 3 revenue pages</b><span>Ship the highest-intent commercial pages: creative testing platform, brand-lift measurement, Swayable vs Zappi.</span></div></li>
+        </ul>
+        <div class="roadmap-success">
+          <span class="label">Success criteria</span>
+          <span class="text">Site health 90%+. AI readiness verified. First measurable path from search intent to demo demand.</span>
+        </div>
+      </div>
+
+      <div class="roadmap-card walk stagger">
+        <div class="roadmap-tag">Phase 2 · Walk</div>
+        <h3>Content Architecture and AI Visibility</h3>
+        <div class="roadmap-months">Months 3 - 4</div>
+        <ul class="roadmap-list">
+          <li><div><b>Solution and methodology pages</b><span>Build dedicated SEO-optimized pages: Message Testing, Creative Testing, Brand Tracking, Audience Testing, plus RCT methodology explainers.</span></div></li>
+          <li><div><b>Comparison and alternatives pages</b><span>Swayable vs Suzy, Kantar LINK AI, Qualtrics, Attest. Plus "best creative testing platforms" and "Zappi alternatives" listicle targets.</span></div></li>
+          <li><div><b>Proof-to-content extraction</b><span>Turn one existing RCT report into a pillar page, 5 to 8 supporting articles, a LinkedIn post set, and a sales one-pager.</span></div></li>
+          <li><div><b>GEO and listicle outreach</b><span>Target the top 10 industry listicles for inclusion to boost AI visibility and category citation.</span></div></li>
+          <li><div><b>G2 review campaign</b><span>Initiate compliant customer review-generation workflow targeting 25+ verified reviews on G2, Capterra, and TrustRadius.</span></div></li>
+        </ul>
+        <div class="roadmap-success">
+          <span class="label">Success criteria</span>
+          <span class="text">Visibility for category and competitor queries on Google, AI answers, and review sites. Reusable proof assets active across sales and retargeting.</span>
+        </div>
+      </div>
+
+      <div class="roadmap-card run stagger">
+        <div class="roadmap-tag">Phase 3 · Run</div>
+        <h3>Authority and AI Domination</h3>
+        <div class="roadmap-months">Months 5 - 6</div>
+        <ul class="roadmap-list">
+          <li><div><b>Authoritative long-form guides</b><span>Publish 4 long-form guides (e.g., "The 2026 Guide to RCT-Based Ad Testing", "Brand Lift vs Engagement Metrics") to anchor AI citations.</span></div></li>
+          <li><div><b>PR and backlinks</b><span>Secure mentions and backlinks in major industry publications: AdAge, Marketing Week, MarTech, and Greenbook.</span></div></li>
+          <li><div><b>LinkedIn content series</b><span>Executive-led LinkedIn series targeting Research and Brand ICP personas, repurposed from proprietary studies.</span></div></li>
+          <li><div><b>AI Visibility Scorecard</b><span>Deliver the first full AI Visibility Scorecard against the priority prompt set, with month-over-month tracking.</span></div></li>
+          <li><div><b>CRO and demo flow</b><span>Audit the demo form flow, run conversion tests on commercial and comparison pages, and optimize based on PPC learnings.</span></div></li>
+        </ul>
+        <div class="roadmap-success">
+          <span class="label">Success criteria</span>
+          <span class="text">AI visibility score moves from 3/10 to 7/10. Working growth system tied to demo demand. Organic and AI-sourced inbound pipeline visible in CRM.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- toggle for full strategy detail -->
+<div class="deep-toggle">
+  <button id="toggle-detail" type="button"><span class="toggle-label">See the full strategy detail</span><span class="arrow">↓</span></button>
+  <span class="toggle-hint">Approach, architecture, AI visibility deep-dive, working session questions, and more.</span>
+</div>
+
 <!-- approach -->
-<section class="sec pillars reveal" id="approach">
+<section class="sec pillars reveal deep-section" id="approach">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -604,7 +831,7 @@
 </section>
 
 <!-- search architecture detail -->
-<section class="sec arch reveal" id="architecture">
+<section class="sec arch reveal deep-section" id="architecture">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -681,7 +908,7 @@
 </section>
 
 <!-- proprietary data flow -->
-<section class="sec data reveal" id="data">
+<section class="sec data reveal deep-section" id="data">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -736,7 +963,7 @@
 </section>
 
 <!-- AI visibility -->
-<section class="ai-vis reveal" id="ai-visibility">
+<section class="ai-vis reveal deep-section" id="ai-visibility">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -862,7 +1089,7 @@
 </section>
 
 <!-- reporting -->
-<section class="sec report reveal" id="reporting">
+<section class="sec report reveal deep-section" id="reporting">
   <div class="wrap">
     <div class="report-grid">
       <div class="report-text">
@@ -905,7 +1132,7 @@
 </section>
 
 <!-- 90-day plan -->
-<section class="sec plan reveal" id="plan">
+<section class="sec plan reveal deep-section" id="plan">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -1012,7 +1239,7 @@
 </section>
 
 <!-- after 90 days -->
-<section class="sec reveal" id="outcomes">
+<section class="sec reveal deep-section" id="outcomes">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -1142,7 +1369,7 @@
 </section>
 
 <!-- working together -->
-<section class="sec work reveal">
+<section class="sec work reveal deep-section">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -1188,7 +1415,7 @@
 </section>
 
 <!-- questions to align on -->
-<section class="sec qa reveal">
+<section class="sec qa reveal deep-section">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -1217,7 +1444,7 @@
 </section>
 
 <!-- why now -->
-<section class="sec reveal" id="why-now">
+<section class="sec reveal deep-section" id="why-now">
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-eyebrow">
@@ -1301,6 +1528,26 @@
   },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
 
   document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){obs.observe(el)});
+
+  var toggleBtn = document.getElementById('toggle-detail');
+  if(toggleBtn){
+    var labelEl = toggleBtn.querySelector('.toggle-label');
+    toggleBtn.addEventListener('click', function(){
+      var expanded = document.body.classList.toggle('show-detail');
+      if(labelEl){
+        labelEl.textContent = expanded ? 'Collapse strategy detail' : 'See the full strategy detail';
+      }
+      if(expanded){
+        document.querySelectorAll('.deep-section.reveal,.deep-section .reveal').forEach(function(el){
+          el.classList.add('revealed');
+          el.querySelectorAll('.stagger').forEach(function(k,i){
+            k.style.transitionDelay = (i * 0.06) + 's';
+            k.classList.add('revealed');
+          });
+        });
+      }
+    });
+  }
 })();
 </script>
 </html>
