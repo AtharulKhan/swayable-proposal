@@ -1,0 +1,1541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Incentify - Growth Strategy</title>
+<template id="__bundler_thumbnail" data-bg-color="#E6F0FF">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#E6F0FF"/>
+    <g transform="translate(600,400)">
+      <circle r="220" fill="none" stroke="#DBEAFE" stroke-width="2"/>
+      <circle r="140" fill="none" stroke="#DBEAFE" stroke-width="2"/>
+      <circle r="70" fill="#1E3A8A"/>
+      <text y="6" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="500">Strategy</text>
+    </g>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Incentify brand: deep blue / enterprise SaaS */
+    --brand:#1E3A8A;
+    --brand-2:#1E40AF;
+    --brand-soft:#3B82F6;
+    --brand-bg:#E6F0FF;
+    --brand-bg-2:#DBEAFE;
+
+    --ink:#111111;
+    --body:#333333;
+    --muted:#6B7280;
+    --bg:#FFFFFF;
+    --bg-2:#F5F7FB;
+    --bg-3:#FAFBFD;
+    --line:#E5E7EB;
+    --line-2:#CBD5E1;
+
+    --r-sm:6px;
+    --r-md:10px;
+    --r-lg:16px;
+    --r-xl:20px;
+
+    --shadow-sm:0 1px 2px rgba(15,23,42,0.04);
+    --shadow-md:0 8px 24px -8px rgba(15,23,42,0.10), 0 1px 2px rgba(15,23,42,0.04);
+    --shadow-lg:0 24px 60px -24px rgba(30,58,138,0.22), 0 4px 16px -6px rgba(15,23,42,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  body{font-size:16px;line-height:1.6;letter-spacing:-0.005em}
+  ::selection{background:var(--brand);color:#fff}
+  a{color:inherit;text-decoration:none}
+
+  /* layout */
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+  section{position:relative}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(255,255,255,0.85);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--brand) 0%,#8B6BF5 100%);position:relative;display:grid;place-items:center;color:#fff;font-weight:600;font-size:14px;letter-spacing:-0.02em}
+  .brand-name{font-size:16px;font-weight:600;letter-spacing:-0.015em}
+  .brand-name span{color:var(--muted);font-weight:400;margin-left:6px}
+  .nav-links{display:flex;gap:36px;font-size:14px;color:var(--body);font-weight:400}
+  .nav-links a{transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:500;line-height:1;letter-spacing:-0.005em;border:1px solid transparent;transition:all .15s;cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-2);transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(108,76,241,0.5)}
+  .btn-ghost{color:var(--ink);border-color:var(--line-2);background:#fff}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-link{color:var(--brand);font-weight:500;display:inline-flex;align-items:center;gap:6px}
+  .btn-link:hover{color:var(--brand-2)}
+
+  /* hero */
+  .hero{padding:96px 0 80px;position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .hero-bg::before{content:"";position:absolute;top:-200px;right:-200px;width:720px;height:720px;border-radius:50%;background:radial-gradient(closest-side,rgba(108,76,241,0.18),transparent 70%);filter:blur(40px)}
+  .hero-bg::after{content:"";position:absolute;bottom:-200px;left:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(120,180,255,0.16),transparent 70%);filter:blur(40px)}
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center}
+
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border-radius:99px;background:var(--brand-bg);color:var(--brand);font-size:13px;font-weight:500;border:1px solid var(--brand-bg-2);letter-spacing:-0.005em}
+  .pill .dot{width:6px;height:6px;border-radius:99px;background:var(--brand);box-shadow:0 0 0 3px rgba(108,76,241,0.18)}
+
+  h1.hero-title{font-size:clamp(40px,5.4vw,68px);font-weight:500;line-height:1.04;letter-spacing:-0.028em;margin:24px 0 0;max-width:18ch;color:var(--ink)}
+  h1.hero-title em{font-style:normal;color:var(--brand)}
+
+  .hero-sub{margin-top:24px;font-size:18px;line-height:1.55;color:var(--body);max-width:52ch}
+
+  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-actions .btn{padding:14px 22px;font-size:15px;border-radius:12px}
+
+  .hero-meta{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:28px;border-top:1px solid var(--line);max-width:640px}
+  .hero-meta .k{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:-0.005em}
+  .hero-meta .v{font-size:18px;color:var(--ink);margin-top:6px;font-weight:500;letter-spacing:-0.015em}
+  .hero-meta .v em{font-style:normal;color:var(--brand)}
+
+  /* hero card visual */
+  .hero-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:28px;position:relative}
+  .hero-card-h{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .hero-card-h .t{font-size:13px;color:var(--muted);font-weight:500}
+  .hero-card-h .t b{color:var(--ink);font-weight:600}
+  .hero-card-h .live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:500;color:#1B8055;background:#E6F4EB;padding:4px 10px;border-radius:99px;letter-spacing:0.02em}
+  .hero-card-h .live i{width:6px;height:6px;border-radius:99px;background:#28A06B;display:block}
+
+  .hero-card-rows{display:flex;flex-direction:column;gap:14px}
+  .hero-row{display:grid;grid-template-columns:120px 1fr 80px;gap:14px;align-items:center;font-size:13.5px}
+  .hero-row .lbl{color:var(--body);font-weight:500}
+  .hero-row .val{color:var(--ink);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+  .hero-track{height:8px;background:var(--bg-2);border-radius:99px;overflow:hidden;position:relative}
+  .hero-track i{display:block;height:100%;background:linear-gradient(90deg,var(--brand-soft),var(--brand));border-radius:99px}
+  .hero-row.muted .hero-track i{background:var(--line-2)}
+  .hero-row.muted .lbl,.hero-row.muted .val{color:var(--muted)}
+
+  .hero-card-foot{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;font-size:13px;color:var(--body)}
+  .hero-card-foot b{display:block;font-size:22px;color:var(--ink);font-weight:600;letter-spacing:-0.018em;margin-top:4px}
+  .hero-card-foot .delta{color:var(--brand);font-weight:500}
+
+  /* section heading */
+  .sec{padding:96px 0}
+  .sec-head{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;margin-bottom:56px}
+  .sec-eyebrow{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+  .sec-eyebrow .label{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+  .sec-eyebrow .bar{width:32px;height:2px;background:var(--brand);border-radius:99px}
+  .sec-eyebrow .num{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:0.02em}
+  .sec-title{font-size:clamp(32px,3.6vw,46px);font-weight:500;line-height:1.08;letter-spacing:-0.025em;margin:0;max-width:22ch;color:var(--ink)}
+  .sec-title em{font-style:normal;color:var(--brand)}
+  .sec-sub{margin-top:20px;font-size:17px;color:var(--body);line-height:1.6;max-width:60ch}
+
+  /* diagnosis */
+  .diag{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .diag-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;display:flex;flex-direction:column;gap:14px;min-height:300px;transition:all .2s}
+  .diag-card:hover{border-color:var(--brand-soft);box-shadow:var(--shadow-md)}
+  .diag-card .ic{width:40px;height:40px;border-radius:10px;background:var(--brand-bg);color:var(--brand);display:grid;place-items:center;font-weight:600;font-size:16px}
+  .diag-card h3{margin:0;font-size:20px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;max-width:22ch}
+  .diag-card p{margin:0;color:var(--body);font-size:14.5px;line-height:1.6}
+  .diag-card .meta{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+  .diag-card .meta b{color:var(--ink);font-weight:500}
+
+  /* approach pillars */
+  .pillars{}
+  .pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pillar{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 32px 32px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+  .pillar::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--brand-soft))}
+  .pillar-head{display:flex;align-items:center;gap:14px}
+  .pillar-num{width:36px;height:36px;border-radius:8px;background:var(--brand-bg);color:var(--brand);display:grid;place-items:center;font-weight:600;font-size:14px}
+  .pillar-tag{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0.04em;text-transform:uppercase}
+  .pillar h3{margin:0;font-size:24px;font-weight:600;letter-spacing:-0.018em;line-height:1.22;max-width:20ch}
+  .pillar p{margin:0;color:var(--body);font-size:15px;line-height:1.6;max-width:46ch}
+  .pillar-list{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .pillar-list li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:baseline;font-size:14px;color:var(--body);line-height:1.5}
+  .pillar-list li::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--brand);display:block;margin-top:8px}
+  .pillar-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+  .pillar-foot b{color:var(--ink);font-weight:500}
+
+  /* search architecture */
+  .arch{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .arch-table{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .arch-row{display:grid;grid-template-columns:200px 1fr 1.4fr;gap:0;border-bottom:1px solid var(--line)}
+  .arch-row:last-child{border-bottom:none}
+  .arch-row.head{background:var(--bg-3)}
+  .arch-row.head>div{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:16px 24px}
+  .arch-row>div{padding:24px}
+  .arch-cat{background:var(--bg-3);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .arch-cat b{display:block;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.012em}
+  .arch-cat span{font-size:13px;color:var(--muted)}
+  .arch-purpose{border-right:1px solid var(--line);font-size:14.5px;color:var(--body);line-height:1.6;display:flex;align-items:center}
+  .arch-pages{display:flex;flex-wrap:wrap;gap:8px;align-content:center}
+  .arch-tag{display:inline-flex;align-items:center;font-size:13px;color:var(--ink);background:var(--bg-2);border:1px solid var(--line);padding:6px 12px;border-radius:99px;font-weight:400}
+  .arch-tag.brand{background:var(--brand-bg);border-color:var(--brand-bg-2);color:var(--brand-2);font-weight:500}
+
+  /* proprietary data flow */
+  .data{}
+  .flow{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:40px;display:grid;grid-template-columns:1fr;gap:32px}
+  .flow-h{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:end}
+  .flow-h h3{margin:0;font-size:28px;font-weight:600;letter-spacing:-0.02em;line-height:1.18;max-width:22ch}
+  .flow-h p{margin:0;color:var(--body);font-size:15.5px;line-height:1.6;max-width:42ch}
+  .flow-source{padding:22px 24px;background:var(--brand);color:#fff;border-radius:var(--r-md);display:flex;align-items:center;gap:18px}
+  .flow-source .ic{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.16);display:grid;place-items:center;font-weight:600}
+  .flow-source .body b{display:block;font-size:16px;font-weight:600;letter-spacing:-0.012em}
+  .flow-source .body span{display:block;font-size:13px;opacity:0.85;margin-top:2px}
+  .flow-out{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .flow-card{background:var(--bg-3);border:1px solid var(--line);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:8px;position:relative;transition:all .2s}
+  .flow-card:hover{border-color:var(--brand-soft);background:#fff;box-shadow:var(--shadow-sm)}
+  .flow-card .n{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+  .flow-card h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.008em;line-height:1.3}
+  .flow-card p{margin:0;font-size:13px;color:var(--body);line-height:1.5}
+  .flow-card .out{margin-top:6px;font-size:12px;color:var(--muted);font-weight:500}
+
+  /* reporting */
+  .report{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .report-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+  .report-text h3{margin:0 0 16px;font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;max-width:18ch}
+  .report-text p{margin:0 0 14px;color:var(--body);font-size:15.5px;line-height:1.65;max-width:44ch}
+  .report-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .report-col{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:24px}
+  .report-col.no{background:var(--bg-3)}
+  .report-col h4{margin:0 0 16px;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .report-col.yes h4{color:var(--brand)}
+  .report-col h4 .pip{width:8px;height:8px;border-radius:99px;background:var(--brand)}
+  .report-col.no h4 .pip{background:var(--line-2)}
+  .report-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .report-col li{font-size:14.5px;color:var(--ink);display:flex;align-items:flex-start;gap:10px;line-height:1.45}
+  .report-col li::before{content:"";flex:none;width:18px;height:18px;border-radius:99px;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--bg-2);margin-top:1px;color:var(--muted)}
+  .report-col.yes li{color:var(--ink);font-weight:500}
+  .report-col.yes li::before{content:"✓";background:var(--brand);color:#fff}
+  .report-col.no li{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-2);text-decoration-thickness:1px}
+  .report-col.no li::before{content:"–";background:var(--bg-2);color:var(--muted)}
+
+  /* plan table */
+  .plan-table{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm)}
+  .plan-table-row{display:grid;grid-template-columns:110px 1fr 1fr 1fr;border-bottom:1px solid var(--line)}
+  .plan-table-row:last-child{border-bottom:none}
+  .plan-row-lbl{padding:22px 14px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);background:var(--bg-3);border-right:1px solid var(--line);display:flex;align-items:flex-start}
+  .plan-cell{padding:22px 26px;border-right:1px solid var(--line)}
+  .plan-cell:last-child{border-right:none}
+  .plan-cell-ph .ph-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .plan-cell-ph .pno{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;background:var(--brand-bg);border-radius:99px}
+  .plan-cell-ph .days{font-size:12px;color:var(--muted);font-weight:500}
+  .plan-cell-ph h3{margin:0;font-size:16px;font-weight:600;letter-spacing:-0.015em;line-height:1.3;color:var(--ink)}
+  .plan-cell-obj p{margin:0;font-size:13.5px;color:var(--body);line-height:1.6}
+  .plan-cell-del ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .plan-cell-del li{display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:flex-start}
+  .plan-cell-del li::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:2px;flex:none}
+  .plan-cell-del li > div{display:flex;flex-direction:column;gap:2px}
+  .plan-cell-del li b{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+  .plan-cell-del li span{font-size:11.5px;color:var(--muted);line-height:1.4}
+  .plan-cell-out{display:flex;align-items:flex-start;gap:12px}
+  .plan-cell-out .out-icon{width:34px;height:34px;border-radius:10px;background:var(--brand-bg);display:grid;place-items:center;flex:none}
+  .plan-cell-out .out-icon svg{width:15px;height:15px}
+  .plan-cell-out .out-text{font-size:13px;font-weight:600;color:var(--ink);line-height:1.45;padding-top:4px}
+  .plan-cell-foc{display:flex;align-items:center;gap:10px}
+  .plan-cell-foc .foc-pill{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--brand);background:var(--brand-bg);padding:4px 10px;border-radius:99px;white-space:nowrap}
+  .plan-cell-foc .foc-text{font-size:13px;color:var(--body)}
+  .plan-note{margin-top:16px;background:var(--brand-bg);border-radius:var(--r-md);padding:16px 20px;display:flex;align-items:flex-start;gap:14px;border:1px solid var(--brand-bg-2)}
+  .plan-note .note-icon{width:32px;height:32px;border-radius:99px;background:var(--brand);display:grid;place-items:center;flex:none}
+  .plan-note .note-icon svg{width:13px;height:13px}
+  .plan-note b{font-size:13.5px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px}
+  .plan-note p{margin:0;font-size:13px;color:var(--body);line-height:1.5}
+
+  /* questions */
+  .qa{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
+  .qa-item{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transition:all .15s}
+  .qa-item:hover{border-color:var(--brand-soft);box-shadow:var(--shadow-sm)}
+  .qa-item .n{flex:none;width:32px;height:32px;border-radius:8px;background:var(--brand-bg);color:var(--brand);display:grid;place-items:center;font-weight:600;font-size:13px}
+  .qa-item p{margin:0;font-size:15px;color:var(--ink);line-height:1.5;font-weight:400}
+  .qa-item p b{font-weight:600}
+
+  /* working together table */
+  .work-table{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm);display:grid;grid-template-columns:1fr 1fr}
+  .work-col{border-right:1px solid var(--line)}
+  .work-col:last-child{border-right:none}
+  .work-col-head{padding:22px 28px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+  .work-col-head .wowner{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+  .work-col-head.them .wowner{color:var(--muted)}
+  .work-col-head h3{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.012em;line-height:1.3;color:var(--ink)}
+  .work-items{padding:6px 28px 22px}
+  .work-item{display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .work-item:last-child{border-bottom:none}
+  .work-item::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:2px;flex:none}
+  .work-col.them .work-item::before{color:var(--muted);background:var(--bg-2)}
+  .work-item > div{display:flex;flex-direction:column;gap:2px}
+  .work-item b{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+  .work-item span{font-size:11.5px;color:var(--muted);line-height:1.4}
+
+  /* close */
+  .close{padding:120px 0 110px;position:relative;overflow:hidden}
+  .close::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(108,76,241,0.16),transparent 70%);filter:blur(40px);pointer-events:none;z-index:0}
+  .close-inner{position:relative;z-index:1;text-align:center;max-width:840px;margin:0 auto}
+  .close .pill{margin-bottom:24px}
+  .close h2{font-size:clamp(40px,5.6vw,68px);font-weight:500;line-height:1.05;letter-spacing:-0.028em;margin:0;max-width:18ch;margin-left:auto;margin-right:auto;color:var(--ink)}
+  .close h2 em{font-style:normal;color:var(--brand)}
+  .close p{margin:24px auto 0;color:var(--body);font-size:18px;line-height:1.55;max-width:54ch}
+  .close-actions{margin-top:40px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .close-actions .btn{padding:14px 24px;font-size:15px;border-radius:12px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:13px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer a:hover{color:var(--ink)}
+  footer .links{display:flex;gap:28px}
+
+  /* start-here pricing tiers */
+  .start-here{padding:80px 0 90px;background:linear-gradient(180deg,var(--bg-3) 0%, #fff 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .start-here .sec-head{margin-bottom:48px}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-top:8px}
+  .tier-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;display:flex;flex-direction:column;gap:14px;position:relative;transition:all .2s;box-shadow:var(--shadow-sm)}
+  .tier-card:hover{box-shadow:var(--shadow-md)}
+  .tier-card.featured{border-color:var(--brand);box-shadow:0 16px 40px -12px rgba(30,58,138,0.28),0 4px 12px -4px rgba(15,23,42,0.06);transform:translateY(-6px)}
+  .tier-card.featured::before{content:"Recommended";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brand);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:99px;white-space:nowrap;box-shadow:0 4px 12px -2px rgba(30,58,138,0.4)}
+  .tier-tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+  .tier-card.featured .tier-tag{color:var(--brand)}
+  .tier-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.018em;line-height:1.25;color:var(--ink)}
+  .tier-price{display:flex;align-items:baseline;gap:6px;padding:16px 0 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tier-price .amount{font-size:32px;font-weight:600;color:var(--ink);letter-spacing:-0.025em;font-variant-numeric:tabular-nums;line-height:1}
+  .tier-price .unit{font-size:14px;color:var(--muted);font-weight:400}
+  .tier-min{font-size:12.5px;color:var(--muted);margin-top:-4px}
+  .tier-features{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+  .tier-features li{font-size:13.5px;color:var(--body);line-height:1.5;display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:baseline}
+  .tier-features li::before{content:"✓";font-size:9px;font-weight:700;color:var(--brand);width:16px;height:16px;border-radius:99px;background:var(--brand-bg);display:grid;place-items:center;margin-top:2px;flex:none}
+  .tier-outcome{padding:14px 16px;background:var(--bg-3);border-radius:var(--r-sm);border:1px solid var(--line);font-size:13px;color:var(--ink);line-height:1.5;font-weight:500}
+  .tier-card.featured .tier-outcome{background:var(--brand-bg);border-color:var(--brand-bg-2);color:var(--ink)}
+  .tier-cta{margin-top:4px;padding:13px 18px;border-radius:10px;font-size:14px;font-weight:500;text-align:center;border:1px solid var(--line-2);color:var(--ink);background:#fff;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+  .tier-cta:hover{border-color:var(--ink)}
+  .tier-card.featured .tier-cta{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .tier-card.featured .tier-cta:hover{background:var(--brand-2);border-color:var(--brand-2);transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(30,58,138,0.5)}
+  .start-here-note{margin-top:32px;padding:18px 22px;background:var(--brand-bg);border:1px solid var(--brand-bg-2);border-radius:var(--r-md);font-size:14px;color:var(--ink);line-height:1.55;display:flex;gap:14px;align-items:flex-start}
+  .start-here-note .nm{flex:none;width:28px;height:28px;border-radius:99px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+  .start-here-note b{color:var(--brand);font-weight:600}
+
+  /* 6-month roadmap */
+  .roadmap{padding:96px 0}
+  .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .roadmap-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:34px 30px 30px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm);transition:all .2s}
+  .roadmap-card:hover{box-shadow:var(--shadow-md)}
+  .roadmap-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+  .roadmap-card.crawl::before{background:linear-gradient(90deg,#60A5FA,#3B82F6)}
+  .roadmap-card.walk::before{background:linear-gradient(90deg,#3B82F6,#1E3A8A)}
+  .roadmap-card.run::before{background:linear-gradient(90deg,#1E3A8A,#0F1F4D)}
+  .roadmap-tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);padding-top:6px}
+  .roadmap-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-0.018em;line-height:1.25;color:var(--ink);max-width:18ch}
+  .roadmap-months{font-size:13px;color:var(--muted);font-weight:500;padding-bottom:14px;border-bottom:1px solid var(--line);letter-spacing:0.005em}
+  .roadmap-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;flex:1}
+  .roadmap-list li{font-size:13.5px;color:var(--body);line-height:1.55;display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:flex-start}
+  .roadmap-list li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand);margin-top:8px;flex:none}
+  .roadmap-list li > div{display:flex;flex-direction:column;gap:3px}
+  .roadmap-list li b{color:var(--ink);font-weight:600;font-size:13.5px;line-height:1.4}
+  .roadmap-list li span{color:var(--muted);font-size:12.5px;line-height:1.55}
+  .roadmap-success{padding:14px 16px;background:var(--brand-bg);border:1px solid var(--brand-bg-2);border-radius:var(--r-md);margin-top:auto}
+  .roadmap-success .label{display:block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);margin-bottom:5px}
+  .roadmap-success .text{font-size:12.5px;color:var(--ink);line-height:1.5;font-weight:500}
+
+  /* deep section toggle (hidden by default) */
+  .deep-section{display:none}
+  body.show-detail .deep-section{display:block}
+  .deep-toggle{padding:48px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-3);text-align:center}
+  body.show-detail .deep-toggle{border-bottom:none}
+  .deep-toggle button{background:#fff;border:1px solid var(--line-2);color:var(--ink);padding:14px 26px;border-radius:99px;font-size:14px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .15s;font-family:inherit;letter-spacing:-0.005em}
+  .deep-toggle button:hover{border-color:var(--brand);color:var(--brand);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .deep-toggle .arrow{transition:transform .25s;display:inline-block}
+  body.show-detail .deep-toggle .arrow{transform:rotate(180deg)}
+  .deep-toggle .toggle-hint{display:block;margin-top:10px;font-size:12.5px;color:var(--muted)}
+
+  /* AI visibility section (marquee dark panel) */
+  .ai-vis{background:linear-gradient(180deg,#0F0E1A 0%,#1B1530 60%,#241848 100%);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+  .ai-vis::before{content:"";position:absolute;top:-200px;right:-180px;width:600px;height:600px;border-radius:50%;background:radial-gradient(closest-side,rgba(142,120,245,0.32),transparent 70%);filter:blur(40px);pointer-events:none}
+  .ai-vis::after{content:"";position:absolute;bottom:-200px;left:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(108,76,241,0.22),transparent 70%);filter:blur(40px);pointer-events:none}
+  .ai-vis .wrap{position:relative;z-index:1}
+  .ai-vis .sec-eyebrow .label{color:var(--brand-soft)}
+  .ai-vis .sec-eyebrow .bar{background:var(--brand-soft)}
+  .ai-vis .sec-title{color:#fff}
+  .ai-vis .sec-sub{color:rgba(255,255,255,0.72)}
+  .ai-shift{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start;margin-bottom:56px}
+  .ai-shift h3{margin:0 0 16px;font-size:22px;font-weight:600;letter-spacing:-0.018em;color:#fff;line-height:1.3}
+  .ai-shift p{margin:0 0 14px;color:rgba(255,255,255,0.75);font-size:15px;line-height:1.65}
+  .ai-prompts{display:flex;flex-direction:column;gap:10px}
+  .ai-prompt{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:14px 18px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:13px;color:rgba(255,255,255,0.86);display:flex;gap:12px;align-items:center;letter-spacing:-0.005em}
+  .ai-prompt .pmark{color:var(--brand-soft);font-weight:700;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;flex:none;width:80px}
+  .ai-advantage{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:36px 40px;margin-bottom:56px}
+  .ai-advantage h3{margin:0 0 18px;font-size:20px;font-weight:600;letter-spacing:-0.015em;color:#fff;line-height:1.3}
+  .ai-advantage p{margin:0 0 28px;color:rgba(255,255,255,0.78);font-size:15px;line-height:1.65;max-width:64ch}
+  .ai-advantage-table{border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);overflow:hidden;background:rgba(255,255,255,0.025)}
+  .ai-advantage-row{display:grid;grid-template-columns:0.95fr 1.6fr;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,0.08);align-items:flex-start;gap:32px}
+  .ai-advantage-row:last-child{border-bottom:none}
+  .ai-advantage-row .arow-label{display:flex;align-items:flex-start;gap:10px;color:#fff;font-weight:600;font-size:14px;letter-spacing:-0.005em;line-height:1.45;padding-top:1px}
+  .ai-advantage-row .arow-label .dot{width:6px;height:6px;border-radius:99px;background:var(--brand-soft);flex:none;margin-top:7px}
+  .ai-advantage-row .arow-desc{color:rgba(255,255,255,0.68);font-size:13.5px;line-height:1.6}
+  .ai-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:48px}
+  .ai-stage{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:30px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
+  .ai-stage .stage-num{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-soft);font-weight:700}
+  .ai-stage h4{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.012em;color:#fff;line-height:1.3}
+  .ai-stage p{margin:0;color:rgba(255,255,255,0.72);font-size:13.5px;line-height:1.6}
+  .ai-stage .stage-arrow{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,0.1);color:var(--brand-soft);font-size:12.5px;font-weight:600;letter-spacing:-0.005em}
+  .ai-quote{padding:36px 40px;background:linear-gradient(135deg,rgba(108,76,241,0.18),rgba(142,120,245,0.08));border:1px solid rgba(142,120,245,0.28);border-radius:var(--r-lg);font-size:19px;line-height:1.5;color:#fff;font-weight:500;letter-spacing:-0.014em;max-width:78ch}
+  .ai-quote b{color:var(--brand-soft);font-weight:600}
+
+  /* outcomes (after 90 days) */
+  .outcomes{display:flex;flex-direction:column;gap:14px}
+  .outcome-row{display:grid;grid-template-columns:48px 1fr;gap:24px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 32px;align-items:start;transition:box-shadow .2s,border-color .2s}
+  .outcome-row:hover{border-color:var(--brand-soft);box-shadow:var(--shadow-md)}
+  .outcome-num{font-size:30px;font-weight:300;color:var(--brand);letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums}
+  .outcome-body h4{margin:0 0 10px;font-size:18px;font-weight:600;letter-spacing:-0.015em;line-height:1.3;color:var(--ink)}
+  .outcome-deliverables{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin:0 0 14px;padding:0;list-style:none}
+  .outcome-deliverables li{font-size:13px;color:var(--body);line-height:1.5;display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:baseline}
+  .outcome-deliverables li::before{content:"";width:5px;height:5px;border-radius:99px;background:var(--brand);margin-top:8px;flex:none}
+  .outcome-impact{padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink);line-height:1.5;display:flex;gap:8px;align-items:baseline}
+  .outcome-impact .impact-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);flex:none;padding-top:1px}
+  .outcome-impact .impact-text{color:var(--body)}
+
+  /* urgency (why now) */
+  .urgency-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+  .urgency-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 32px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+  .urgency-card::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px}
+  .urgency-card.risk::before{background:#C2410C}
+  .urgency-card.opp::before{background:var(--brand)}
+  .urgency-card .tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+  .urgency-card.risk .tag{color:#C2410C}
+  .urgency-card.opp .tag{color:var(--brand)}
+  .urgency-card h3{margin:0;font-size:20px;font-weight:600;letter-spacing:-0.015em;line-height:1.3}
+  .urgency-card p{margin:0;font-size:14.5px;color:var(--body);line-height:1.6}
+  .urgency-note{padding:24px 28px;background:var(--brand-bg);border:1px solid var(--brand-bg-2);border-radius:var(--r-md);font-size:15px;color:var(--ink);line-height:1.55;display:flex;gap:14px;align-items:flex-start}
+  .urgency-note .note-mark{flex:none;width:32px;height:32px;border-radius:99px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+  .urgency-note b{color:var(--brand);font-weight:600}
+
+  /* close enhancement */
+  .close-decision{text-align:left;max-width:780px;margin:0 auto}
+  .close-decision .recommend{margin-top:32px;padding:24px 28px;background:rgba(255,255,255,0.85);border:1px solid var(--line-2);border-radius:var(--r-md);text-align:left;backdrop-filter:blur(8px)}
+  .close-decision .recommend .rlbl{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+  .close-decision .recommend p{margin:0;font-size:14.5px;color:var(--body);line-height:1.6}
+  .close-decision .closing-line{margin-top:28px;font-size:17px;line-height:1.5;color:var(--ink);font-weight:500;letter-spacing:-0.012em;font-style:italic;max-width:60ch;margin-left:auto;margin-right:auto;text-align:center}
+  .close-decision .closing-line b{color:var(--brand);font-style:normal;font-weight:600}
+
+  /* responsive */
+  @media (max-width:1080px){
+    .wrap{padding:0 24px}
+    .hero-inner{grid-template-columns:1fr;gap:48px}
+    .sec-head{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
+    .diag-grid,.pillar-grid,.flow-out,.report-grid,.qa-grid{grid-template-columns:1fr}
+    .work-table{grid-template-columns:1fr}
+    .work-col{border-right:none;border-bottom:1px solid var(--line)}
+    .work-col:last-child{border-bottom:none}
+    .arch-row{grid-template-columns:1fr}
+    .arch-cat,.arch-purpose{border-right:none;border-bottom:1px solid var(--line)}
+    .nav-links{display:none}
+    .flow-out{grid-template-columns:1fr 1fr}
+    .plan-table-row{grid-template-columns:1fr}
+    .plan-row-lbl{border-right:none;border-bottom:1px solid var(--line)}
+    .plan-cell{border-right:none}
+    .ai-shift{grid-template-columns:1fr;gap:24px}
+    .ai-stages{grid-template-columns:1fr}
+    .ai-advantage-row{grid-template-columns:1fr;gap:6px;padding:16px 20px}
+    .urgency-grid{grid-template-columns:1fr}
+    .outcome-row{grid-template-columns:1fr;gap:12px}
+    .outcome-deliverables{grid-template-columns:1fr}
+    .tier-grid{grid-template-columns:1fr;gap:32px}
+    .tier-card.featured{transform:none}
+    .roadmap-grid{grid-template-columns:1fr}
+  }
+
+  /* ── scroll reveal ── */
+  .reveal,.stagger{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.revealed,.stagger.revealed{opacity:1;transform:translateY(0)}
+
+  .reveal-fade{opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1)}
+  .reveal-fade.revealed{opacity:1}
+
+  .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal-left.revealed{opacity:1;transform:translateX(0)}
+
+  .reveal-right{opacity:0;transform:translateX(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal-right.revealed{opacity:1;transform:translateX(0)}
+
+  .reveal-scale{opacity:0;transform:scale(.94);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .reveal-scale.revealed{opacity:1;transform:scale(1)}
+</style>
+</head>
+<body>
+
+<!-- nav -->
+
+
+<!-- hero -->
+<section class="hero reveal-fade">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <div class="reveal-left">
+      <span class="pill"><span class="dot"></span>Growth strategy · Prepared for Incentify</span>
+      <h1 class="hero-title">Turn Incentify's <em>enterprise proof</em> into inbound pipeline.</h1>
+      <p class="hero-sub">Incentify already has the hard part: a purpose-built credits and incentives platform, real enterprise proof (Cargill, Paramount, Tyson), and 100% compliance rates. The opportunity now is to make that proof show up wherever tax and finance buyers research before they book a demo - Claude, ChatGPT, Perplexity, Google AI Overviews, comparison searches, and high-intent paid search. We build the technical growth system that turns Incentify's enterprise credibility into measurable inbound demand for the SDR team.</p>
+      <div class="hero-meta">
+        <div><div class="k">Engagement</div><div class="v">90 days, then monthly</div></div>
+        <div><div class="k">Goal</div><div class="v"><em>Inbound pipeline</em> for SDRs</div></div>
+        <div><div class="k">Owned by you</div><div class="v">Pages, tracking, playbook</div></div>
+      </div>
+    </div>
+
+    <div class="hero-card reveal-right">
+      <div class="hero-card-h">
+        <div class="t">Where Incentify shows up today<br/><b>Buyer-journey coverage</b></div>
+        <div class="live"><i></i>Snapshot</div>
+      </div>
+      <div class="hero-card-rows">
+        <div class="hero-row stagger"><div class="lbl">Enterprise proof</div><div class="hero-track"><i style="width:88%"></i></div><div class="val">Strong</div></div>
+        <div class="hero-row stagger"><div class="lbl">Product positioning</div><div class="hero-track"><i style="width:72%"></i></div><div class="val">Strong</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">Solution / use-case pages</div><div class="hero-track"><i style="width:24%"></i></div><div class="val">Sparse</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">Comparison pages</div><div class="hero-track"><i style="width:8%"></i></div><div class="val">Missing</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">Review presence</div><div class="hero-track"><i style="width:14%"></i></div><div class="val">Sparse</div></div>
+        <div class="hero-row muted stagger"><div class="lbl">AI visibility (17 / 100)</div><div class="hero-track"><i style="width:17%"></i></div><div class="val">Low</div></div>
+      </div>
+      <div class="hero-card-foot">
+        <div>The gap is not product credibility.<br/>It is <b>turning proof into inbound pipeline.</b></div>
+        <div class="delta">→ build the system</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- diagnosis -->
+<section class="sec diag reveal" id="diagnosis">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">01 · Diagnosis</div>
+      </div>
+      <div>
+        <h2 class="sec-title">Where pipeline is leaking today.</h2>
+        <p class="sec-sub">Each of these is a growth opportunity, not just a gap. And each one shows up in demo demand once the right system is in place.</p>
+      </div>
+    </div>
+
+    <div class="diag-grid">
+      <div class="diag-card stagger">
+        <div class="ic">01</div>
+        <h3>Strong proof, limited discovery surface</h3>
+        <p>Incentify has a differentiated product story: the only purpose-built tax credit and incentive platform, 100% compliance rates, and enterprise clients like Cargill, Tyson, and Paramount. But buyers can only convert on proof they actually encounter. The path from a researching buyer to a booked demo needs more high-intent surfaces that explain, rank, and convert.</p>
+        <div class="meta"><span>Growth implication</span><b>More surfaces that explain, rank, and convert</b></div>
+      </div>
+      <div class="diag-card stagger">
+        <div class="ic">02</div>
+        <h3>Competitors are capturing the high-intent searches</h3>
+        <p>The audit identified 5 keyword clusters representing roughly 8,000 monthly enterprise searches around WOTC software, tax compliance software, and tax incentive management. Incentify is currently missing from the top 10 results on these high-intent terms while competitors and legacy advisory firms appear instead.</p>
+        <div class="meta"><span>Growth implication</span><b>Capture the 8,000 monthly searches already happening</b></div>
+      </div>
+      <div class="diag-card stagger">
+        <div class="ic">03</div>
+        <h3>AI systems are not citing Incentify</h3>
+        <p>Incentify's AI Visibility Score is currently 17 / 100. Claude, ChatGPT, and Google AI Overviews are building their understanding of Incentify almost entirely from brand pages, not commercial solution pages. That creates a fragile, narrow citation footprint that leaves Incentify out of AI-generated vendor recommendations.</p>
+        <div class="meta"><span>Growth implication</span><b>Format existing assets so AI can cleanly cite them</b></div>
+      </div>
+      <div class="diag-card stagger">
+        <div class="ic">04</div>
+        <h3>Paid media spend is leaking</h3>
+        <p>The Google Ads audit found campaigns leading to dead pages and missing on the highest-intent commercial queries. Even when traffic is acquired, the lack of dedicated landing pages means it converts inefficiently. Wasted spend on traffic that does not turn into demo requests.</p>
+        <div class="meta"><span>Growth implication</span><b>Stop the leakage and validate what converts</b></div>
+      </div>
+      <div class="diag-card stagger">
+        <div class="ic">05</div>
+        <h3>Outbound is carrying the pipeline alone</h3>
+        <p>Today most leads come from the SDR team's outbound motion. There is no inbound function feeding the SDRs warm leads while they prospect cold. Building a measurable inbound channel is the stated Q2 priority and is the gap this engagement is built to close.</p>
+        <div class="meta"><span>Growth implication</span><b>Inbound channel that feeds the SDR team</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6-month roadmap -->
+<section class="sec roadmap reveal" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">6-Month Roadmap</div>
+      </div>
+      <div>
+        <h2 class="sec-title">From invisible to inescapable, in three phases.</h2>
+        <p class="sec-sub">A staged build, not a content calendar. Months 1-2 fix the foundation and make the system measurable. Months 3-4 launch the revenue pages and turn enterprise proof into discoverable assets. Months 5-6 scale what is converting and compound authority across review sites and AI answers.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-card crawl stagger">
+        <div class="roadmap-tag">Phase 1 · Crawl</div>
+        <h3>Technical Foundation</h3>
+        <div class="roadmap-months">Months 1 - 2</div>
+        <ul class="roadmap-list">
+          <li><div><b>Site audit and tracking stack</b><span>Audit the existing site, set up GA4, GTM, Search Console, and HubSpot attribution wired to demo form starts.</span></div></li>
+          <li><div><b>Technical SEO and AI readiness</b><span>Fix the alt-text gap across all media, clean up H1 hierarchy, repair semantic structure, resolve crawlability and Core Web Vitals issues identified in the audit.</span></div></li>
+          <li><div><b>Schema and llms.txt</b><span>Implement Organization, FAQ, HowTo, and SoftwareApplication schema. Add llms.txt so Claude, ChatGPT, and AI Overviews can index Incentify cleanly.</span></div></li>
+          <li><div><b>Buyer-intent map</b><span>Map the 5 keyword clusters (~8,000 monthly searches) across WOTC software, tax compliance software, and tax incentive management to specific pages.</span></div></li>
+          <li><div><b>First 2 to 3 revenue pages</b><span>Ship the highest-intent commercial pages: WOTC software, tax incentive management platform, and the core C&amp;I solution page.</span></div></li>
+          <li><div><b>PPC leakage cleanup</b><span>Stop the 14 ads pointing to dead pages. Restructure campaigns around high-intent commercial queries with proper landing pages.</span></div></li>
+        </ul>
+        <div class="roadmap-success">
+          <span class="label">Success criteria</span>
+          <span class="text">Site technically clean. AI readiness verified. PPC leakage stopped. First measurable path from search intent to demo form starts.</span>
+        </div>
+      </div>
+
+      <div class="roadmap-card walk stagger">
+        <div class="roadmap-tag">Phase 2 · Walk</div>
+        <h3>Content Architecture and AI Visibility</h3>
+        <div class="roadmap-months">Months 3 - 4</div>
+        <ul class="roadmap-list">
+          <li><div><b>Solution and methodology pages</b><span>Build dedicated SEO-optimized pages: C&amp;I Discovery, Portfolio Management, Compliance Tracking, plus methodology explainers for tax and finance buyers.</span></div></li>
+          <li><div><b>Comparison and alternatives pages</b><span>Pages that intercept "alternatives to legacy WOTC providers", "best tax incentive software", and direct comparisons against advisory-firm and spreadsheet workflows.</span></div></li>
+          <li><div><b>Proof-to-content extraction</b><span>Turn one existing enterprise case study (Cargill, Paramount, or Tyson) into a pillar page, 5 to 8 supporting articles, a LinkedIn post set, and a sales one-pager for the SDR team.</span></div></li>
+          <li><div><b>GEO and listicle outreach</b><span>Target the top industry listicles ("best WOTC software", "top tax incentive platforms") for inclusion to boost AI visibility and category citation.</span></div></li>
+          <li><div><b>G2 review campaign</b><span>Initiate a compliant customer review-generation workflow on G2, Capterra, and TrustRadius using the existing customer base and customer success team.</span></div></li>
+        </ul>
+        <div class="roadmap-success">
+          <span class="label">Success criteria</span>
+          <span class="text">Visibility for category and competitor queries on Google, AI answers, and review sites. Reusable proof assets active across sales enablement and retargeting.</span>
+        </div>
+      </div>
+
+      <div class="roadmap-card run stagger">
+        <div class="roadmap-tag">Phase 3 · Run</div>
+        <h3>Authority and AI Domination</h3>
+        <div class="roadmap-months">Months 5 - 6</div>
+        <ul class="roadmap-list">
+          <li><div><b>Authoritative long-form guides</b><span>Publish 4 long-form guides (e.g., "The 2026 Enterprise Guide to C&amp;I Management", "WOTC vs Advisory-Firm Workflows") to anchor AI citations and high-intent search.</span></div></li>
+          <li><div><b>PR and backlinks</b><span>Secure mentions and backlinks in major tax and finance publications: Tax Notes, Bloomberg Tax, Accounting Today, and HR Executive.</span></div></li>
+          <li><div><b>LinkedIn content series</b><span>Executive-led LinkedIn series targeting Tax Director, VP Finance, and Total Rewards ICP personas, repurposed from enterprise case studies.</span></div></li>
+          <li><div><b>AI Visibility Scorecard</b><span>Deliver the first full AI Visibility Scorecard against the priority prompt set with month-over-month tracking. Target 70+ / 100 from the current 17 / 100.</span></div></li>
+          <li><div><b>CRO and demo flow</b><span>Audit the demo form flow, run conversion tests on commercial and comparison pages, and optimize the self-serve pilot landing page using PPC learnings.</span></div></li>
+        </ul>
+        <div class="roadmap-success">
+          <span class="label">Success criteria</span>
+          <span class="text">AI visibility score moves from 17 / 100 toward 70+ / 100. Working inbound system tied to demo demand. Organic and AI-sourced pipeline visible in HubSpot for the SDR team.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pricing / engagement options -->
+<section class="start-here reveal" id="engagement">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">Engagement</div>
+      </div>
+      <div>
+        <h2 class="sec-title">How we'd structure the engagement.</h2>
+        <p class="sec-sub">Three engagement options sized to a Series A startup with a small in-house team. The recommendation is the Pro Inbound Engine: it fits Incentify's stated Q2 priority (build an inbound function to feed the SDR team), maps to the Pro tier of our standard SEO pricing, and runs the full 6-month build above end to end.</p>
+      </div>
+    </div>
+
+    <div class="tier-grid">
+      <div class="tier-card stagger">
+        <div class="tier-tag">Lighter start</div>
+        <h3>Foundation</h3>
+        <div class="tier-price">
+          <span class="amount">$1,250</span>
+          <span class="unit">/ month</span>
+        </div>
+        <div class="tier-min">3-month minimum · Technical foundation only</div>
+        <ul class="tier-features">
+          <li>Technical SEO cleanup from full audit</li>
+          <li>Alt-text implementation across all media</li>
+          <li>Semantic structure and H1 cleanup for AI readability</li>
+          <li>Schema markup (Organization, FAQ, SoftwareApplication)</li>
+          <li>llms.txt setup for AI search visibility</li>
+          <li>PPC leakage cleanup (the 14 ads to dead pages)</li>
+          <li>Clean reporting dashboard wired to GA4 and HubSpot</li>
+        </ul>
+        <div class="tier-outcome">A technically sound, AI-readable, measurable site, ready for content scale.</div>
+      </div>
+
+      <div class="tier-card featured stagger">
+        <div class="tier-tag">Pro tier · Recommended</div>
+        <h3>Inbound Engine</h3>
+        <div class="tier-price">
+          <span class="amount">$1,950</span>
+          <span class="unit">/ month</span>
+        </div>
+        <div class="tier-min">6-month minimum · ~$11,700 total · Best fit for Incentify</div>
+        <ul class="tier-features">
+          <li>Everything in Foundation</li>
+          <li>2 revenue pages per month</li>
+          <li>Commercial pages (WOTC software, tax compliance, C&amp;I management)</li>
+          <li>Methodology and use-case pages by buyer segment</li>
+          <li>Comparison pages targeting the 8,000-search clusters</li>
+          <li>Proof-to-content extraction from existing case studies</li>
+          <li>AI Visibility Scorecard tracked against priority prompt set</li>
+          <li>Pipeline-tied monthly reporting (demo demand by page)</li>
+        </ul>
+        <div class="tier-outcome">First measurable inbound demo demand for the SDR team, sourced from search and AI, in 90 days.</div>
+      </div>
+
+      <div class="tier-card stagger">
+        <div class="tier-tag">Full system</div>
+        <h3>Pipeline Growth Engine</h3>
+        <div class="tier-price">
+          <span class="amount">$2,475+</span>
+          <span class="unit">/ month</span>
+        </div>
+        <div class="tier-min">6-month minimum · Custom-scoped retainer</div>
+        <ul class="tier-features">
+          <li>Everything in Inbound Engine</li>
+          <li>3 to 4 revenue pages per month</li>
+          <li>Full competitor intercept and category capture</li>
+          <li>Review-site visibility (G2, Capterra, TrustRadius)</li>
+          <li>Paid-search restructure and management</li>
+          <li>Retargeting layer for high-intent visitors</li>
+          <li>LinkedIn and PR repurposing for executive ICP</li>
+          <li>Quarterly growth review with Audra and the team</li>
+        </ul>
+        <div class="tier-outcome">Consistent inbound pipeline across organic, AI, review sites, and paid.</div>
+      </div>
+    </div>
+
+    <div class="start-here-note">
+      <div class="nm">i</div>
+      <div>The recommendation is the <b>Pro Inbound Engine at $1,950 / month</b>. It runs the full 6-month roadmap above, fits a Series A growth budget with one in-house marketing manager, and is the right size to build a working inbound channel for the SDR team without overcommitting scope. Foundation is available as a lighter Q2 start.</div>
+    </div>
+  </div>
+</section>
+
+<!-- toggle for full strategy detail -->
+<div class="deep-toggle">
+  <button id="toggle-detail" type="button"><span class="toggle-label">See the full strategy detail</span><span class="arrow">↓</span></button>
+  <span class="toggle-hint">Approach, architecture, AI visibility deep-dive, working session questions, and more.</span>
+</div>
+
+<!-- approach -->
+<section class="sec pillars reveal deep-section" id="approach">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">02 · Approach</div>
+      </div>
+      <div>
+        <h2 class="sec-title">Six revenue plays, built as one system.</h2>
+        <p class="sec-sub">Each play is independently measurable but they reinforce each other. Search without CRO wastes intent. Content without distribution wastes proof. Paid without organic learnings wastes budget. The system only works when all six run together.</p>
+      </div>
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">01</div>
+          <div class="pillar-tag">Revenue Search Architecture</div>
+        </div>
+        <h3>Build the pages buyers search before they book a demo.</h3>
+        <p>Incentify has strong enterprise proof but a thin commercial-page footprint. The next step is organizing the site into a coherent acquisition system across commercial, methodology, use-case, comparison, and proof-led pages.</p>
+        <ul class="pillar-list">
+          <li>Commercial pages: WOTC software, tax incentive management, tax compliance software, C&amp;I platform</li>
+          <li>Methodology pages: C&amp;I discovery, portfolio management, compliance tracking</li>
+          <li>Use-case pages by buyer segment: enterprise tax teams, advisory firms, multi-entity employers</li>
+          <li>Technical audit: alt-text, semantic structure, schema, canonicalization, internal linking</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Coherent funnel from research to demo</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">02</div>
+          <div class="pillar-tag">Competitor Intercept</div>
+        </div>
+        <h3>Capture the 8,000 monthly searches already happening.</h3>
+        <p>The audit identified 5 keyword clusters where enterprise buyers are evaluating WOTC and tax incentive software right now and Incentify is missing from the top 10. Honest, fair comparison pages built around where the purpose-built platform wins against legacy and advisory-firm alternatives.</p>
+        <ul class="pillar-list">
+          <li>Comparisons against legacy WOTC providers and advisory-firm workflows</li>
+          <li>Category pages: best WOTC software, best tax incentive platforms, top C&amp;I software</li>
+          <li>Alternatives pages targeting the named legacy systems</li>
+          <li>Each page paired with enterprise proof, compliance numbers, and a demo path</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Incentify named in active vendor evaluation</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">03</div>
+          <div class="pillar-tag">Proof-to-Pipeline Engine</div>
+        </div>
+        <h3>Turn enterprise case studies into compounding assets.</h3>
+        <p>Cargill, Paramount, Tyson, 3M, Kroger. Most competitors cannot show enterprise proof at this level. We build a repeatable workflow that turns existing customer stories into discoverable growth assets across search, sales, and AI surfaces.</p>
+        <ul class="pillar-list">
+          <li>Structured extraction workflow for existing case studies and customer wins</li>
+          <li>Pillar pages built around enterprise success stories by vertical</li>
+          <li>One case study becomes: pillar page, supporting articles, LinkedIn posts, PR pitch, sales one-pager</li>
+          <li>Light interactive assets: WOTC eligibility calculator, C&amp;I opportunity scan</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Every case study becomes multiple revenue assets</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">04</div>
+          <div class="pillar-tag">Review-Site and AI Visibility</div>
+        </div>
+        <h3>Make Incentify easier to validate wherever buyers look.</h3>
+        <p>Enterprise tax and finance buyers check review sites, software directories, industry articles, and AI-generated summaries before engaging sales. Today the AI Visibility Score is 17 / 100. We rebuild the inputs AI systems and buyers actually use.</p>
+        <ul class="pillar-list">
+          <li>G2, Capterra, TrustRadius profile setup and review campaign</li>
+          <li>Schema, semantic HTML, and llms.txt so Claude, ChatGPT, and AI Overviews can cleanly cite Incentify</li>
+          <li>Pitch inclusion into "best WOTC software" and "best tax incentive platform" listicles</li>
+          <li>Monthly AI Visibility Scorecard against a defined prompt set</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Validated wherever tax and finance buyers research</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">05</div>
+          <div class="pillar-tag">Paid Search Cleanup and Validation</div>
+        </div>
+        <h3>Stop the leakage and validate what converts.</h3>
+        <p>The audit found Google Ads campaigns leading to dead pages and 14 ads missing the highest-intent commercial queries. We stop the wasted spend, restructure campaigns around high-value enterprise keywords, and use paid search to validate which messages convert before scaling SEO around them.</p>
+        <ul class="pillar-list">
+          <li>Audit and restructure of the existing Google Ads campaigns</li>
+          <li>Exact-match high-intent campaigns on WOTC and tax compliance terms</li>
+          <li>Dedicated landing pages per campaign with clear demo CTAs</li>
+          <li>Retargeting for comparison, methodology, and proof-page visitors</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Stopped leakage. Fast feedback on what messaging drives demos.</b></div>
+      </div>
+
+      <div class="pillar stagger">
+        <div class="pillar-head">
+          <div class="pillar-num">06</div>
+          <div class="pillar-tag">CRO, Attribution and Pipeline Reporting</div>
+        </div>
+        <h3>Make the growth system measurable and accountable.</h3>
+        <p>Audra hates silos. The dashboard has to give marketing, sales, and the SDR team one source of truth. Attribution and CRO are not reporting add-ons. They are what makes the system accountable.</p>
+        <ul class="pillar-list">
+          <li>GA4, GTM, Search Console, HubSpot attribution wired to demo form starts</li>
+          <li>Demo form tracking, UTM governance, page-level conversion reporting</li>
+          <li>Demo flow audit and friction reduction (including the self-serve pilot landing page)</li>
+          <li>Monthly pipeline review: which pages, keywords, and campaigns create qualified SDR-ready leads</li>
+        </ul>
+        <div class="pillar-foot"><span>Outcome</span><b>Every page and campaign tied to pipeline</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- search architecture detail -->
+<section class="sec arch reveal deep-section" id="architecture">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">03 · Architecture</div>
+      </div>
+      <div>
+        <h2 class="sec-title">The page system, in detail.</h2>
+        <p class="sec-sub">Four families of pages, each with a job. The point isn't volume - it's coverage of the actual buyer journey, from "what is WOTC" through "best tax incentive software" through "request a demo." Sample slugs are illustrative; the final set is built from your keyword data and HubSpot CRM.</p>
+      </div>
+    </div>
+
+    <div class="arch-table">
+      <div class="arch-row head">
+        <div>Page family</div>
+        <div>Buyer job</div>
+        <div>Sample pages</div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Commercial</b><span>Rank &amp; convert</span></div>
+        <div class="arch-purpose">High-intent enterprise buyers searching by capability. These rank for product-category terms and carry the strongest demo CTAs.</div>
+        <div class="arch-pages">
+          <span class="arch-tag brand stagger">WOTC software</span>
+          <span class="arch-tag brand stagger">Tax incentive management platform</span>
+          <span class="arch-tag stagger">Tax compliance software</span>
+          <span class="arch-tag stagger">Credits and incentives software</span>
+          <span class="arch-tag stagger">Enterprise C&amp;I platform</span>
+          <span class="arch-tag stagger">R&amp;D tax credit management</span>
+        </div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Methodology</b><span>Trust &amp; remove friction</span></div>
+        <div class="arch-purpose">Buyers who do not yet trust software for this category. These pages answer "why purpose-built?" and resolve compliance and integration objections before sales has to.</div>
+        <div class="arch-pages">
+          <span class="arch-tag brand stagger">C&amp;I discovery methodology</span>
+          <span class="arch-tag stagger">Software vs advisory firm vs in-house</span>
+          <span class="arch-tag stagger">How to manage WOTC at scale</span>
+          <span class="arch-tag stagger">Portfolio management for tax credits</span>
+          <span class="arch-tag stagger">Compliance tracking for enterprise tax</span>
+          <span class="arch-tag stagger">How Incentify achieves 100% compliance</span>
+        </div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Use-case</b><span>Speak to pain</span></div>
+        <div class="arch-purpose">Buyers who already know they have a problem in a specific context. These pages convert better than generic content because they read like the buyer's job description.</div>
+        <div class="arch-pages">
+          <span class="arch-tag stagger">WOTC for retail and CPG</span>
+          <span class="arch-tag stagger">Tax incentives for manufacturing</span>
+          <span class="arch-tag brand stagger">C&amp;I for media and entertainment</span>
+          <span class="arch-tag stagger">Multi-entity WOTC management</span>
+          <span class="arch-tag stagger">R&amp;D credits for software companies</span>
+          <span class="arch-tag stagger">Tax credit management for advisory firms</span>
+        </div>
+      </div>
+
+      <div class="arch-row">
+        <div class="arch-cat"><b>Comparison</b><span>Capture in-market buyers</span></div>
+        <div class="arch-purpose">The fastest path to pipeline. Buyers searching these terms are evaluating, not exploring - they have already accepted they need a vendor.</div>
+        <div class="arch-pages">
+          <span class="arch-tag brand stagger">Incentify vs legacy WOTC providers</span>
+          <span class="arch-tag brand stagger">Incentify vs advisory-firm workflows</span>
+          <span class="arch-tag stagger">Incentify vs in-house spreadsheets</span>
+          <span class="arch-tag stagger">Best WOTC software</span>
+          <span class="arch-tag stagger">Best tax incentive platforms</span>
+          <span class="arch-tag stagger">Top C&amp;I software for enterprises</span>
+          <span class="arch-tag stagger">Alternatives to legacy WOTC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- proprietary data flow -->
+<section class="sec data reveal deep-section" id="data">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">04 · Data moat</div>
+      </div>
+      <div>
+        <h2 class="sec-title">One case study becomes a campaign.</h2>
+        <p class="sec-sub">Incentify's enterprise customer wins are the most valuable raw material in the engagement. A single case study - say, Cargill or Paramount - should become a connected set of SEO, LinkedIn, PR, and sales-enablement assets that the SDR team can actually use. Here's the flow we'd run for each.</p>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-h">
+        <h3>From one enterprise case study to a connected discovery surface.</h3>
+        <p>Each case study is structured once, then expressed across every place a tax or finance buyer might encounter Incentify in the next 90 days. Internal velocity comes from a structured extraction workflow paired with the customer success team.</p>
+      </div>
+
+      <div class="flow-source">
+        <div class="ic">◆</div>
+        <div class="body"><b>Source · Enterprise case study (Cargill, Paramount, Tyson, 3M, Kroger)</b><span>Structured extraction with the customer success team, validated for compliance before publication</span></div>
+      </div>
+
+      <div class="flow-out">
+        <div class="flow-card stagger">
+          <div class="n">Output 01</div>
+          <h4>Pillar SEO page</h4>
+          <p>One canonical, evergreen page on the topic - e.g. "How a Fortune 500 retailer reached 100% WOTC compliance at scale."</p>
+          <div class="out">→ commercial intent</div>
+        </div>
+        <div class="flow-card stagger">
+          <div class="n">Output 02</div>
+          <h4>Supporting articles</h4>
+          <p>5 to 8 articles linking back to the pillar - WOTC at multi-entity scale, integration patterns, audit-ready compliance workflows.</p>
+          <div class="out">→ informational intent</div>
+        </div>
+        <div class="flow-card stagger">
+          <div class="n">Output 03</div>
+          <h4>LinkedIn + sales enablement</h4>
+          <p>Executive-led posts for Tax Director and VP Finance audiences. Sales one-pager the SDR team uses in cold and warm outreach.</p>
+          <div class="out">→ awareness + warm-up</div>
+        </div>
+        <div class="flow-card stagger">
+          <div class="n">Output 04</div>
+          <h4>PR pitch and AI bait</h4>
+          <p>Pitch into Tax Notes, Bloomberg Tax, Accounting Today, HR Executive. Structured with citations AI systems can index and reference.</p>
+          <div class="out">→ trust + AI citation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI visibility -->
+<section class="ai-vis reveal deep-section" id="ai-visibility">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">05 · AI Visibility</div>
+      </div>
+      <div>
+        <h2 class="sec-title">How Incentify wins in AI-driven buyer journeys.</h2>
+        <p class="sec-sub">Enterprise tax and finance buyers are no longer just using Google. Before they book a demo, they ask Claude, ChatGPT, Perplexity, and Google AI Overviews the same questions they used to ask analysts and advisors. The vendors that show up in those answers are shaping the shortlist before any sales conversation happens. Today Incentify's AI Visibility Score is 17 / 100.</p>
+      </div>
+    </div>
+
+    <div class="ai-shift stagger">
+      <div>
+        <h3>The shift in how tax and finance buyers research vendors.</h3>
+        <p>By 2026, the research path before an enterprise software demo is fragmented across LLM chats, AI overviews, comparison sites, review platforms, LinkedIn, and traditional search. Tax directors and finance leaders ask conversational, intent-rich questions and accept the synthesized answer. If Incentify is not part of how those answers get assembled, Incentify is not part of the shortlist.</p>
+        <p>This is not a future problem. It is already happening on every active enterprise vendor evaluation in the C&amp;I and WOTC space.</p>
+      </div>
+      <div class="ai-prompts">
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"Best WOTC software for enterprise employers"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"How do I manage tax credits across multiple entities?"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"Alternatives to legacy WOTC providers"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"Should we use software or an advisory firm for tax incentives?"</div>
+        <div class="ai-prompt"><span class="pmark">Buyer asks</span>"What is the best platform for credits and incentives management?"</div>
+      </div>
+    </div>
+
+    <div class="ai-advantage stagger">
+      <h3>Why Incentify wins this layer structurally.</h3>
+      <p>LLMs and AI search reward proof, citations, structured benchmarks, and authoritative sources. Most B2B competitors in this space publish generic compliance content or rely on advisory-firm thought leadership. Incentify has the inputs AI systems actually prioritize when assembling answers about WOTC, tax incentives, and C&amp;I management.</p>
+      <div class="ai-advantage-table">
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Real enterprise proof</div>
+          <div class="arow-desc">Cargill, Paramount, Tyson, 3M, Kroger - named, named, named. AI surfaces vendors with citable customer evidence.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Credible compliance numbers</div>
+          <div class="arow-desc">100% compliance rates and audit-ready workflows that map directly to "how to manage WOTC at scale" queries.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Purpose-built positioning</div>
+          <div class="arow-desc">The only platform built specifically for credits and incentives at enterprise scale, not a generic tax module.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Category vocabulary</div>
+          <div class="arow-desc">Discovery, portfolio management, compliance tracking. Owning category language LLMs cite back.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Industry-specific proof</div>
+          <div class="arow-desc">Retail, CPG, manufacturing, media use cases tax buyers actually search for by industry.</div>
+        </div>
+        <div class="ai-advantage-row">
+          <div class="arow-label"><span class="dot"></span>Defensible differentiation</div>
+          <div class="arow-desc">Software vs advisory-firm vs in-house spreadsheet, with a clear answer to each.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-shift stagger" style="margin-bottom:0">
+      <div>
+        <h3>What we do differently.</h3>
+        <p>We do not treat AI visibility as SEO with a new label. We build Incentify into the source Claude, ChatGPT, Perplexity, and AI Overviews pull from when answering high-intent tax and finance questions. That means structuring enterprise proof so AI models can interpret and cite it, aligning content with how buyers actually phrase questions, and engineering the technical inputs that drive citation.</p>
+      </div>
+      <div class="ai-advantage" style="margin:0;padding:28px 32px">
+        <h3 style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:18px;font-weight:700">Inputs we engineer</h3>
+        <div class="ai-advantage-table">
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Schema markup</div>
+            <div class="arow-desc">Organization, FAQ, HowTo, SoftwareApplication, BreadcrumbList across the site.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>llms.txt and AI metadata</div>
+            <div class="arow-desc">Explicit AI-search inclusion file plus metadata Claude and ChatGPT cleanly index.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Semantic structure and alt-text</div>
+            <div class="arow-desc">The current homepage gaps fixed: clean H1, structured headings, alt-text across all media.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Authoritative citations</div>
+            <div class="arow-desc">Named customer wins, compliance numbers, executive bylines, structured benchmark content.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Conversational queries</div>
+            <div class="arow-desc">Pages structured around the actual questions tax directors ask LLMs, not just keyword pages.</div>
+          </div>
+          <div class="ai-advantage-row">
+            <div class="arow-label"><span class="dot"></span>Prompt-set tracking</div>
+            <div class="arow-desc">Monthly AI Visibility Scorecard moving the score from 17 / 100 toward 70+ / 100.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:72px">
+      <h3 style="margin:0 0 28px;font-size:22px;font-weight:600;letter-spacing:-0.018em;color:#fff;line-height:1.3">How AI visibility turns into pipeline.</h3>
+      <div class="ai-stages stagger">
+        <div class="ai-stage">
+          <div class="stage-num">Stage 01 · Early influence</div>
+          <h4>Incentify frames the problem.</h4>
+          <p>When tax and finance buyers are still defining what enterprise C&amp;I management looks like, how to operationalize WOTC at scale, or whether to use software or an advisory firm, Incentify shows up in the explanation. The category gets framed in Incentify's language.</p>
+          <div class="stage-arrow">→ Buyers learn the category through Incentify's lens</div>
+        </div>
+        <div class="ai-stage">
+          <div class="stage-num">Stage 02 · Mid validation</div>
+          <h4>Incentify enters the shortlist.</h4>
+          <p>When buyers move to comparison queries, alternatives searches, and "best tools" questions, Incentify appears alongside legacy WOTC providers and advisory-firm workflows. The purpose-built platform becomes the reason to take a meeting.</p>
+          <div class="stage-arrow">→ Incentify named in active vendor evaluation</div>
+        </div>
+        <div class="ai-stage">
+          <div class="stage-num">Stage 03 · High-intent capture</div>
+          <h4>Incentify converts demand in motion.</h4>
+          <p>Buyers move from AI answer to search to site to demo form. By the time they hit the page, they have already accepted the positioning, the compliance numbers, and the enterprise proof. The SDR team gets a warmer call.</p>
+          <div class="stage-arrow">→ Warmer demos, shorter sales cycles</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-quote stagger" style="margin-top:56px">
+      We are not just helping Incentify rank in Google. We are making sure that when tax and finance leaders ask AI tools how to manage credits and incentives at scale, evaluate WOTC software, or choose between software and an advisory firm - <b>Incentify is part of the answer.</b>
+    </div>
+  </div>
+</section>
+
+<!-- reporting -->
+<section class="sec report reveal deep-section" id="reporting">
+  <div class="wrap">
+    <div class="report-grid">
+      <div class="report-text">
+        <div class="sec-eyebrow" style="flex-direction:row;align-items:center;gap:14px;padding:0;margin-bottom:18px"><div class="bar"></div><div class="label">06 · Reporting</div></div>
+        <h3>We report pipeline movement, not marketing activity.</h3>
+        <p>The goal is not to produce more content, chase vanity rankings, or show traffic charts disconnected from revenue. The dashboard is built around the questions Audra and the SDR team actually need answered: which pages create demo requests, which keywords create qualified buyers, and which parts of the funnel are leaking.</p>
+        <p>Stack: GA4, GTM, Search Console, Looker Studio wired to HubSpot, plus a monthly AI Visibility Scorecard tracked against a defined prompt set. Set up in the first 30 days.</p>
+      </div>
+      <div class="report-cols">
+        <div class="report-col yes">
+          <h4><span class="pip"></span>What we report</h4>
+          <ul>
+            <li>Organic-sourced demo requests</li>
+            <li>Demo form starts by landing page</li>
+            <li>Pipeline contribution by content cluster</li>
+            <li>Conversion rate by page family</li>
+            <li>WOTC and tax compliance keyword visibility</li>
+            <li>AI answer share-of-voice across Claude / ChatGPT / AI Overviews</li>
+            <li>Review-site profile growth (G2, Capterra, TrustRadius)</li>
+            <li>SDR-ready leads sourced from inbound</li>
+          </ul>
+        </div>
+        <div class="report-col no">
+          <h4><span class="pip"></span>What we don't</h4>
+          <ul>
+            <li>Total organic traffic</li>
+            <li>Generic keyword rankings</li>
+            <li>Impression counts</li>
+            <li>Number of blogs published</li>
+            <li>Social engagement volume</li>
+            <li>Domain authority score</li>
+            <li>Backlink count</li>
+            <li>"Activity" hours logged</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 90-day plan -->
+<section class="sec plan reveal deep-section" id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">07 · 90-Day plan</div>
+      </div>
+      <div>
+        <h2 class="sec-title">What the first 90 days actually look like.</h2>
+        <p class="sec-sub">A staged plan, not a content calendar. Phase one makes the system measurable and puts the first revenue pages live. Phase two expands the page system and starts turning proof into assets. Phase three scales what is working and improves conversion paths.</p>
+      </div>
+    </div>
+
+    <div class="plan-table stagger">
+      <!-- Phase row -->
+      <div class="plan-table-row">
+        <div class="plan-row-lbl">Phase</div>
+        <div class="plan-cell plan-cell-ph">
+          <div class="ph-top"><span class="pno">Phase 01</span><span class="days">Days 0-30</span></div>
+          <h3>Foundation and first revenue pages</h3>
+        </div>
+        <div class="plan-cell plan-cell-ph">
+          <div class="ph-top"><span class="pno">Phase 02</span><span class="days">Days 31-60</span></div>
+          <h3>Buyer-capture expansion</h3>
+        </div>
+        <div class="plan-cell plan-cell-ph">
+          <div class="ph-top"><span class="pno">Phase 03</span><span class="days">Days 61-90</span></div>
+          <h3>Conversion and authority compounding</h3>
+        </div>
+      </div>
+      <!-- Objective row -->
+      <div class="plan-table-row">
+        <div class="plan-row-lbl">Objective</div>
+        <div class="plan-cell plan-cell-obj"><p>Make the system measurable and ship the first buyer-capture assets. Incentify gets its first measurable path from buyer search intent to demo demand.</p></div>
+        <div class="plan-cell plan-cell-obj"><p>Expand the highest-intent page system and begin turning proof assets into growth assets. Incentify starts showing up across more buyer-intent surfaces.</p></div>
+        <div class="plan-cell plan-cell-obj"><p>Scale what shows qualified intent and improve conversion paths. Incentify has a working growth system tied to demo demand.</p></div>
+      </div>
+      <!-- Key Deliverables row -->
+      <div class="plan-table-row">
+        <div class="plan-row-lbl">Key Deliverables</div>
+        <div class="plan-cell plan-cell-del">
+          <ul>
+            <li><div><b>Tracking + CRM setup</b><span>GA4, GTM, GSC, HubSpot attribution wired to demo form starts</span></div></li>
+            <li><div><b>Technical audit and AI readiness</b><span>alt-text, semantic structure, schema, llms.txt</span></div></li>
+            <li><div><b>Buyer-intent map</b><span>5 keyword clusters covering ~8,000 monthly searches</span></div></li>
+            <li><div><b>3 revenue pages</b><span>WOTC software, tax compliance software, C&amp;I management platform</span></div></li>
+            <li><div><b>PPC leakage cleanup</b><span>stop ads to dead pages, restructure on high-intent terms</span></div></li>
+            <li><div><b>Case study extraction test</b><span>workflow on 1 existing enterprise customer</span></div></li>
+          </ul>
+        </div>
+        <div class="plan-cell plan-cell-del">
+          <ul>
+            <li><div><b>5 to 8 additional pages</b><span>methodology, use-case, and comparison families</span></div></li>
+            <li><div><b>Proof-led pillar page</b><span>from one existing enterprise case study (Cargill, Paramount, or Tyson)</span></div></li>
+            <li><div><b>One interactive asset</b><span>WOTC eligibility calculator or C&amp;I opportunity scan</span></div></li>
+            <li><div><b>G2 review campaign</b><span>begin customer review outreach with customer success team</span></div></li>
+            <li><div><b>Retargeting</b><span>high-intent visitors on comparison and methodology pages</span></div></li>
+            <li><div><b>Content repurposing</b><span>case study into LinkedIn posts and SDR sales one-pager</span></div></li>
+          </ul>
+        </div>
+        <div class="plan-cell plan-cell-del">
+          <ul>
+            <li><div><b>5 to 8 more pages</b><span>based on early search and PPC learnings</span></div></li>
+            <li><div><b>1 to 2 competitor pages</b><span>additional alternatives and comparison pages</span></div></li>
+            <li><div><b>Review footprint</b><span>expand G2, Capterra, TrustRadius presence</span></div></li>
+            <li><div><b>AI Scorecard</b><span>first AI Visibility Scorecard, target 35+ / 100 from baseline 17 / 100</span></div></li>
+            <li><div><b>Demo flow improvement</b><span>demo page and self-serve pilot landing page audit</span></div></li>
+            <li><div><b>Enterprise data campaign</b><span>pillar page + posts + SDR sales one-pager + PR pitch</span></div></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Success Outcome row -->
+      <div class="plan-table-row">
+        <div class="plan-row-lbl">Success Outcome</div>
+        <div class="plan-cell plan-cell-out">
+          <div class="out-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <div class="out-text">First measurable path from search intent to demo demand</div>
+        </div>
+        <div class="plan-cell plan-cell-out">
+          <div class="out-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="out-text">More buyer-intent surfaces, reusable assets for sales and retargeting</div>
+        </div>
+        <div class="plan-cell plan-cell-out">
+          <div class="out-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div class="out-text">Working growth system tied to demo demand and pipeline</div>
+        </div>
+      </div>
+      <!-- Focus row -->
+      <div class="plan-table-row">
+        <div class="plan-row-lbl">Focus</div>
+        <div class="plan-cell plan-cell-foc"><span class="foc-pill">Establish</span><span class="foc-text">Make it measurable</span></div>
+        <div class="plan-cell plan-cell-foc"><span class="foc-pill">Expand</span><span class="foc-text">Build the asset base</span></div>
+        <div class="plan-cell plan-cell-foc"><span class="foc-pill">Scale</span><span class="foc-text">Convert what works</span></div>
+      </div>
+    </div>
+
+    <div class="plan-note">
+      <div class="note-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div>
+        <b>How this works</b>
+        <p>Each phase unlocks the next. Don't skip the foundations-compounding only happens when the system is in place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- after 90 days -->
+<section class="sec reveal deep-section" id="outcomes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">08 · After 90 days</div>
+      </div>
+      <div>
+        <h2 class="sec-title">What Incentify has after 90 days.</h2>
+        <p class="sec-sub">This is not a content plan or channel strategy. It is a 90-day system build that captures existing demand, validates what converts, and increases conversion into demos. Every deliverable lives in one of three buckets: capture demand, validate what converts, or improve conversion into demos.</p>
+      </div>
+    </div>
+
+    <div class="outcomes">
+      <div class="outcome-row stagger">
+        <div class="outcome-num">01</div>
+        <div class="outcome-body">
+          <h4>A measurable inbound acquisition system tied to demo demand.</h4>
+          <ul class="outcome-deliverables">
+            <li>Full tracking stack: GA4, GTM, Search Console, HubSpot integration</li>
+            <li>UTM governance across all channels (LinkedIn, paid, organic, outbound)</li>
+            <li>Conversion mapping: demo requests, form starts, self-serve pilot signups</li>
+            <li>Pipeline attribution: first-touch, last-touch, assisted</li>
+            <li>Reporting dashboard: page to demo to pipeline visibility</li>
+            <li>Channel and keyword to conversion tracking</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Clear visibility into what drives demos and SDR-ready leads. Faster decisions, less wasted spend.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">02</div>
+        <div class="outcome-body">
+          <h4>High-intent pages targeting the 8,000 monthly searches Incentify is missing.</h4>
+          <ul class="outcome-deliverables">
+            <li>The 5 keyword clusters from the audit fully mapped to pages</li>
+            <li>3 to 5 initial revenue pages live and indexed</li>
+            <li>Structured for ranking and conversion together</li>
+            <li>Clear demo CTAs and integrated enterprise proof</li>
+            <li>Internal linking architecture across the site</li>
+            <li>Schema markup, alt-text, semantic structure, AI-readability fixes</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Captures enterprise buyers actively searching for WOTC and tax incentive solutions. Immediate lift in qualified inbound.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">03</div>
+        <div class="outcome-body">
+          <h4>Competitor and category pages that place Incentify in active vendor evaluations.</h4>
+          <ul class="outcome-deliverables">
+            <li>Comparisons against legacy WOTC providers and advisory-firm workflows</li>
+            <li>Category pages: best WOTC software, best tax incentive platforms</li>
+            <li>Alternatives pages for primary competitor searches</li>
+            <li>Each page positions the purpose-built platform as the differentiator</li>
+            <li>Conversion paths and demo CTAs on every page</li>
+            <li>SDR-ready talking points pulled from each page</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Places Incentify directly into shortlist-stage decisions where conversion rates are highest.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">04</div>
+        <div class="outcome-body">
+          <h4>A repeatable process for turning enterprise case studies into pipeline assets.</h4>
+          <ul class="outcome-deliverables">
+            <li>Insights extracted from existing customers (Cargill, Paramount, Tyson)</li>
+            <li>One pillar page: evergreen, SEO-driven, AI-citable</li>
+            <li>5 to 8 supporting articles linked to the pillar</li>
+            <li>LinkedIn post sets for executive distribution to tax and finance ICPs</li>
+            <li>Sales enablement one-pagers for the SDR team</li>
+            <li>Repeatable workflow: case study to extraction to multi-channel distribution</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Turns existing proof into a compounding discovery engine competitors cannot replicate.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">05</div>
+        <div class="outcome-body">
+          <h4>Paid-search cleanup and validation tied back to organic learnings.</h4>
+          <ul class="outcome-deliverables">
+            <li>Stopped leakage from the existing dead-page ads</li>
+            <li>Tightly scoped exact-match high-intent campaigns on WOTC and tax compliance terms</li>
+            <li>Dedicated landing pages, message and audience specific</li>
+            <li>Headlines, value props, and pain-point variants tested</li>
+            <li>Retargeting on comparison and methodology page visitors</li>
+            <li>Learnings fed back into SEO and CRO priorities</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Fast feedback loop on what messaging drives demos. Stops wasted spend immediately.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">06</div>
+        <div class="outcome-body">
+          <h4>Review-site and AI-visibility foundations that improve buyer trust.</h4>
+          <ul class="outcome-deliverables">
+            <li>G2, Capterra, TrustRadius profile setup and cleanup</li>
+            <li>Compliant customer review-generation workflow with customer success</li>
+            <li>Directory presence with consistent positioning</li>
+            <li>AI Visibility Scorecard moving from 17 / 100 toward 35+ / 100</li>
+            <li>Tracking inclusion in Claude, ChatGPT, and Google AI Overviews answers</li>
+            <li>Schema, llms.txt, and citation engineering for LLM pickup</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Strengthens the validation layer enterprise tax buyers rely on before engaging sales.</span></div>
+        </div>
+      </div>
+
+      <div class="outcome-row stagger">
+        <div class="outcome-num">07</div>
+        <div class="outcome-body">
+          <h4>Reporting that shows what is creating qualified inbound demand.</h4>
+          <ul class="outcome-deliverables">
+            <li>Looker Studio dashboard wired to GA4 and HubSpot</li>
+            <li>Demo requests by page, keyword, and campaign</li>
+            <li>Conversion rate by page family and content cluster</li>
+            <li>Monthly review process: top performers and leakage points</li>
+            <li>SDR-ready inbound lead volume and source attribution</li>
+            <li>One source of truth across organic, paid, and proof assets</li>
+          </ul>
+          <div class="outcome-impact"><span class="impact-label">Impact</span><span class="impact-text">Decision-making moves from activity metrics to pipeline-driven optimization. Audra and the SDR team work from the same numbers.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- working together -->
+<section class="sec work reveal deep-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">09 · Working together</div>
+      </div>
+      <div>
+        <h2 class="sec-title">We extend your team without taking control away from it.</h2>
+        <p class="sec-sub">Incentify's team owns the brand, product truth, customer relationships, and final approvals. We bring the technical growth execution that typically requires multiple specialists across SEO, paid search, analytics, content systems, CRO, review-site visibility, and web development. Your team stays in control. We add the execution layer that turns proof into pipeline.</p>
+      </div>
+    </div>
+
+    <div class="work-table stagger">
+      <div class="work-col">
+        <div class="work-col-head">
+          <div class="wowner">Incentify owns</div>
+          <h3>Brand voice, product truth, customer relationships.</h3>
+        </div>
+        <div class="work-items">
+          <div class="work-item"><div><b>Brand voice</b><span>Narrative, positioning, and the high-level category story.</span></div></div>
+          <div class="work-item"><div><b>Product accuracy</b><span>What is and isn't accurate to claim about Incentify's platform and compliance numbers.</span></div></div>
+          <div class="work-item"><div><b>Customer relationships</b><span>Approvals on logos, case studies, and review outreach for Cargill, Paramount, Tyson, and others.</span></div></div>
+          <div class="work-item"><div><b>SDR and sales conversations</b><span>Lead acceptance, outreach cadence, and the conversation that closes deals.</span></div></div>
+          <div class="work-item"><div><b>Final publishing approval</b><span>All pages and assets go live with Incentify sign-off.</span></div></div>
+        </div>
+      </div>
+      <div class="work-col them">
+        <div class="work-col-head them">
+          <div class="wowner">Growth team owns</div>
+          <h3>Technical execution, content velocity, measurement.</h3>
+        </div>
+        <div class="work-items">
+          <div class="work-item"><div><b>Search architecture and SEO</b><span>Crawl, intent map, technical fixes, revenue page system.</span></div></div>
+          <div class="work-item"><div><b>Revenue page production</b><span>Commercial, methodology, use-case, and comparison pages.</span></div></div>
+          <div class="work-item"><div><b>Proof extraction workflow</b><span>Turn reports, studies, and benchmarks into growth assets.</span></div></div>
+          <div class="work-item"><div><b>Paid validation and retargeting</b><span>Sharp PPC tests that feed learnings back into SEO and CRO.</span></div></div>
+          <div class="work-item"><div><b>Review-site and AI visibility</b><span>Profile cleanup, review campaign, directory coverage, AI tracking.</span></div></div>
+          <div class="work-item"><div><b>CRO and attribution</b><span>Demo flow, conversion tests, dashboards, and pipeline reporting.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- questions to align on -->
+<section class="sec qa reveal deep-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">10 · To align on</div>
+      </div>
+      <div>
+        <h2 class="sec-title">The questions we'd open the working session with.</h2>
+        <p class="sec-sub">Answers to these shape priority order in the first 30 days. None require homework - they're the conversations we'd rather have on day one than guess at in month two.</p>
+      </div>
+    </div>
+
+    <div class="qa-grid">
+      <div class="qa-item stagger"><span class="n">Q1</span><p>Which buyer is the priority this year - <b>enterprise tax teams, advisory firms, multi-entity employers, or specific industry verticals?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q2</span><p>Which alternatives come up most in sales calls - <b>legacy WOTC providers, advisory firms (BDO, RSM), in-house spreadsheets, or no current solution?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q3</span><p>What are the <b>top three reasons deals stall</b> today - integration trust, procurement, compliance proof, pricing, or timing?</p></div>
+      <div class="qa-item stagger"><span class="n">Q4</span><p>Which existing pages already <b>generate demo requests</b>, and what do they have in common?</p></div>
+      <div class="qa-item stagger"><span class="n">Q5</span><p>Is <b>HubSpot attribution</b> fully connected to web conversions today, or does that need to be set up?</p></div>
+      <div class="qa-item stagger"><span class="n">Q6</span><p>Can we use anonymized aggregate customer data to <b>publish benchmark content</b> under Incentify's name?</p></div>
+      <div class="qa-item stagger"><span class="n">Q7</span><p>Are you open to a compliant <b>customer review campaign</b> across G2, TrustRadius, and Capterra (working with customer success)?</p></div>
+      <div class="qa-item stagger"><span class="n">Q8</span><p>What content already exists but hasn't been repurposed - <b>webinars, sales decks, case studies, founder talks, conference content?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q9</span><p>Who owns website changes internally, and <b>how quickly can technical updates ship?</b></p></div>
+      <div class="qa-item stagger"><span class="n">Q10</span><p>Of these core areas - <b>WOTC, general tax compliance, portfolio management, R&amp;D credits</b> - which do you want to win first?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- why now -->
+<section class="sec reveal deep-section" id="why-now">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">
+        <div class="bar"></div>
+        <div class="label">11 · Why now</div>
+      </div>
+      <div>
+        <h2 class="sec-title">Why this matters in 2026.</h2>
+        <p class="sec-sub">Buyers are no longer moving linearly from awareness to sales call. They are checking Google, asking AI tools, reading category pages, comparing vendors, scanning LinkedIn, validating proof, and only then deciding who is worth a conversation. That creates a risk and an opportunity.</p>
+      </div>
+    </div>
+
+    <div class="urgency-grid">
+      <div class="urgency-card risk stagger">
+        <div class="tag">The risk</div>
+        <h3>Competitors are capturing the inbound demand that should be Incentify's.</h3>
+        <p>Legacy WOTC providers and advisory firms are capturing the 8,000 monthly enterprise searches around tax credits and compliance. Their content is generic but it is everywhere. If Incentify does not enter those surfaces deliberately, AI systems and buyers will keep assembling shortlists that do not include Incentify - even when the purpose-built platform is the better fit.</p>
+      </div>
+      <div class="urgency-card opp stagger">
+        <div class="tag">The opportunity</div>
+        <h3>Incentify has what competitors cannot manufacture.</h3>
+        <p>Real enterprise proof (Cargill, Paramount, Tyson, 3M, Kroger), a credible compliance record (100%), purpose-built positioning, and a customer base AI systems can cite. These are exactly the inputs AI systems prioritize and tax buyers trust. The window to translate those assets into compounding visibility is open right now.</p>
+      </div>
+    </div>
+
+    <div class="urgency-note stagger">
+      <div class="note-mark">!</div>
+      <div>AI visibility compounds early. Vendors that become part of training data, indexed sources, and frequently cited pages gain disproportionate share of future demand. <b>Delaying this means competitors define the category in AI systems first.</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- close -->
+<section class="close reveal-scale" id="close">
+  <div class="wrap close-inner close-decision">
+    <span class="pill"><span class="dot"></span>The decision</span>
+    <h2>Incentify already has the enterprise proof. The question is whether those assets are <em>consistently turning into inbound pipeline.</em></h2>
+    <p>Right now, too many buyer-research moments are happening without Incentify owning the conversation: WOTC software searches, tax compliance comparisons, AI answers about C&amp;I management, review-site checks, and high-intent paid queries leading to dead pages. We build the inbound system that closes that gap and feeds the SDR team warm leads.</p>
+    <p>The first 90 days are designed to prove the model: ship the highest-intent pages, stop the PPC leakage, connect reporting to demo activity, and turn existing enterprise case studies into assets the SDR team can reuse. If the system shows qualified demand, we scale it. If something does not convert, we know quickly and redirect budget. That is the operating model: <b>test, prove, scale.</b></p>
+
+    <div class="recommend">
+      <div class="rlbl">Recommended next step</div>
+      <p>Approve the Pro Inbound Engine at $1,950 / month for 6 months. We begin with tracking, buyer-intent mapping, first revenue pages, PPC leakage cleanup, and case study extraction. By the end of 90 days, Incentify will know which search surfaces, messages, and proof assets are creating measurable inbound demo demand, and where to scale next.</p>
+    </div>
+
+    <p class="closing-line">Incentify simplifies incentives and amplifies impact. <b>This engagement makes sure the market finds that proof before competitors shape the shortlist.</b></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>SimplifAI · Growth strategy prepared for Incentify · 2026</div>
+    <div class="links"><a href="#diagnosis">Diagnosis</a><a href="#approach">Approach</a><a href="#plan">Plan</a><a href="#close">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var isReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(isReduced){
+    document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){el.classList.add('revealed')});
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('revealed');
+        var kids = e.target.querySelectorAll('.stagger');
+        kids.forEach(function(k,i){
+          k.style.transitionDelay = (i * 0.08) + 's';
+          k.classList.add('revealed');
+        });
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.reveal,.reveal-fade,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){obs.observe(el)});
+
+  var toggleBtn = document.getElementById('toggle-detail');
+  if(toggleBtn){
+    var labelEl = toggleBtn.querySelector('.toggle-label');
+    toggleBtn.addEventListener('click', function(){
+      var expanded = document.body.classList.toggle('show-detail');
+      if(labelEl){
+        labelEl.textContent = expanded ? 'Collapse strategy detail' : 'See the full strategy detail';
+      }
+      if(expanded){
+        document.querySelectorAll('.deep-section.reveal,.deep-section .reveal').forEach(function(el){
+          el.classList.add('revealed');
+          el.querySelectorAll('.stagger').forEach(function(k,i){
+            k.style.transitionDelay = (i * 0.06) + 's';
+            k.classList.add('revealed');
+          });
+        });
+      }
+    });
+  }
+})();
+</script>
+</html>
