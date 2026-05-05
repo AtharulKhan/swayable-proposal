@@ -322,6 +322,8 @@
   .finding-table .neg{color:#C2410C;font-weight:500}
   .finding-table .pos{color:#1B8055;font-weight:500}
   .finding-table .row-label{font-weight:600;color:var(--ink)}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r-md);border:1px solid var(--line);background:#fff}
+  .table-scroll .finding-table{border:none;border-radius:0;min-width:560px}
   .finding-callout{margin-top:20px;padding:18px 22px;background:#FEF7E6;border:1px solid #FED98A;border-radius:var(--r-md);font-size:14px;color:var(--ink);line-height:1.6}
   .finding-callout .ctitle{font-size:12px;font-weight:700;color:#A36500;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px}
   .finding-callout ul{margin:0;padding:0 0 0 18px}
@@ -352,6 +354,51 @@
   .rev-tile .lbl{font-size:14px;color:rgba(255,255,255,0.92);font-weight:600;margin-top:8px;letter-spacing:-0.005em}
   .rev-tile .sub{font-size:11.5px;color:rgba(255,255,255,0.55);margin-top:4px;font-style:italic;line-height:1.4}
   .rev-note{margin-top:32px;padding:20px 24px;border-left:3px solid var(--brand-soft);background:rgba(255,255,255,0.04);border-radius:var(--r-sm);font-size:14.5px;color:rgba(255,255,255,0.85);line-height:1.6;font-style:italic}
+
+  /* revenue math + scope */
+  .rev-math{margin-top:48px;display:flex;flex-direction:column;gap:24px}
+  .rev-math-h{display:flex;flex-direction:column;gap:10px;max-width:64ch;margin-bottom:8px}
+  .rev-math-h .label{font-size:11px;color:var(--brand-soft);font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+  .rev-math-h h3{margin:0;font-size:26px;font-weight:600;letter-spacing:-0.018em;color:#fff;line-height:1.25}
+  .rev-math-h p{margin:0;color:rgba(255,255,255,0.72);font-size:14.5px;line-height:1.6}
+
+  .rev-channel-table{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r-md);overflow:hidden;color:#fff}
+  .rev-channel-table table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .rev-channel-table th,.rev-channel-table td{padding:14px 20px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.08);letter-spacing:-0.005em;color:rgba(255,255,255,0.88)}
+  .rev-channel-table th{font-size:11px;color:var(--brand-soft);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(255,255,255,0.02)}
+  .rev-channel-table tbody tr:last-child td{border-bottom:none}
+  .rev-channel-table .ch-name{color:#fff;font-weight:600}
+  .rev-channel-table .total-row td{background:rgba(108,76,241,0.22);font-weight:600;color:#fff;border-bottom:none}
+
+  .rev-assumptions{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.12);border-radius:var(--r-md);overflow:hidden;background:rgba(255,255,255,0.03)}
+  .rev-assume-tile{padding:22px 20px;border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:6px}
+  .rev-assume-tile:last-child{border-right:none}
+  .rev-assume-tile .a-lbl{font-size:11px;color:rgba(255,255,255,0.62);font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+  .rev-assume-tile .a-val{font-size:22px;color:#fff;font-weight:600;letter-spacing:-0.018em;line-height:1.1}
+  .rev-assume-tile .a-note{font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.45}
+
+  .rev-pipeline-line{padding:20px 24px;border-radius:var(--r-md);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font-size:14.5px;color:rgba(255,255,255,0.92);line-height:1.65}
+  .rev-pipeline-line b{color:#fff;font-weight:600}
+  .rev-pipeline-line .eq{color:var(--brand-soft);font-weight:600;padding:0 4px}
+
+  .rev-investment{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.12);border-radius:var(--r-md);overflow:hidden;background:rgba(255,255,255,0.03)}
+  .rev-invest-tile{padding:22px 20px;border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:6px}
+  .rev-invest-tile:last-child{border-right:none}
+  .rev-invest-tile .i-lbl{font-size:11px;color:rgba(255,255,255,0.62);font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+  .rev-invest-tile .i-val{font-size:20px;color:#fff;font-weight:600;letter-spacing:-0.015em;line-height:1.2}
+  .rev-invest-tile.highlight{background:rgba(108,76,241,0.22)}
+
+  .rev-scope{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:28px 32px}
+  .rev-scope-h{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .rev-scope-h .stag{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-soft);background:rgba(108,76,241,0.22);padding:6px 12px;border-radius:99px}
+  .rev-scope-h h4{margin:0;font-size:18px;color:#fff;font-weight:600;letter-spacing:-0.012em;line-height:1.3}
+  .rev-scope-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+  .rev-scope-list li{display:grid;grid-template-columns:14px 1fr;gap:14px;font-size:13.5px;color:rgba(255,255,255,0.78);line-height:1.6}
+  .rev-scope-list li::before{content:"";width:6px;height:6px;border-radius:99px;background:var(--brand-soft);margin-top:9px;display:block}
+  .rev-scope-list li b{color:#fff;font-weight:600}
+
+  .rev-pressure-test{padding:18px 24px;border-left:3px solid var(--brand-soft);background:rgba(108,76,241,0.14);border-radius:var(--r-sm);font-size:14px;color:rgba(255,255,255,0.92);line-height:1.6}
+  .rev-pressure-test b{color:#fff;font-weight:600}
 
   /* start-here pricing tiers */
   .start-here{padding:80px 0 90px;background:linear-gradient(180deg,var(--bg-3) 0%, #fff 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -515,6 +562,14 @@
     .rev-grid{grid-template-columns:1fr 1fr}
     .rev-tile{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12)}
     .rev-tile:nth-child(2n-1){border-right:1px solid rgba(255,255,255,0.12)}
+    .rev-assumptions,.rev-investment{grid-template-columns:1fr 1fr}
+    .rev-assume-tile,.rev-invest-tile{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+    .rev-assume-tile:nth-child(2n-1),.rev-invest-tile:nth-child(2n-1){border-right:1px solid rgba(255,255,255,0.08)}
+    .rev-channel-table{font-size:12px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .rev-channel-table table{min-width:520px}
+    .rev-channel-table th,.rev-channel-table td{padding:10px 14px}
+    .finding-table{min-width:520px}
+    .finding-table th,.finding-table td{padding:8px 10px;font-size:12px}
     .finding-grid-2{grid-template-columns:1fr}
     .finding{padding:32px 24px}
     .finding-table{font-size:12.5px}
@@ -657,30 +712,34 @@
       <h3>You are invisible where buyers now research.</h3>
       <p>Enterprise buyers have moved. ChatGPT, Claude, Gemini, and Perplexity are the first research stop, not just Google. When a VP of Insights at a Fortune 500 brand searches for a creative testing solution today, this is what they find.</p>
 
-      <table class="finding-table">
-        <thead>
-          <tr><th style="width:34%">AI Visibility Metric</th><th style="width:22%">Swayable (April)</th><th style="width:22%">Swayable (May re-measure)</th><th>Competitor Reality</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="row-label">Overall AI Visibility Score</td><td class="col-old">3 / 10</td><td class="col-new">4 / 10</td><td>Zappi: 9 / 10 · Suzy: 8 / 10</td></tr>
-          <tr><td class="row-label">Total AI Mentions</td><td class="col-old">12</td><td class="col-new">17</td><td>Competitors: 100+</td></tr>
-          <tr><td class="row-label">Total AI Citations</td><td class="col-old">34</td><td class="col-new">41</td><td>Competitors: 200+</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="finding-table">
+          <thead>
+            <tr><th style="width:34%">AI Visibility Metric</th><th style="width:22%">Swayable (April)</th><th style="width:22%">Swayable (May re-measure)</th><th>Competitor Reality</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">Overall AI Visibility Score</td><td class="col-old">3 / 10</td><td class="col-new">4 / 10</td><td>Zappi: 9 / 10 · Suzy: 8 / 10</td></tr>
+            <tr><td class="row-label">Total AI Mentions</td><td class="col-old">12</td><td class="col-new">17</td><td>Competitors: 100+</td></tr>
+            <tr><td class="row-label">Total AI Citations</td><td class="col-old">34</td><td class="col-new">41</td><td>Competitors: 200+</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-      <table class="finding-table" style="margin-top:14px">
-        <thead>
-          <tr><th style="width:34%">LLM &amp; Schema Coverage</th><th style="width:22%">Swayable (April)</th><th style="width:22%">Swayable (May re-measure)</th><th>Competitor Reality</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="row-label">Google AI Overview Presence</td><td class="col-old neg">0 mentions</td><td class="col-new neg">0 mentions</td><td>Competitors: Dominant</td></tr>
-          <tr><td class="row-label">ChatGPT Mentions</td><td class="col-old">2</td><td class="col-new">3</td><td>Competitors: Strong</td></tr>
-          <tr><td class="row-label">Gemini Mentions</td><td class="col-old">3</td><td class="col-new">4</td><td>Competitors: Strong</td></tr>
-          <tr><td class="row-label">Claude Mentions</td><td class="col-old">Not measured</td><td class="col-new">1</td><td>Competitors: Moderate</td></tr>
-          <tr><td class="row-label">Perplexity Mentions</td><td class="col-old">Not measured</td><td class="col-new">2</td><td>Competitors: Strong</td></tr>
-          <tr><td class="row-label">Structured Data / Schema</td><td class="col-old neg">Zero detected</td><td class="col-new neg">Organization only</td><td>Competitors: Full suite</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll" style="margin-top:14px">
+        <table class="finding-table">
+          <thead>
+            <tr><th style="width:34%">LLM &amp; Schema Coverage</th><th style="width:22%">Swayable (April)</th><th style="width:22%">Swayable (May re-measure)</th><th>Competitor Reality</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">Google AI Overview Presence</td><td class="col-old neg">0 mentions</td><td class="col-new neg">0 mentions</td><td>Competitors: Dominant</td></tr>
+            <tr><td class="row-label">ChatGPT Mentions</td><td class="col-old">2</td><td class="col-new">3</td><td>Competitors: Strong</td></tr>
+            <tr><td class="row-label">Gemini Mentions</td><td class="col-old">3</td><td class="col-new">4</td><td>Competitors: Strong</td></tr>
+            <tr><td class="row-label">Claude Mentions</td><td class="col-old">Not measured</td><td class="col-new">1</td><td>Competitors: Moderate</td></tr>
+            <tr><td class="row-label">Perplexity Mentions</td><td class="col-old">Not measured</td><td class="col-new">2</td><td>Competitors: Strong</td></tr>
+            <tr><td class="row-label">Structured Data / Schema</td><td class="col-old neg">Zero detected</td><td class="col-new neg">Organization only</td><td>Competitors: Full suite</td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="finding-callout">
         <div class="ctitle">Why competitors win every AI query</div>
@@ -697,19 +756,21 @@
       <div class="finding-tag">Finding 2</div>
       <h3>The website's critical technical failures, after the relaunch.</h3>
       <p>The relaunch fixed two of the six issues from the April audit. Three remain. They are simultaneously suppressing organic ranking and AI legibility, and they are fixable in days, not months.</p>
-      <table class="finding-table">
-        <thead>
-          <tr><th style="width:24%">Technical Issue</th><th style="width:22%">April Status</th><th style="width:22%">May Status</th><th>Business Impact</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="row-label">/product page</td><td class="col-old neg">Returns 404 error</td><td class="col-new pos">Resolved at relaunch</td><td>Critical - link equity restored</td></tr>
-          <tr><td class="row-label">Homepage load time</td><td class="col-old neg">6.03 seconds</td><td class="col-new pos">2.8 seconds</td><td>Critical - now near benchmark</td></tr>
-          <tr><td class="row-label">Schema markup</td><td class="col-old neg">Zero structured data</td><td class="col-new neg">Organization only</td><td>High - still invisible to AI engines</td></tr>
-          <tr><td class="row-label">Open Graph tags</td><td class="col-old neg">0 of 4 essential tags</td><td class="col-new neg">2 of 4 essential tags</td><td>High - social previews still poor</td></tr>
-          <tr><td class="row-label">Title tag</td><td class="col-old neg">"Swayable" only</td><td class="col-new pos">Updated with category terms</td><td>High - missed signal recovered</td></tr>
-          <tr><td class="row-label">Image alt-text</td><td class="col-old neg">4+ images missing</td><td class="col-new pos">Mostly resolved</td><td>Medium - accessibility gap closed</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="finding-table">
+          <thead>
+            <tr><th style="width:24%">Technical Issue</th><th style="width:22%">April Status</th><th style="width:22%">May Status</th><th>Business Impact</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">/product page</td><td class="col-old neg">Returns 404 error</td><td class="col-new pos">Resolved at relaunch</td><td>Critical - link equity restored</td></tr>
+            <tr><td class="row-label">Homepage load time</td><td class="col-old neg">6.03 seconds</td><td class="col-new pos">2.8 seconds</td><td>Critical - now near benchmark</td></tr>
+            <tr><td class="row-label">Schema markup</td><td class="col-old neg">Zero structured data</td><td class="col-new neg">Organization only</td><td>High - still invisible to AI engines</td></tr>
+            <tr><td class="row-label">Open Graph tags</td><td class="col-old neg">0 of 4 essential tags</td><td class="col-new neg">2 of 4 essential tags</td><td>High - social previews still poor</td></tr>
+            <tr><td class="row-label">Title tag</td><td class="col-old neg">"Swayable" only</td><td class="col-new pos">Updated with category terms</td><td>High - missed signal recovered</td></tr>
+            <tr><td class="row-label">Image alt-text</td><td class="col-old neg">4+ images missing</td><td class="col-new pos">Mostly resolved</td><td>Medium - accessibility gap closed</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="finding-callout">
         <div class="ctitle">Still outstanding</div>
         <ul>
@@ -736,19 +797,21 @@
         </ul>
       </div>
 
-      <table class="finding-table" style="margin-top:18px">
-        <thead>
-          <tr><th style="width:28%">Organic Metric</th><th style="width:22%">April Audit</th><th style="width:22%">May Re-measure</th><th>Competitive Context</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="row-label">Authority Score</td><td class="col-old">27</td><td class="col-new">28</td><td>Needs targeted link building</td></tr>
-          <tr><td class="row-label">Organic Traffic</td><td class="col-old">595 visits / month</td><td class="col-new">642 visits / month</td><td class="neg">Stagnant - +1.4% growth</td></tr>
-          <tr><td class="row-label">Total Organic Keywords</td><td class="col-old">99</td><td class="col-new">112</td><td>Competitor footprints: 1,000+</td></tr>
-          <tr><td class="row-label">Branded vs Non-Branded</td><td class="col-old neg">96.8% Branded</td><td class="col-new neg">95.4% Branded</td><td class="neg">Critical demand-capture gap</td></tr>
-          <tr><td class="row-label">LinkedIn Followers</td><td class="col-old">~4,011</td><td class="col-new">~4,340</td><td>Zappi: 30K · Suzy: 50K+</td></tr>
-          <tr><td class="row-label">G2 Review Volume</td><td class="col-old neg">Low</td><td class="col-new neg">Low</td><td class="neg">Zappi &amp; Suzy: High volume</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll" style="margin-top:18px">
+        <table class="finding-table">
+          <thead>
+            <tr><th style="width:28%">Organic Metric</th><th style="width:22%">April Audit</th><th style="width:22%">May Re-measure</th><th>Competitive Context</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">Authority Score</td><td class="col-old">27</td><td class="col-new">28</td><td>Needs targeted link building</td></tr>
+            <tr><td class="row-label">Organic Traffic</td><td class="col-old">595 visits / month</td><td class="col-new">642 visits / month</td><td class="neg">Stagnant - +1.4% growth</td></tr>
+            <tr><td class="row-label">Total Organic Keywords</td><td class="col-old">99</td><td class="col-new">112</td><td>Competitor footprints: 1,000+</td></tr>
+            <tr><td class="row-label">Branded vs Non-Branded</td><td class="col-old neg">96.8% Branded</td><td class="col-new neg">95.4% Branded</td><td class="neg">Critical demand-capture gap</td></tr>
+            <tr><td class="row-label">LinkedIn Followers</td><td class="col-old">~4,011</td><td class="col-new">~4,340</td><td>Zappi: 30K · Suzy: 50K+</td></tr>
+            <tr><td class="row-label">G2 Review Volume</td><td class="col-old neg">Low</td><td class="col-new neg">Low</td><td class="neg">Zappi &amp; Suzy: High volume</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="finding stagger">
@@ -810,8 +873,100 @@
       </div>
     </div>
 
+    <div class="rev-math stagger">
+      <div class="rev-math-h">
+        <div class="label">How the $1.85M is built</div>
+        <h3>Channel by channel, conversion by conversion. The math is auditable.</h3>
+        <p>The projection above is built bottom-up from four channels and four conversion assumptions. Below is exactly how each channel contributes, what we expect to invest to deliver it, and where you should pressure-test the model.</p>
+      </div>
+
+      <div class="rev-channel-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:30%">Channel</th>
+              <th style="width:24%">Volume / Month</th>
+              <th style="width:18%">Conversion</th>
+              <th>Output / Month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="ch-name">Organic Search (SEO / AEO)</td><td>430 visits</td><td>5%</td><td>21 demos</td></tr>
+            <tr><td class="ch-name">Google Ads (PPC)</td><td>200 clicks</td><td>8%</td><td>16 demos</td></tr>
+            <tr><td class="ch-name">Cold Email / ABM</td><td>1,000 prospects</td><td>2%</td><td>20 demos</td></tr>
+            <tr><td class="ch-name">LinkedIn Ads</td><td>500 clicks</td><td>10%</td><td>50 MQLs</td></tr>
+            <tr class="total-row"><td>Run-rate at Month 6</td><td></td><td></td><td>57 demos + 50 MQLs</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rev-assumptions">
+        <div class="rev-assume-tile">
+          <span class="a-lbl">Visitor → Demo</span>
+          <span class="a-val">5%</span>
+          <span class="a-note">Industry-average optimized B2B SaaS</span>
+        </div>
+        <div class="rev-assume-tile">
+          <span class="a-lbl">MQL → Demo</span>
+          <span class="a-val">15%</span>
+          <span class="a-note">Mid-funnel nurture conversion</span>
+        </div>
+        <div class="rev-assume-tile">
+          <span class="a-lbl">Demo → Closed-Won</span>
+          <span class="a-val">25%</span>
+          <span class="a-note">Enterprise close-rate benchmark</span>
+        </div>
+        <div class="rev-assume-tile">
+          <span class="a-lbl">Average Contract Value</span>
+          <span class="a-val">$50K</span>
+          <span class="a-note">Reflects mid-market enterprise deal</span>
+        </div>
+      </div>
+
+      <div class="rev-pipeline-line">
+        <b>Pipeline math:</b> ~150 demos cumulatively over 6 months (with ramp) <span class="eq">×</span> 25% close <span class="eq">×</span> $50K ACV <span class="eq">=</span> <b>$1.85M closed-won revenue</b>
+      </div>
+
+      <div class="rev-investment">
+        <div class="rev-invest-tile">
+          <span class="i-lbl">Agency Retainer</span>
+          <span class="i-val">~$15K / mo</span>
+        </div>
+        <div class="rev-invest-tile">
+          <span class="i-lbl">Ad Spend (Google + LinkedIn)</span>
+          <span class="i-val">~$10K / mo</span>
+        </div>
+        <div class="rev-invest-tile highlight">
+          <span class="i-lbl">6-Month Total</span>
+          <span class="i-val">$150K</span>
+        </div>
+        <div class="rev-invest-tile highlight">
+          <span class="i-lbl">Projected ROI</span>
+          <span class="i-val">11.3x · 5.1x at 50% miss</span>
+        </div>
+      </div>
+
+      <div class="rev-scope">
+        <div class="rev-scope-h">
+          <span class="stag">Demand Engine Scope</span>
+          <h4>What goes into delivering each channel</h4>
+        </div>
+        <ul class="rev-scope-list">
+          <li><b>SEO / AEO build</b> (delivered by the Revenue Search Program tier below): solution pages, comparison pages, schema, AI visibility, content cadence. Drives the 21 organic demos / month.</li>
+          <li><b>Google Ads management:</b> high-CPC commercial keyword bids ($56 creative testing platform, $26 message testing software), competitor intercept ("Zappi alternatives", "Suzy competitors"), dedicated landing pages. Drives the 16 PPC demos / month.</li>
+          <li><b>LinkedIn Ads management:</b> Document Ads (gated benchmark reports), Lead Gen Forms, targeting VP Insights, CMO, and Brand leaders at greater than 1,000-employee enterprises. Drives the 50 LinkedIn MQLs / month.</li>
+          <li><b>Cold Email / ABM execution:</b> sequence build, list build for top 500 lookalike accounts (DoorDash, New Balance lookalikes), reply management, A/B testing, value-led messaging anchored to the 24-hour Swayable turnaround. Drives the 20 ABM demos / month.</li>
+          <li><b>Retargeting and remarketing:</b> case-study video retargeting across Google Display Network and LinkedIn for non-converted visitors. Compounds frequency and trust across all four channels.</li>
+        </ul>
+      </div>
+
+      <div class="rev-pressure-test">
+        <b>Pressure-test the inputs:</b> these are the conservative assumptions from the original audit. On the call we will walk through each input (sales cycle, deal size, current close rate, ad budget) and adjust to your reality before committing to the model.
+      </div>
+    </div>
+
     <div class="rev-note">
-      The opportunity cost of inaction is not zero. Every month the current infrastructure persists, qualified buyers are finding Zappi and Suzy through channels Swayable should own. The relaunch fixed the technical baseline. It did not build the discovery surface.
+      The opportunity cost of inaction is not zero. Every month the current infrastructure persists, qualified buyers are finding Zappi and Suzy through channels Swayable should own. The relaunch fixed the technical baseline. It did not build the discovery surface. The Revenue Search Program below delivers the SEO / AEO portion of this model. The full $1.85M projection assumes the omnichannel scope above (SEO/AEO + Google Ads + LinkedIn Ads + Cold Email / ABM) is funded together.
     </div>
   </div>
 </section>
@@ -953,10 +1108,10 @@
         <div class="tier-tag">Lighter start</div>
         <h3>Foundation</h3>
         <div class="tier-price">
-          <span class="amount">$1,850</span>
+          <span class="amount">$2,035</span>
           <span class="unit">/ month</span>
         </div>
-        <div class="tier-min">3-month minimum · ~$5,550 total</div>
+        <div class="tier-min">3-month minimum · ~$6,105 total</div>
         <ul class="tier-features">
           <li>15 priority keyphrases tracked</li>
           <li>On-page optimization across 15 pages</li>
@@ -973,10 +1128,10 @@
         <div class="tier-tag">Recommended</div>
         <h3>Revenue Search Program</h3>
         <div class="tier-price">
-          <span class="amount">$3,465</span>
+          <span class="amount">$3,812</span>
           <span class="unit">/ month</span>
         </div>
-        <div class="tier-min">6-month minimum · ~$20,790 total · Best fit for Swayable</div>
+        <div class="tier-min">6-month minimum · ~$22,872 total · Best fit for Swayable</div>
         <ul class="tier-features">
           <li>25 priority keyphrases tracked</li>
           <li>On-page optimization across 25 pages</li>
@@ -989,17 +1144,17 @@
           <li>AI Visibility Scorecard against priority prompt set</li>
           <li>Pipeline-tied monthly reporting (demo demand by page)</li>
         </ul>
-        <div class="tier-outcome">30 pages over 6 months. Paid media live in Month 2. Projected $1.85M pipeline.</div>
+        <div class="tier-outcome">30 pages over 6 months. Paid media strategy delivered. Drives the SEO / AEO contribution to the $1.85M projection (organic = 21 demos / mo).</div>
       </div>
 
       <div class="tier-card stagger">
         <div class="tier-tag">Full system</div>
         <h3>Pipeline Growth Engine</h3>
         <div class="tier-price">
-          <span class="amount">$4,620</span>
+          <span class="amount">$5,082</span>
           <span class="unit">/ month</span>
         </div>
-        <div class="tier-min">6-month minimum · Add-ons available (paid media management, PR)</div>
+        <div class="tier-min">6-month minimum · ~$30,492 total · Add-ons available (paid media management, PR)</div>
         <ul class="tier-features">
           <li>30 priority keyphrases tracked</li>
           <li>On-page optimization across 30 pages</li>
@@ -1018,7 +1173,7 @@
 
     <div class="start-here-note">
       <div class="nm">i</div>
-      <div>The recommendation is the <b>Revenue Search Program at $3,465 / month</b>. It runs the full Growth Programme above (Phase 1 Foundation, Phase 2 Authority &amp; Paid Launch, Phase 3 Scale &amp; Expansion), ships 30 pages over 6 months, and includes the paid media strategy that pairs with organic. The Pipeline Growth Engine adds in-house paid media management and the outbound playbook for teams that want one partner for the full demand engine. Foundation is available if a lighter starting point makes sense for the first quarter.</div>
+      <div>The recommendation is the <b>Revenue Search Program at $3,812 / month</b>. It runs the full Growth Programme above (Phase 1 Foundation, Phase 2 Authority &amp; Paid Launch, Phase 3 Scale &amp; Expansion), ships 30 pages over 6 months, and includes the paid media strategy that pairs with organic. The Pipeline Growth Engine adds in-house paid media management and the outbound playbook for teams that want one partner for the full demand engine. Foundation is available if a lighter starting point makes sense for the first quarter. <b>To deliver the full $1.85M projection from Section 03, the Revenue Search Program should be paired with the omnichannel Demand Engine scope (Google Ads + LinkedIn + Cold Email management). Pricing for that scope is set on the call once channel volumes and ad-spend caps are confirmed.</b></div>
     </div>
   </div>
 </section>
