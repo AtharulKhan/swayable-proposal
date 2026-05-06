@@ -386,7 +386,17 @@
   .rev-invest-tile:last-child{border-right:none}
   .rev-invest-tile .i-lbl{font-size:11px;color:rgba(255,255,255,0.62);font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
   .rev-invest-tile .i-val{font-size:20px;color:#fff;font-weight:600;letter-spacing:-0.015em;line-height:1.2}
+  .rev-invest-tile .i-note{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.4;margin-top:2px}
   .rev-invest-tile.highlight{background:rgba(108,76,241,0.22)}
+  .rev-invest-breakdown{padding:18px 22px;border-radius:var(--r-md);background:rgba(108,76,241,0.12);border:1px solid rgba(142,120,245,0.28);font-size:13px;color:rgba(255,255,255,0.88);line-height:1.65}
+  .rev-invest-breakdown b{color:#fff;font-weight:600}
+  .rev-invest-breakdown .ribl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:8px;display:block}
+  .rev-invest-breakdown table{width:100%;border-collapse:collapse;margin-top:6px}
+  .rev-invest-breakdown td{padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.12);vertical-align:top}
+  .rev-invest-breakdown tr:last-child td{border-bottom:none;padding-top:10px}
+  .rev-invest-breakdown td:nth-child(2){text-align:right;font-variant-numeric:tabular-nums;color:#fff;font-weight:600;white-space:nowrap;padding-left:14px}
+  .rev-invest-breakdown td:nth-child(3){padding-left:14px;color:rgba(255,255,255,0.6);font-size:12px}
+  .rev-invest-breakdown tr.total td{color:#fff;font-weight:600}
 
   .rev-scope{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:28px 32px}
   .rev-scope-h{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.1)}
@@ -795,11 +805,12 @@
       <div class="finding-callout">
         <div class="ctitle">The commercial keyword gap, in dollar terms</div>
         <ul>
-          <li><b>"Creative testing platform"</b> - $56.02 cost-per-click. Competitors rank organically. Swayable still absent.</li>
-          <li><b>"Message testing software"</b> - $26.10 cost-per-click. Same result.</li>
-          <li><b>"Brand lift measurement"</b> - high-intent enterprise term. Swayable still absent from page 1 and all AI results.</li>
+          <li><b>"Creative testing platform"</b> - $56.02 cost-per-click. Swayable IS the only sponsored result here, but absent from organic page 1 and AI answers. Competitors rank organically and compound that visibility for free.</li>
+          <li><b>"Message testing software"</b> - $26.10 cost-per-click. Same dynamic: Swayable shows up as a paid ad only, with no organic or AI presence.</li>
+          <li><b>"Brand lift measurement"</b> - high-intent enterprise term. Swayable still absent from organic page 1 and all AI results.</li>
+          <li><b>Paid-only dependency:</b> being the only sponsored result is good visibility, but every click costs $26 to $56 and that visibility disappears the day the ad budget pauses. Organic and AI presence compound for free, every month, and survive a budget freeze.</li>
           <li><b>Total organic traffic:</b> 642 visits / month (was 595 in April), still effectively flat at +1.4% growth.</li>
-          <li><b>Implication:</b> Every new enterprise logo still requires outbound or referral. Inbound is not pulling its weight.</li>
+          <li><b>Implication:</b> Every net-new enterprise logo today is paid for, outbounded for, or referred. Inbound is not pulling its weight.</li>
         </ul>
       </div>
 
@@ -884,6 +895,7 @@
         <div class="label">How the $1.85M is built</div>
         <h3>Channel by channel, conversion by conversion. The math is auditable.</h3>
         <p>The projection above is built bottom-up from four channels and four conversion assumptions. Below is exactly how each channel contributes, what we expect to invest to deliver it, and where you should pressure-test the model.</p>
+        <p style="margin-top:6px;font-size:13px;color:rgba(255,255,255,0.6)"><b style="color:#fff">Source of these numbers:</b> conservative industry benchmarks for B2B SaaS (typical visitor-to-demo conversion, MQL-to-demo conversion, demo close rate, ACV at this enterprise tier). They are not projected from Swayable's historical campaign data, which we do not yet have access to. On the call we will swap each input with your actuals from the CRM and the live ad accounts.</p>
       </div>
 
       <div class="rev-channel-table">
@@ -937,19 +949,32 @@
         <div class="rev-invest-tile">
           <span class="i-lbl">Agency Retainer</span>
           <span class="i-val">~$15K / mo</span>
+          <span class="i-note">$3,812 SEO + ~$11K Demand Engine</span>
         </div>
         <div class="rev-invest-tile">
           <span class="i-lbl">Ad Spend (Google + LinkedIn)</span>
           <span class="i-val">~$10K / mo</span>
+          <span class="i-note">Pass-through to ad platforms</span>
         </div>
         <div class="rev-invest-tile highlight">
           <span class="i-lbl">6-Month Total</span>
           <span class="i-val">$150K</span>
+          <span class="i-note">$25K / mo × 6 months</span>
         </div>
         <div class="rev-invest-tile highlight">
           <span class="i-lbl">Projected ROI</span>
           <span class="i-val">11.3x · 5.1x at 50% miss</span>
+          <span class="i-note">$1.85M return on $150K invest</span>
         </div>
+      </div>
+
+      <div class="rev-invest-breakdown">
+        <span class="ribl">How the $15K agency retainer maps to the engagement tiers below</span>
+        <table>
+          <tr><td>Revenue Search Program (SEO / AEO)</td><td>$3,812 / mo</td><td>Priced tier in Section 05 below: runs the SEO/AEO build</td></tr>
+          <tr><td>Demand Engine retainer (paid management + cold email / ABM execution)</td><td>~$11,188 / mo</td><td>Set on the call once channel volumes and ad-spend caps are confirmed</td></tr>
+          <tr class="total"><td>Total agency retainer</td><td>~$15,000 / mo</td><td>What the $1.85M projection above is built on</td></tr>
+        </table>
       </div>
 
       <div class="rev-scope">
@@ -1071,7 +1096,7 @@
         <h3>Foundation &amp; Quick Wins</h3>
         <div class="roadmap-months">Weeks 1 - 4 · Technical remediation</div>
         <ul class="roadmap-list">
-          <li><div><b>Re-audit and tracking stack</b><span>Fresh audit on the new site, GA4, GTM, Search Console, and HubSpot/Salesforce attribution wired to demo form starts.</span></div></li>
+          <li><div><b>Re-audit and tracking stack</b><span>Fresh audit on the new site, GA4, GTM, Search Console, and CRM attribution wired to demo form starts.</span></div></li>
           <li><div><b>Technical SEO and AI readiness</b><span>Resolve broken pages, sitemap errors, Core Web Vitals issues, duplicate titles, and image optimization gaps from the audit.</span></div></li>
           <li><div><b>Schema, llms.txt, and 25 keyphrases</b><span>Organization, FAQ, HowTo, Dataset, SoftwareApplication schema. llms.txt for AI inclusion. Track the 25 priority keyphrases from day one.</span></div></li>
           <li><div><b>10 content pieces over 60 days</b><span>5 per month. The first wave includes Swayable vs Zappi, creative testing platform, brand-lift measurement, message testing, and RCT methodology.</span></div></li>
@@ -1150,7 +1175,7 @@
           <li>5 backlinks per month + 5 citations per month</li>
           <li>2 infographics per quarter</li>
           <li>llms.txt and core schema (Organization, FAQ, SoftwareApplication)</li>
-          <li>Monthly reporting dashboard wired to GA4 and HubSpot</li>
+          <li>Monthly reporting dashboard wired to GA4 and CRM</li>
         </ul>
         <div class="tier-outcome">Foundation set, AI-readable site, first revenue pages live.</div>
       </div>
@@ -1318,7 +1343,7 @@
         <h3>Make the growth system measurable and accountable.</h3>
         <p>The strongest growth strategy fails if Swayable cannot see what is working. Attribution and CRO are not reporting add-ons - they are what make the system accountable. The dashboard is built around demo demand and pipeline, not vanity metrics.</p>
         <ul class="pillar-list">
-          <li>GA4, GTM, Search Console, Looker Studio, HubSpot/Salesforce attribution</li>
+          <li>GA4, GTM, Search Console, Looker Studio, CRM attribution</li>
           <li>Demo form tracking, UTM governance, page-level conversion reporting</li>
           <li>Demo flow audit and friction reduction</li>
           <li>Monthly pipeline review: which pages, keywords, and campaigns create qualified demand</li>
@@ -1595,7 +1620,7 @@
         <div class="sec-eyebrow" style="flex-direction:row;align-items:center;gap:14px;padding:0;margin-bottom:18px"><div class="bar"></div><div class="label">06 · Reporting</div></div>
         <h3>We report pipeline movement, not marketing activity.</h3>
         <p>The goal is not to produce more content, chase vanity rankings, or show traffic charts disconnected from revenue. The dashboard is built around the questions Swayable's leadership actually needs answered: which pages create demo requests, which keywords create qualified buyers, and which parts of the funnel are leaking.</p>
-        <p>Stack: GA4, GTM, Search Console, Looker Studio wired to HubSpot/Salesforce, plus a monthly AI Visibility Scorecard tracked against a defined prompt set. Set up in the first 30 days.</p>
+        <p>Stack: GA4, GTM, Search Console, Looker Studio wired to CRM, plus a monthly AI Visibility Scorecard tracked against a defined prompt set. Set up in the first 30 days.</p>
       </div>
       <div class="report-cols">
         <div class="report-col yes">
@@ -1672,7 +1697,7 @@
         <div class="plan-row-lbl">Key Deliverables</div>
         <div class="plan-cell plan-cell-del">
           <ul>
-            <li><div><b>Tracking + CRM setup</b><span>GA4, GTM, GSC, Looker Studio, HubSpot/Salesforce attribution</span></div></li>
+            <li><div><b>Tracking + CRM setup</b><span>GA4, GTM, GSC, Looker Studio, CRM attribution</span></div></li>
             <li><div><b>Audit + 25 keyphrase map</b><span>identify the priority keyword clusters across web properties</span></div></li>
             <li><div><b>5 revenue pages</b><span>creative testing platform, brand-lift measurement, message testing, Swayable vs Zappi, best platforms</span></div></li>
             <li><div><b>5 backlinks + 5 citations</b><span>category-relevant authority sites and B2B SaaS directories</span></div></li>
@@ -1931,7 +1956,7 @@
       <div class="qa-item stagger"><span class="n">Q2</span><p>Which competitors come up most in sales calls - <b>Zappi, Suzy, Kantar, Qualtrics, Attest, or internal research teams?</b></p></div>
       <div class="qa-item stagger"><span class="n">Q3</span><p>What are the <b>top three reasons deals stall</b> today - price, methodology trust, procurement, proof, or timing?</p></div>
       <div class="qa-item stagger"><span class="n">Q4</span><p>Which existing pages already <b>generate demo requests</b>, and what do they have in common?</p></div>
-      <div class="qa-item stagger"><span class="n">Q5</span><p>Is <b>HubSpot or Salesforce attribution</b> connected to web conversions today, or does that need to be set up?</p></div>
+      <div class="qa-item stagger"><span class="n">Q5</span><p>Is <b>CRM attribution</b> connected to web conversions today, or does that need to be set up?</p></div>
       <div class="qa-item stagger"><span class="n">Q6</span><p>Can we use anonymized aggregate test data to <b>publish benchmark content</b> under Swayable's name?</p></div>
       <div class="qa-item stagger"><span class="n">Q7</span><p>Are you open to a compliant <b>customer review campaign</b> across G2, TrustRadius, and Capterra?</p></div>
       <div class="qa-item stagger"><span class="n">Q8</span><p>What content already exists but hasn't been repurposed - <b>webinars, sales decks, case studies, founder talks?</b></p></div>
